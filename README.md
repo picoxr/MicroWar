@@ -18,9 +18,9 @@ Before you begin, ensure you have met the following requirements:
 - PICO 4
 - Unity Version
 ### First Run
-1 - Run in Unity Editor via Live Preview Plug-in
+1. Run in Unity Editor via Live Preview Plug-in
 ...
-2 - Get a build and run on the headset.
+1. Get a build and run on the headset.
 ...
 ## Project Structure
 PICO SDK version, Live Preview Plug-in version etc.
