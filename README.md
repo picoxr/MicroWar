@@ -17,7 +17,13 @@ Hand Tracking, Swift Tracker(Body Tracker), Real Time Communication, Multiplayer
 Before you begin, ensure you have met the following requirements:
 - PICO 4
 - Unity Version
+### First Run
+1 - Run in Unity Editor via Live Preview Plug-in
+...
+2 - Get a build and run on the headset.
+...
 ## Project Structure
+PICO SDK version, Live Preview Plug-in version etc.
 Explain BOOT and Main scenes, and some main components such as GameManager etc.
 ## Game Controls
 How to control the vehicles, etc.
