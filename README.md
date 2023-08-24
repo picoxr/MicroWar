@@ -6,17 +6,18 @@ Project Description
 - [Features](#features)
 - [Download APK](#download-apk)
 ## Demo
-Insert a link or a GIF/video showcasing your game in action.
+Gameplay video or gif?
 ## Features
-- Main
-- Bullet points are a great way to highlight these features.
+Hand Tracking, Swift Tracker(Body Tracker), Real Time Communication, Multiplayer, Achievements, Leaderboard
 ## Getting Started
+- Setting up the project.
+- Creating a PICO Developer Account etc.
+- Configuring the application on Pico Developer Console along with the Achievements, Leaderboards, Access Rights for multiplayer etc.
 ### Prerequisites
 Before you begin, ensure you have met the following requirements:
 - PICO 4
 - Unity Version
-### I
-#
+## Project Structure
 Explain BOOT and Main scenes, and some main components such as GameManager etc.
 ## Game Controls
 How to control the vehicles, etc.
