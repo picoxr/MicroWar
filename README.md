@@ -21,6 +21,7 @@ Before you begin, ensure you have met the following requirements:
 First, ensure you have Git LFS installed by running this command:
 
 `git lfs install`
+
 Then, clone this repo using the "Code" button above, or this command:
 
 `git clone https://github.com/picoxr/MicroWar`
