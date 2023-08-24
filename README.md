@@ -1,3 +1,4 @@
+![microwar-image](https://github.com/picoxr/MicroWar/blob/a7425a16e5e7677012b1c34ffa6caffdb75e48c4/img.png)
 # MicroWar
 Project Description
 ## Table of Contents
