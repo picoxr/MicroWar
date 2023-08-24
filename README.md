@@ -25,6 +25,6 @@ How to control the vehicles, etc.
 - [Asset Name 1](link-to-repo): Description of the asset.
 - [Asset Name 2](link-to-repo): Description of the asset.
 ## Download APK
-[Download APK - China Version](link-to-apk)
-[Download APK - Global Version](link-to-apk)
+- [Download APK - China Version](link-to-apk)
+- [Download APK - Global Version](link-to-apk)
 
