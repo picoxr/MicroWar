@@ -1,8 +1,6 @@
 # MicroWar
-I asked ChatGPT to write a README template for MicroWar's GitHub page. The result is pretty good actualy. We can use most of this structure:
-# MicroWar VR Game
 ![MicroWar Logo](/path/to/logo.png)
-MicroWar is an exciting VR game that showcases the features of the PICO SDK. Immerse yourself in a virtual battlefield where you can experience the power of PICO VR technology while engaging in thrilling combat scenarios.
+Project Description
 ## Table of Contents
 - [Demo](#demo)
 - [Features](#features)
@@ -14,7 +12,6 @@ MicroWar is an exciting VR game that showcases the features of the PICO SDK. Imm
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [Download APK](#download-apk)
-- [License](#license)
 ## Demo
 Insert a link or a GIF/video showcasing your game in action.
 ## Features
@@ -41,21 +38,12 @@ Detail the controls for interacting with the game:
 - Use controller buttons A and B to perform specific actions.
 - Use head movements to aim and look around.
 - Provide any additional control details specific to your game.
-## Contributing
-We welcome contributions from the community! If you'd like to contribute to MicroWar, follow these steps:
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes and commit them: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Open a pull request.
 ## Credits
 Give credit to the open source third-party assets you've used in the project. Include the name of the asset, a brief description, and a link to the original source or repository.
 - [Asset Name 1](link-to-repo): Description of the asset.
 - [Asset Name 2](link-to-repo): Description of the asset.
 ## Download APK
-You can download and install the MicroWar APK to quickly experience the game on your compatible VR device. [Download APK](link-to-apk)
-## License
-This project is licensed under the [MIT License](LICENSE).
----
-Feel free to customize and enhance this template to suit your specific needs. Including clear and detailed information in your README will help users understand and engage with your MicroWar VR game effectively. Good luck with your project!
-(Edited)
+You can download and install the MicroWar APK to quickly experience the game on your compatible VR device.
+[Download APK - China Version](link-to-apk)
+[Download APK - Global Version](link-to-apk)
+
