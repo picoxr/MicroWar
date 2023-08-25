@@ -14,6 +14,6 @@ With a swift tap of your hands or a spirited **kick** of your feet, the crates s
 For the part that involves feet we use the data we collect from PICO Motion Trackers.
 - `SwiftTrackerManager.cs`
 - `TrackedBodyPart.cs`
-- `MotionTrackedObject`
+- `MotionTrackedObject.cs`
   
 ![https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png}](https://github.com/picoxr/MicroWar/blob/1e1f6a9e7a733df7b38d8af03c253e1fd0347548/Documentation/Files/SwiftDocumentation.png)
