@@ -16,7 +16,7 @@ With a swift tap of your hands or a spirited **kick** of your feet, the crates s
 For the part that involves feet we use the data we collect from **PICO Motion Trackers**.
 
 ## Related Scripts
-- `SwiftTrackerManager.cs`<br>
+- `**SwiftTrackerManager.cs**`<br>
   SwiftTrackerManager is responsible for reading the body tracking data and updating the `Transforms` of the `GameObjects` which represent body parts in the game. In our case; those are left and right feet.
 - `TrackedBodyPart.cs` <br>
   We created this component to represent feet objects in the game. `TrackedBodyPart` derives from `MotionTrackedObject`.
