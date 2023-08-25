@@ -17,7 +17,6 @@ For the part that involves feet we use the data we collect from **PICO Motion Tr
 
 ## Related Scripts
 - `SwiftTrackerManager.cs`
-  ---
   SwiftTrackerManager is responsible for reading the body tracking data and updating the Transforms of the GameObjects which represents tracked body parts in the game.
 - `TrackedBodyPart.cs`
 - `MotionTrackedObject.cs`
