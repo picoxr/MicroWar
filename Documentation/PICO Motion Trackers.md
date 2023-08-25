@@ -11,7 +11,7 @@ In the context of MicroWar's mechanics, we introduce power-up crates containing 
 As players gather crates from the map, these crates dynamically emerge before them at an augmented scale.
 >
 With a swift tap of your hands or a spirited **kick** of your feet, the crates shatter open, revealing and initiating the concealed power-up within.
-For the part that involves feet we use the data we collect from PICO Motion Trackers.
+For the part that involves feet we use the data we collect from **PICO Motion Trackers**.
 - `SwiftTrackerManager.cs`
 - `TrackedBodyPart.cs`
 - `MotionTrackedObject.cs`
