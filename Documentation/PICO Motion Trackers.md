@@ -18,12 +18,12 @@ For the part that involves feet we use the data we collect from **PICO Motion Tr
 ## Related Scripts
 - **`SwiftTrackerManager.cs`**<br>
   SwiftTrackerManager is responsible for reading the body tracking data and updating the `Transforms` of the `GameObjects` which represent body parts in the game. In our case; those are left and right feet.
-- `TrackedBodyPart.cs` <br>
+- **`TrackedBodyPart.cs`** <br>
   We created this component to represent feet objects in the game. `TrackedBodyPart` derives from `MotionTrackedObject`.
-- `MotionTrackedObject.cs` <br>
+- **`MotionTrackedObject.cs`** <br>
   This component lets us record the position/rotation history of a GameObject. We utilize this class to calculate the hit speed of feet and hands when they collide with a Crate (aka. `HittableObject`).
   - We ignore the hits that are under a certain threshold (`HittableObject.displacementThreshold`)
-- `HittableObject.cs` <br>
+- **`HittableObject.cs`** <br>
   We simply attach this component to the objects we want hands and feet to interact with.
 
 ## Related GameObjects in the Scene
