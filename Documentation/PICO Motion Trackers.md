@@ -6,6 +6,8 @@
 >
 > [!IMPORTANT]
 > Check out the [PICO Body Tracking SDK Reference](https://developer-global.pico-interactive.com/document/unity/body-tracking/) for more details.
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
 
 # MicroWar PICO Motion Tracker Integration
 In the context of MicroWar's mechanics, we introduce power-up crates containing health and shield bonuses, designed to enhance gameplay subtly.
