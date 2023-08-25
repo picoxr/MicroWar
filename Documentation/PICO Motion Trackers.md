@@ -23,4 +23,7 @@ For the part that involves feet we use the data we collect from **PICO Motion Tr
 - `HittableObject.cs`
 
 ## Related GameObjects in the Scene
-![https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png}](https://github.com/picoxr/MicroWar/blob/1e1f6a9e7a733df7b38d8af03c253e1fd0347548/Documentation/Files/SwiftDocumentation.png)
+![https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png](https://github.com/picoxr/MicroWar/blob/1e1f6a9e7a733df7b38d8af03c253e1fd0347548/Documentation/Files/SwiftDocumentation.png)
+
+## Related Prefabs
+![https://github.com/picoxr/MicroWar/blob/2e2b0f6b84a9d7c1207d43d564322fdfd5db3e21/Documentation/Files/PowerUpCrate.png](https://github.com/picoxr/MicroWar/blob/2e2b0f6b84a9d7c1207d43d564322fdfd5db3e21/Documentation/Files/PowerUpCrate.png)
