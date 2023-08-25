@@ -5,7 +5,7 @@
 > PICO's body tracking capability requires **PICO Motion Tracker** - an accessory that captures a user's body positions. Body tracking APIs convert body positions into pose data for body joints, which serves as the input for your app. You can also use body tracking APIs to retrieve PICO Motion Tracker's connection status, battery level, and calibration status.
 
 > [!IMPORTANT]
-> Before you read please check out the **[PICO Body Tracking SDK Reference](https://developer-global.pico-interactive.com/document/unity/body-tracking/)**
+> Before you read further, please check out the **[PICO Body Tracking SDK Reference](https://developer-global.pico-interactive.com/document/unity/body-tracking/)**
 > to see **how to enable body tracking** and learn more about the **requirements** and **concepts**.
 
 # MicroWar PICO Motion Tracker Integration
