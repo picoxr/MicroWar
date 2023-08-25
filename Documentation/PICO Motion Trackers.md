@@ -8,4 +8,5 @@
 
 # MicroWar PICO Motion Tracker Integration
 In the context of MicroWar's mechanics, we introduce power-up crates containing health and shield bonuses, designed to enhance gameplay subtly.
-As a player picks up a crate by using their vehicle, the . You can use your feet or hands to break the crates to activate the power-up hidden inside the crate.
+As players gather crates from the map, these crates dynamically emerge before them at an augmented scale. With a swift tap of your hands or a spirited kick of your feet, the crates shatter open, revealing and initiating the concealed power-up within.
+For the part that involves feet we use the data we collect from PICO Motion Trackers. Please see `SwiftTrackerManager.cs`
