@@ -1,4 +1,4 @@
-![microwar-image](https://github.com/picoxr/MicroWar/blob/a7425a16e5e7677012b1c34ffa6caffdb75e48c4/img.png)
+![microwar-image](https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png)
 # MicroWar
 Project Description
 ## Table of Contents
