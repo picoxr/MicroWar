@@ -4,7 +4,15 @@ Considering the maintainability and scalability of the program, we have encapsul
 In this architecture, specific scripts implement the logic for different services. The PlatformServiceManager serves as an interface for accessing various instances. Here is the platform service structure diagram used in the MicroWar project:
 
 ![PICO Platform Service Structure](/Documentation/Files/PlatformServiceStructure.jpg)
+### Event Dispatch
+ **C# Code Example - Initializing the SDK**:
+   
+   ```csharp
+   using PicoSDK;
 
+   // Initialize the PICO SDK with your API key
+   PicoSDK.Initialize("your_api_key");
+   ```
 ## Initialization and Login
 
 The PICO platform offers developers a simplified process for initialization and user login, facilitating easy integration into multiplayer online experiences. The basic steps for initialization and login are as follows:
@@ -45,7 +53,7 @@ The PICO platform offers developers a simplified process for initialization and 
    ```
 
 By following these steps, your application will be able to offer a multiplayer online experience on the PICO platform, enabling players to collaboratively engage in gaming and interactive activities.
-## Message Dispatch
+## Event Dispatch
 
 The message dispatch system within the PICO platform is pivotal to constructing real-time interactions. As players communicate, move, shoot projectiles, or perform other actions within a room, this information needs to be synchronized with other players. The message dispatch system is responsible for broadcasting these messages to all participants within a room.
 
