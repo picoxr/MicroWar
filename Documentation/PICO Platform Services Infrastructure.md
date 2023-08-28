@@ -59,6 +59,6 @@ By following these steps, your application will be able to offer a multiplayer o
 ## More to Explore
 
 For detailed implementation specifics and usage guidelines, please refer to the following documentation:
-- [Rooms](Documentation/Rooms.md)
-- [RTC](Documentation/RTC.md)
-- [Multiplay](Documentation/Multiplays.md)
+- [Rooms](./Documentation/Rooms.md)
+- [RTC](./Documentation/RTC.md)
+- [Multiplay](./Documentation/Multiplays.md)
