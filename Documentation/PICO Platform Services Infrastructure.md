@@ -13,7 +13,8 @@ In this architecture, specific scripts implement the logic for different service
    // Initialize the PICO SDK with your API key
    PicoSDK.Initialize("your_api_key");
    ```
-## Initialization and Login
+### Get Service Instance
+## Initialization And Login
 
 The PICO platform offers developers a simplified process for initialization and user login, facilitating easy integration into multiplayer online experiences. The basic steps for initialization and login are as follows:
 
@@ -53,18 +54,6 @@ The PICO platform offers developers a simplified process for initialization and 
    ```
 
 By following these steps, your application will be able to offer a multiplayer online experience on the PICO platform, enabling players to collaboratively engage in gaming and interactive activities.
-## Event Dispatch
-
-The message dispatch system within the PICO platform is pivotal to constructing real-time interactions. As players communicate, move, shoot projectiles, or perform other actions within a room, this information needs to be synchronized with other players. The message dispatch system is responsible for broadcasting these messages to all participants within a room.
-
-Key functionalities of the message dispatch system:
-
-- **Real-time Synchronization**: Ensures players' actions and states remain synchronized within the multiplayer environment, minimizing delays and discrepancies across different clients.
-
-- **Partitioning and Prioritization**: Dispatches messages to specific rooms or players, while prioritizing the timely delivery of critical information.
-
-- **Reliability and Fault Tolerance**: Ensures reliable message delivery, maintaining data integrity and accuracy even in the presence of unstable network conditions.
-
 
 
 ## More to Explore
@@ -72,3 +61,6 @@ Key functionalities of the message dispatch system:
 For detailed implementation specifics and usage guidelines, please refer to the official PICO SDK documentation:
 
 - [PICO SDK Documentation](https://pico-sdk-docs.example.com)
+- [Rooms]
+- [RTC]
+- [Multiplay]
