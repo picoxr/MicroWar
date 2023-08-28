@@ -1,6 +1,6 @@
-# Pico Platform Services Documentation
+# Platform Services infrastructure
 
-Welcome to the documentation for Pico Platform Services. This guide provides an overview of the various services offered by the Pico platform, including Initialization, Rooms, RTC (Real-Time Communication), and Multiplayer.
+This guide provides an overview of the various services offered by the Pico platform, including Initialization, Rooms, RTC (Real-Time Communication), and Multiplayer.
 
 ## Table of Contents
 
