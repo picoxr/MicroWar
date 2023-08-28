@@ -1,5 +1,5 @@
 # PICO Platform Service Infrastructure
-Considering the maintainability and scalability of the program, we have encapsulated the PICO Platform Services. This encapsulation ensures relatively independent logic for each component while providing a unified access approach for all feature's instance. By utilizing an event system, we have interconnected these components to reduce coupling between modules.
+Considering the maintainability and scalability of the program, we have encapsulated the PICO Platform APIs. This encapsulation ensures relatively independent logic for each component while providing a unified access approach for all feature's instance. By utilizing an event system, we have interconnected these components to reduce coupling between modules.
 
 In this architecture, specific scripts implement the logic for different services. The PlatformServiceManager serves as an interface for accessing various instances. Here is the platform service structure diagram used in the MicroWar project:
 
