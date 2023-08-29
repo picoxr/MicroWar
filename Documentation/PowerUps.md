@@ -1,3 +1,4 @@
+*Power-Ups*
 DynamicMapObjectsManager
 PowerUpCrate
 TurretController
