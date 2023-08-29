@@ -23,77 +23,73 @@ PlatformModels.cs
         }
     }
    ```
-The example below explains how to define a foundational event type. We generate these data instances when receiving callbacks from the PICO platform and subsequently distribute them to listeners.
-
+### Register event listener
+Any script that needs to receive these events must register the relevant events and then obtain updates through callbacks. The following code illustrates how the registration and distribution process functions.
 PlatformModels.cs
    ```csharp
-    public class RoomInfo
-       {
-           public readonly NotificationType NotificationType;
-           public readonly RoomServiceStatus RoomStatus;
-           public readonly RoomListRetrieveStatus RoomListRetrieveStatus;
-           public readonly Room CurrentRoom;
-           public readonly RoomList RoomList;
-           public readonly User UpdatePlayer;
-           //Get Room Data method
-           public RoomInfo(RoomServiceStatus status, Room currentRoom, RoomListRetrieveStatus roomListRetrieveStatus, RoomList roomList) 
-           {
-               CurrentRoom = currentRoom;
-               RoomStatus = status;
-               RoomListRetrieveStatus = roomListRetrieveStatus;
-               RoomList = roomList;
-           }
-       }
+    private void Start()
+    {
+         ...
+        // Subscribe the event handler to the RoomUpdateEvent
+        PlatformServiceManager.Instance.RegisterNotification<RoomUpdateEvent>(HandleRoomUpdateEvent);
+        // Subscribe the event handler to the RoomListEvent
+        PlatformServiceManager.Instance.RegisterNotification<RoomListEvent>(HandleRoomListEvent);
+         ...
+    }
+
+    private void HandleRoomUpdateEvent(EventWrapper<RoomUpdateEvent> msg)
+    {
+        if (msg.Data.RoomServiceStatus != RoomServiceStatus.Idle)
+        {
+            ...
+            if (msg.Data.RoomServiceStatus == RoomServiceStatus.InRoom) // If in a room, update the room info UI.
+            {
+                UpdateRoomInfo(msg.Data.CurrentRoom); // Refresh UI
+            }
+            return;
+        }
+        CreateRoomBtn.interactable = true;
+        UpdateRoomInfo(msg.Data.CurrentRoom);
+        //RetrieveRoomList(); 
+    }
+
+    private void OnDestroy()
+    {
+        if (PlatformServiceManager.Instance == null) return;
+        PlatformServiceManager.Instance.UnregisterNotification<RoomUpdateEvent>(HandleRoomUpdateEvent);
+        PlatformServiceManager.Instance.UnregisterNotification<RoomListEvent>(HandleRoomListEvent);
+    }
    ```
-Any script that wishes to receive these events must register the relevant events and then obtain updates through callbacks. The following code illustrates how the registration and distribution process functions.
-PlatformModels.cs
+
+## Get Service Controller Instance
+By encapsulation, we can access instances that control various platform services from the ***PlatformServiceManager.cs***. Here is a code example illustrating how to retrieve these instances and how to use it.
    ```csharp
-        /// <summary>
-        /// Register a callback to receive platform event
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="handler"></param>
-        public void RegisterNotification<T>(EventWrapper<T>.Handler handler)
-        {
-            if(handler == null)
-            {
-                DebugUtils.LogError(nameof(PlatformServiceManager),"Can't Register A Handler That Is Null !");
-                return;
-            }
+   Start()
+   {
+      ...
+     Platformcontroller_Rooms roomController = PlatformServiceManager.Instance.GetController<PlatformController_Rooms>();
+      ...
+   }
 
-            if ( ! eventMap.ContainsKey( typeof(T) ))
-            {
-                eventMap.Add(typeof(T), new List<Delegate>());
-            }
+   public void RetrieveRoomList()
+    {
+        roomController.RetrieveRoomList();
+    }
 
-            if ( ! eventMap[typeof(T)].Contains(handler))
-            {
-                eventMap[typeof(T)].Add(handler);
-            }
-        }
-
-        public void NotifyEventHandler<T>(EventWrapper<T> data)
-        {
-            List<Delegate> handlerList = null;
-            if( eventMap.ContainsKey(typeof(T)))
-            {
-                handlerList = eventMap[typeof(T)];
-            }
-        
-            if(handlerList!=null)
-            {
-                for (int i = 0; i < handlerList.Count; i++)
-                {
-                    if(handlerList[i]!= null && handlerList[i].Target != null)
-                    {
-                        handlerList[i].DynamicInvoke(data);
-                    }
-                }
-            }
-        }
+    public void LeaveRoom()
+    {
+        roomController.LeaveRoom();
+    }
    ```
-
-## Get Service Instance
+The following list comprises the Event types present within the project. For more details, please see the ***PlatformModels.cs*** script.
+  ```csharp
+   ...
+   public class ErrorEvent : EventBase{...}
+   public class RoomUpdateEvent : EventBase{...}
+   public class RoomListEvent : EventBase{...}
+   public class RoomPlayerEvent : EventBase{...}
+   ...
+   ```
 
 ## More to Explore
 
