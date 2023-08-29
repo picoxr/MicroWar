@@ -1,6 +1,6 @@
 
 # Power-Ups
-| foo | bar |
+
 | --- | --- |
 | DynamicMapObjectsManager | ... |
 | TurretController | ... |
