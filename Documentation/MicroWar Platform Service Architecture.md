@@ -94,6 +94,7 @@ The following list comprises the Event types present within the project. For mor
 ## More to Explore
 
 For detailed implementation specifics and usage guidelines, please refer to the following documentation:
+- [Initialization And Login](/Documentation/InitializationAndLogin.md)
 - [Rooms](/Documentation/Rooms.md)
 - [RTC](/Documentation/RTC.md)
 - [Multiplay](/Documentation/Multiplays.md)
