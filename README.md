@@ -88,7 +88,7 @@ In Unity Editor, click "File/Build Settings/Build And Run". Make sure the platfo
 ## Game Instruction
 - Game UI
   - Pick the game mode and check leaderboard and achiement
-  - ![UI-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/UI.png)
+  - ![MainMenu-Image](https://github.com/picoxr/MicroWar/blob/e0c1b5d000392a340ea6d71b6f86e9a1f07c41d3/Documentation/Files/mainMenu.png)
 - Gameplay
   - Check Vehicle status and Pick Vehicle
   - ![PickVehicle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/Check%26PickVechicle.jpeg)
