@@ -1,7 +1,7 @@
 
 # Power-Ups
 |  |  |
-| --- | --- |
+| - | - |
 | DynamicMapObjectsManager | ... |
 | TurretController | ... |
 | PowerUpSettings | ... |
