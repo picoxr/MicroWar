@@ -14,6 +14,11 @@
 | bar |
 | bar | baz | boo |
 
+| f\|oo  |
+| ------ |
+| b `\|` az |
+| b **\|** im |
+
 PowerUpCrate
 TurretController
 PowerUpSettings
