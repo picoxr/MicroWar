@@ -19,7 +19,8 @@ For the part that involves feet we use the data we collect from **PICO Motion Tr
 - **`SwiftTrackerManager.cs`**<br>
   SwiftTrackerManager is responsible for reading the body tracking data and updating the `Transforms` of the `GameObjects` which represent body parts in the game. In our case; those are left and right feet.
   ``` c#
-          private void Update()
+        //Read body tracking data each frame
+        private void Update()
         {
             GetBodyTrackingData();
         }
