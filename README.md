@@ -80,6 +80,8 @@ https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31
 
 ## Assets used in this project
 - Assets from [Kenny.nl](https://www.kenney.nl/)
+- SFX from [OpenGameArt](https://opengameart.org/), [Sonniss - Game Audio GDC](https://sonniss.com/gameaudiogdc)
+- Prefab Lightmap Data Script: https://github.com/Ayfel/PrefabLightmapping/blob/master/PrefabLightmapData.cs
 
 ## Download APK
 - [Download APK - China Version](link-to-apk)
