@@ -1,9 +1,13 @@
-# RTC (Real-Time communication)
+# RTC (Real-Time Communication)
 
-The RTC service is very similar to the Room service. it gathers all players through the RTC room. In the same room, players can easily communicate with each other, mute, or silence any player. This chapter explains the integration of RTC services in MicroWar.
+The RTC service is very similar to the Room service. it gathers all players through the RTC room. In the same room, players can easily communicate with each other using their voice, mute, or silence any player. This chapter explains the integration of RTC services in MicroWar.
 
-## Create And Join RTC Room
-In MicroWar, we default to joining RTC rooms when a player joins a Named Room
+## Create RTC Room
+
+- **`PlatformController_RTC.cs`**<br>
+
+In MicroWar, we default to joining RTC rooms when a player joins a Named Room. The following example demonstrates how to utilize the event system to automatically notify the RTC module to join a room.
+
  ```csharp
     public void CreateRoom(uint maxUser)
         {
@@ -24,35 +28,46 @@ In MicroWar, we default to joining RTC rooms when a player joins a Named Room
             }
         }
    ```
-### Create Room
+## Join RTC Room
 - **`PlatformController_RTC.cs`**<br>
 
-  
- ### Join Room
-- **`PlatformController_Rooms.cs`**<br>
-
-   ```csharp
-  public void JoinToRoom(ulong roomID)
+  ```csharp
+        private void JoinRTCRoom(string roomId, string currentUserId)
         {
-            if (!isInitialized || serviceStatus != RoomServiceStatus.Idle)
-                return;
-
-            if (roomID == 0)
-                return;
-
-            UpdateRoomServiceStatus(RoomServiceStatus.Processing, null); //Processing
-            RoomOptions op = new RoomOptions();
-            RoomService.Join2(roomID, op).OnComplete(msg =>
+           
+            RtcService.GetToken(roomId, currentUserId, tokenTTL, privilege).OnComplete(result =>
             {
-                if (msg.IsError)
+                if (result.IsError)
                 {
-                    UpdateRoomServiceStatus(RoomServiceStatus.Idle, null);
-                    platformServiceManager.HandlePlatformErrors(PlatformErrors.JoinRoomFailed, msg.Error.Code.ToString()); //Notify error handler
-                    DebugUtils.LogError(nameof(PlatformController_Rooms), $"Join Room Failed! Error Code: {msg.Error.Code} Message: {msg.Error.Message}");
+                    Debug.LogWarning($"[PVRRTC]: PICO RTC Service get token failed. Result:  {result.Error.Code} | {result.Error.Message} ");
+                    return;
                 }
-                //Join Room Success
-                DebugUtils.Log(nameof(PlatformController_Rooms), $"Join Room Success! Room ID: {msg.Data.RoomId}");
-                UpdateRoomServiceStatus(RoomServiceStatus.InRoom, msg.Data); //Success in room
+                rtcToken = result.Data;
+                RtcRoomOptions rtcRoomOp = new RtcRoomOptions();
+                rtcRoomOp.SetRoomId(roomId);
+                rtcRoomOp.SetUserId(currentUserId);
+                rtcRoomOp.SetToken(rtcToken);
+                rtcRoomOp.SetRoomProfileType(RtcRoomProfileType.Game);
+                rtcRoomOp.SetIsAutoSubscribeAudio(true);
+                RtcService.JoinRoom2(rtcRoomOp, true);
             });
         }
-   ```
+  ```
+
+## Leave RTC Room
+- **`PlatformController_RTC.cs`**<br>
+
+  ```csharp
+ private void LeaveRTCRoom(string rtcRoomId)
+        {
+            ...
+            string strRoomID = rtcRoomId;
+
+            RtcService.StopAudioCapture();
+            RtcService.UnPublishRoom(strRoomID);
+            RtcService.LeaveRoom(strRoomID);
+            rtcRoomID = null;
+            rtcToken = null;
+        }
+
+```
