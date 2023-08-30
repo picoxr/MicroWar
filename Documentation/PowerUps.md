@@ -10,4 +10,4 @@
 | CrateContainerQueue | Stores collected power-up crates in a queue, allowing players to interact with one crate at a time. |
 | EnvironmentManager | Stores references to player spawn points, vehicle spawn points, and the map's origin position. Provides methods for retrieving random points on the map. |
 
-
+![powerups-img](https://github.com/picoxr/MicroWar/blob/642aa597ea855c5a1a1f19146f996293a05dd9ba/Documentation/Files/PowerUpSettings.png)
