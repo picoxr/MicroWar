@@ -5,10 +5,7 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 **`Trailer`**<br>
 
 [![Demo](https://img.youtube.com/vi/MtnugBt0IuQ/0.jpg)](https://www.youtube.com/watch?v=MtnugBt0IuQ)
-## Get Involved
-We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
 
-Thank you for your interest in MicroWar and the PICO Integration SDK. Let's embark on a journey of immersive possibilities!
 ## Table of Contents
 - [Demo](#demo)
 - [Getting Started](#getting-started)
@@ -89,6 +86,11 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
 - Prefab Lightmap Data Script: https://github.com/Ayfel/PrefabLightmapping/blob/master/PrefabLightmapData.cs
 
 ## Download APK
+
 - [Download APK](link-to-apk)
 
+## Get Involved
+We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
+
+Thank you for your interest in MicroWar and the PICO Integration SDK. Let's embark on a journey of immersive possibilities!
 
