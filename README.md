@@ -60,12 +60,11 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - Tracking Origin
   - Eye Tracking
   - [PICO Motion Tracker Integration](https://github.com/picoxr/MicroWar/blob/bdc2762d5d03262e497725e5183bca76c384ac47/Documentation/PICO%20Motion%20Trackers.md)
-- [Platform Service](
-https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/MicroWar%20Platform%20Service%20Architecture.md)
-  - [Initialization And Login](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Initialization%20And%20Login.md)
-  - [Real Time Communication](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/RTC%20(Real-Time%20communication).md)
-  - [Rooms](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Rooms.md)
-  - [Multiplay](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Multiplay.md)
+- [Platform Service](/Documentation/MicroWar%20Platform%20Service%20Architecture.md)
+  - [Initialization And Login](/Documentation/Initialization%20And%20Login.md)
+  - [Real Time Communication](/Documentation/RTC%20(Real-Time%20Communication).md)
+  - [Rooms](/Documentation/Rooms.md)
+  - [Multiplay](/Documentation/Multiplay.md)
   - Achievements
   - Leaderboard
 ## Game Instruction
