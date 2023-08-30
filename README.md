@@ -75,7 +75,7 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - Check Vehicle status and Pick Vehicle
   - ![PickVehicle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/Check%26PickVechicle.jpeg)
   - Battle with instruction
-  - ![Battle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/GamePlay.jpeg)
+  - ![Battle-image](https://github.com/picoxr/MicroWar/blob/77c9af957b25aacef7f36197493075f958be46ba/Documentation/Files/Battlefield_01_Text.png)
 
 ## Assets used in this project
 - Assets from [Kenny.nl](https://www.kenney.nl/)
