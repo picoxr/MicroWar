@@ -5,16 +5,13 @@ The rooms feature is designed to unite numerous online players. In the PICO plat
 ## Create And Join Room
 In the MicroWar project, we encapsulate the room functionality within a single script. Through the foundational structure of platform services, this enables the transmission of room data changes to the external environment and facilitates easy access to control script instances. To achieve room listing functionality, we have opted for the PICO named room type. The following code snippet demonstrates how to create a NamedRoom within MicroWar.
 ### Create Room
+
 - **`PlatformController_Rooms.cs`**<br>
 
    ```csharp
     public void CreateRoom(uint maxUser)
         {
-            if (!isInitialized || serviceStatus != RoomServiceStatus.Idle)
-                return;
-            //Named Room
-            UpdateRoomServiceStatus(RoomServiceStatus.Processing, null); // Processing
-            //Get logged in user ID to set a unique room name.
+            ...
             string userID = platformServiceManager.Me.ID;
             string roomName = userID + DateTime.Now.ToString();
             RoomOptions op = new RoomOptions();
@@ -23,8 +20,7 @@ In the MicroWar project, we encapsulate the room functionality within a single s
             RoomService.JoinOrCreateNamedRoom(RoomJoinPolicy.Everyone, true, maxUser, op).OnComplete(msg => {
                 if (msg.IsError)
                 {
-                    UpdateRoomServiceStatus(RoomServiceStatus.Idle, null); // Error, back to idle
-                    platformServiceManager.HandlePlatformErrors(PlatformErrors.CreateRoomFailed, msg.Error.Code.ToString());  // Notify error handler
+                    ...
                     DebugUtils.LogError(nameof(PlatformController_Rooms), $"Create Room Failed! Error Code: {msg.Error.Code} Message: {msg.Error.Message}");
                     return;
                 }
@@ -34,25 +30,19 @@ In the MicroWar project, we encapsulate the room functionality within a single s
             });
    ```
  ### Join Room
+ 
 - **`PlatformController_Rooms.cs`**<br>
 
    ```csharp
   public void JoinToRoom(ulong roomID)
         {
-            if (!isInitialized || serviceStatus != RoomServiceStatus.Idle)
-                return;
-
-            if (roomID == 0)
-                return;
-
-            UpdateRoomServiceStatus(RoomServiceStatus.Processing, null); //Processing
+            ...
             RoomOptions op = new RoomOptions();
             RoomService.Join2(roomID, op).OnComplete(msg =>
             {
                 if (msg.IsError)
                 {
-                    UpdateRoomServiceStatus(RoomServiceStatus.Idle, null);
-                    platformServiceManager.HandlePlatformErrors(PlatformErrors.JoinRoomFailed, msg.Error.Code.ToString()); //Notify error handler
+                    ...
                     DebugUtils.LogError(nameof(PlatformController_Rooms), $"Join Room Failed! Error Code: {msg.Error.Code} Message: {msg.Error.Message}");
                 }
                 //Join Room Success
@@ -61,5 +51,35 @@ In the MicroWar project, we encapsulate the room functionality within a single s
             });
         }
    ```
+### Retrieve Room List
+
+- **`PlatformController_Rooms.cs`**<br>
+
+   ```csharp
+  public void RetrieveRoomList()
+        {
+            ...
+            RoomService.GetNamedRooms(0, 20).OnComplete(msg =>
+            {
+                if (msg.IsError)
+                {
+                    ...
+                    platformServiceManager.HandlePlatformErrors(PlatformErrors.RetrieveRoomListFailed, msg.Error.Code.ToString());//Notify error handler
+                    DebugUtils.LogError(nameof(PlatformController_Rooms), $"Retrieve Room List Failed! Error Code: {msg.Error.Code} Message: {msg.Error.Message}");
+                    return;
+                }
+                DebugUtils.Log(nameof(PlatformController_Rooms), $"Retrieve Room List Success!");
+                var roomList = msg.Data;
+                UpdateRoomListRetrieveStatus(RoomListRetrieveStatus.Idle, roomList);
+            });
+   ```
+## More to Explore
+
+For detailed implementation specifics and usage guidelines, please refer to the following documentation:
+- [MicroWar Platform Service Architecture]([/Documentation/MicroWarPlatformServiceArchitecture.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/MicroWar%20Platform%20Service%20Architecture.md))
+- [Initialization And Login]([/Documentation/InitializationAndLogin.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Initialization%20And%20Login.md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Initialization%20And%20Login.md)
+- [Rooms]([/Documentation/Rooms.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Rooms.md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Rooms.md)
+- [RTC]([/Documentation/RTC.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/RTC%20(Real-Time%20communication).md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/RTC%20(Real-Time%20communication).md)
+- [Multiplay]([/Documentation/Multiplays.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Multiplay.md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Multiplay.md)
 
 
