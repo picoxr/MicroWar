@@ -68,15 +68,20 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - [Multiplay](/Documentation/Multiplay.md)
   - Achievements
   - Leaderboard
-## Game Instruction
-- Game UI
+## How to Play
+#### Game UI
   - Pick the game mode and check leaderboard and achiement
-  ![MainMenu-Image](https://github.com/picoxr/MicroWar/blob/e0c1b5d000392a340ea6d71b6f86e9a1f07c41d3/Documentation/Files/mainMenu.png)
-- Gameplay
-  - Check Vehicle status and Pick Vehicle
-  ![PickVehicle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/Check%26PickVechicle.jpeg)
-- Battle with instruction
-  ![Battle-image](/Documentation/Files/Battlefield_01_Text.png)
+<img src="/Documentation/Files/UI.png" width="800px">
+  
+#### Check Vehicle status and Pick Vehicle
+
+<img src="/Documentation/Files/TankSelector.png" width="800px">
+
+#### Gameplay Instruction
+
+<img src="/Documentation/Files/Battlefield_01_Text.png" width="800px">
+
+
 
 ## Assets used in this project
 - Assets from [Kenny.nl](https://www.kenney.nl/)
@@ -84,8 +89,6 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
 - Prefab Lightmap Data Script: https://github.com/Ayfel/PrefabLightmapping/blob/master/PrefabLightmapData.cs
 
 ## Download APK
-- [Download APK - China Version](link-to-apk)
-- [Download APK - Global Version](link-to-apk)
+- [Download APK](link-to-apk)
 
-## Known Issues
 
