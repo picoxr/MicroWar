@@ -59,7 +59,7 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - Hand Tracking
   - Tracking Origin
   - Eye Tracking
-  - Body Tracking (Swift)
+  - [PICO Motion Tracker Integration](https://github.com/picoxr/MicroWar/blob/fc14918c1441d88c620a3e7608ae41b609bfca9e/Documentation/PICO%20Motion%20Trackers.md)
 - [Platform Service](
 https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/MicroWar%20Platform%20Service%20Architecture.md)
   - [Initialization And Login](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Initialization%20And%20Login.md)
