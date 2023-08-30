@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6322962814999873372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6322962814999873374}
+  - component: {fileID: 6322962814999873375}
+  m_Layer: 0
+  m_Name: VehicleConfigManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6322962814999873374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322962814999873372}
+  m_LocalRotation: {x: 0.08717229, y: -0.89959055, z: 0.21045254, w: -0.37262267}
+  m_LocalPosition: {x: 6.1625504, y: -2.6614292, z: 3.553002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6322962814999873375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322962814999873372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772fb5e8b420a48449076092a967a832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VehiclePrefabGroups:
+  - VehicleType: 1
+    PlayerPrefab: {fileID: 102232189091352495, guid: efea1b5fe1d89414a81d155e1355c91d,
+      type: 3}
+    AiPrefab: {fileID: 7816536854821683487, guid: 069cbd550a0b8d94cb2ce638c86fc84d,
+      type: 3}
+    MultiplayerPrefab: {fileID: 1262676091272385947, guid: 81a3e523a9924164192d40655608008d,
+      type: 3}
+  - VehicleType: 2
+    PlayerPrefab: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+      type: 3}
+    AiPrefab: {fileID: 3972938094825085045, guid: c6843bc3a6753464d86213b8a0f4bc96,
+      type: 3}
+    MultiplayerPrefab: {fileID: 1262676091272385947, guid: 9df074323afd7af49b8da857629aa37b,
+      type: 3}
+  - VehicleType: 0
+    PlayerPrefab: {fileID: 102232189091352495, guid: a4b8da5f0268b244d8f5a0cf17a39c13,
+      type: 3}
+    AiPrefab: {fileID: 950106645511534271, guid: 9a0bb30384d57b14f8bf572b60308779,
+      type: 3}
+    MultiplayerPrefab: {fileID: 1262676091272385947, guid: 6d77a32c16cfad842a1b39a919e9ed5e,
+      type: 3}
+  VehicleSettings:
+  - {fileID: 11400000, guid: 0f6542417a996e348825bf365c10ba62, type: 2}
+  - {fileID: 11400000, guid: 63f7ab6b8f157c240b1e9884805859c1, type: 2}
+  - {fileID: 11400000, guid: cb6acfcb3e123be4b89bd949af089990, type: 2}

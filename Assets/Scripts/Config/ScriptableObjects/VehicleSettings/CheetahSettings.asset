@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0494c268c0f657b42b3810c72f156b44, type: 3}
+  m_Name: CheetahSettings
+  m_EditorClassIdentifier: 
+  VehicleType: 2
+  StartingHealth: 66.666664
+  FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
+  ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  Speed: 18
+  TurnSpeed: 270
+  MinLaunchForce: 3.75
+  MaxLaunchForce: 12
+  MaxChargeTime: 0.75
+  GunTurnSpeed: 180
+  localScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  ExplosionAudio: {fileID: 0}
+  ExplosionParticles: {fileID: 0}

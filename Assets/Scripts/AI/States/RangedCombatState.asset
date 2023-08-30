@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52304f2e8d3d2fa4b9ed5a24b87e8954, type: 3}
+  m_Name: RangedCombatState
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: fe80a8817947a2b4c961b1fbe6e9b02c, type: 2}
+  - {fileID: 11400000, guid: 11b2a10ab20cf964e99618808ff1c6bb, type: 2}
+  - {fileID: 11400000, guid: 972b0ff92dc463646be7f64a569d8a4e, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 5d6a262edbddaf74f9f651f1b02d91c3, type: 2}
+    trueState: {fileID: 11400000, guid: b65d4315467cf5f42acc8c5b368a38fe, type: 2}
+    falseState: {fileID: 11400000, guid: 94d17d76de467e041968de03287ef8b6, type: 2}
+  sceneGizmoColor: {r: 0.11764705, g: 0.44133013, b: 1, a: 1}

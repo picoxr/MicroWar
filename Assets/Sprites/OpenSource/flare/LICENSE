@@ -1,0 +1,5 @@
+CC0 - Public Domain Donation by hackcraft.de
+
+preview:
+montage *.png -geometry +0+0 -background grey0 preview.jpg
+
