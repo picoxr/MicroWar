@@ -20,25 +20,27 @@ This part involves fundamental SDK initialization, encompassing services such as
             {
                 if (msg.IsError)
                 {
+                     ...
                     DebugUtils.LogError(nameof(PlatformServiceManager), $"[Core Service] Aysnc Initialize Failed! Error Code: {msg.Error.Code} Message: {msg.Error.Message}");
-                    UpdateGameInitializeStatus(ServiceInitializeStatus.Failed); //Core Initialize Failed
                     return;
                 }
 
                 if (msg.Data != PlatformInitializeResult.Success && msg.Data != PlatformInitializeResult.AlreadyInitialized)
                 {
+                     ...
                     DebugUtils.LogError(nameof(PlatformServiceManager), $"[Core Service] Aysnc Initialize Failed! Initialize Result: {msg.Data.ToString()}");
-                    UpdateGameInitializeStatus(ServiceInitializeStatus.Failed); //Core Initialize Failed
                     return;
                 }
                 DebugUtils.Log(nameof(PlatformServiceManager), $"[Core Service] Aysnc Initialize Success!");
-                //Try get logged in user data.
-                GetLoginUserData();
+                GetLoginUserData();//Try get logged in user data.
                 InitializeGameService();
             });
    ```
 ## Get Logged-in User Data
 In the context of multiplayer gaming, a common requirement is to access data related to the currently logged-in player ***After the platform initialization is completed***, we can call an interface to retrieve all the relevant user data. Please refer to the example provided below.
+
+- **`PlatformServiceManager.cs`**<br>
+
    ```csharp
    private void GetLoginUserData()
            {
@@ -50,14 +52,16 @@ In the context of multiplayer gaming, a common requirement is to access data rel
                        return;
                    }
                    DebugUtils.Log(nameof(PlatformServiceManager), $"[User] Login Success! User: {msg.Data.DisplayName} ID: {msg.Data.ID}");
-                   //Login success
                    me = msg.Data;
                });
            }
    ```
 
 ## Game Service Initialization
-Game service initialization pertains to room management, matchmaking, and multiplayer gameplay. If the project involves these features, it's essential to initialize the game services before calling any of the API. 
+Game service initialization pertains to ***room service***, ***matchmaking***, and ***multiplayer***. If the project involves these features, it's essential to initialize the game services before calling any of the API. 
+
+- **`PlatformServiceManager.cs`**<br>
+
    ```csharp
        private void InitializeGameService()
         {
@@ -75,10 +79,9 @@ Game service initialization pertains to room management, matchmaking, and multip
                 if (msg.Data == GameInitializeResult.Success)
                 {
                     DebugUtils.Log(nameof(PlatformServiceManager), $"[Game Service] Aysnc Initialize Success!");
-                    //Bind connection notifications
-                    NetworkService.SetNotification_Game_ConnectionEventCallback(HandleGameConnectionEvent);
+                    ...
                     //Try initialize other modules
-                    UpdateGameInitializeStatus(ServiceInitializeStatus.initialized); //Core Initialize Failed
+                    UpdateGameInitializeStatus(ServiceInitializeStatus.initialized);
                     DelayInit();
                 }
                 else
@@ -90,3 +93,14 @@ Game service initialization pertains to room management, matchmaking, and multip
             });
         }
    ```
+## More to Explore
+
+For detailed implementation specifics and usage guidelines, please refer to the following documentation:
+- [MicroWar Platform Service Architecture]([/Documentation/MicroWarPlatformServiceArchitecture.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/MicroWar%20Platform%20Service%20Architecture.md))
+- [Initialization And Login]([/Documentation/InitializationAndLogin.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Initialization%20And%20Login.md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Initialization%20And%20Login.md)
+- [Rooms]([/Documentation/Rooms.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Rooms.md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Rooms.md)
+- [RTC]([/Documentation/RTC.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/RTC%20(Real-Time%20communication).md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/RTC%20(Real-Time%20communication).md)
+- [Multiplay]([/Documentation/Multiplays.md](https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Multiplay.md)https://github.com/picoxr/MicroWar/blob/17e79e7bb7d1f3383b1dfeb6457363885e4b4d31/Documentation/Multiplay.md)
+
+
+   
