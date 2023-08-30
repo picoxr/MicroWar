@@ -66,15 +66,33 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - Achievements
   - Leaderboard
 ## How to Play
-#### Game UI
-  - Pick the game mode and check leaderboard and achiement
+### Game UI
+Players have the option to navigate the UI using either controller line interactors or using Hand tracking poke gesture. The player have the ability to select two game modes on the main menu. In the ***single-player mode***, you can promptly initiate a local solo game, fighting with a formidable AI bot. Alternatively, in the ***multiplayer mode***, players can either create their own game room or join an existing one to engage in battles with other players. Of course, the option to include AI bots in multiplayer matches is also available.
+
+Players also have the option to select and view the ***achievements*** they have earned or browse through the ***leaderboard*** from the main menu.
+
 <img src="/Documentation/Files/UI.png" width="800px">
   
-#### Check Vehicle status and Pick Vehicle
+### Check Vehicle status and Pick Vehicle
+
+After entering the game, players can choose from three vehicles with distinct attributes. Using either a controller or hand tracking, they can pick up the tank and place it onto the illuminated sphere on the battlefield. This action grants them control of the chosen vehicle for gameplay. Once any player achieves victory in three rounds, the game will conclude.
 
 <img src="/Documentation/Files/TankSelector.png" width="800px">
 
-#### Gameplay Instruction
+### Gameplay Instruction
+
+**'Vehicle control'**<br>
+The ***Grab button*** on the controller is used to grab vehicles, while the ***Trigger button*** on the right controller is utilized to launch projectiles. The ***joysticks*** on the left and right controllers are employed to control the vehicle's movement direction and the turret's orientation, respectively.
+
+In the gesture recognition mode, ***clenching the left hand into a fist*** and moving it over the suspended cursor will manipulate the vehicle to move in the corresponding direction. ***Pinching with the right hand*** triggers the firing of projectiles.
+
+**'Power-ups'**<br>
+
+Power-ups will randomly spawn on the battlefield. Players can guide their vehicles to collect these power-ups. Currently, the game features two main types of power-ups:
+
+- ***Turret Activator***: This item can be used to activate one of the three turrets placed within the scene. The activated turret will automatically attack all enemies except the player.
+
+- ***Crate***: This power-up generates a crate in front of the player. The player can break the crate using the controller or by tracking foot movements through the body tracker to acquire the bonus inside. There are two types of bonuses available: ***health regeneration*** and ***immunity to a single attack***.
 
 <img src="/Documentation/Files/Battlefield_01_Text.png" width="800px">
 
