@@ -5,6 +5,29 @@ PICO SDK provides basic packet forwarding APIs, enabling players within a game r
 
 ![PacketProcess](https://github.com/picoxr/MicroWar/blob/0e9ef5d885c2913c3105061e906994929bfc2478/Documentation/Files/PacketProcess.jpg)
 ## Sending Packet
+
+In the following example, PID represents the ***PICO User ID***, and UID represents the ***Unity Netcode Client ID***. We maintain this mapping relationship in the project, checking in the map to determine the PICO user ID of the target user we need to send to.
+> [!NOTE]
+> The Client ID of the host is always 0, and clients can only send data to the host. Meanwhile, the host can transmit data to any client, including itself. We store the Host ID for each multiplayer session to facilitate data transmission from clients.
+
+```csharp
+public bool SendPacket2UID(ulong clientUID, byte[] data)
+        {
+            string targetPID = string.Empty;
+
+            if (clientUID == 0)//Client send data to server
+            {
+                return NetworkService.SendPacket(netcodeRoomData.HostPId, data, true);
+            }
+
+            if (netcodeRoomData.ParseUID2PID(clientUID,out targetPID)) // Server send data to clients
+            {
+                //DebugUtils.LogWarning(nameof(PlatformController_Network), $"Send data to {targetPID}");
+                return NetworkService.SendPacket(targetPID, data, true);
+            }
+            return false;
+        }
+```
 ## Receiving Packet
 ## More to Explore
 
