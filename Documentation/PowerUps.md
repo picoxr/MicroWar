@@ -2,12 +2,12 @@
 # Power-Ups
 | Script | Function |
 | - | - |
-| DynamicMapObjectsManager | Manages the dynamic objects such as the crates containing power-ups and turret activators in the game. |
-| TurretController | Contains the functionality that handles firing homing missiles from a turret. |
-| PowerUpCrate | Represent the big breakable crate that appears in front of the player.  |
-| PowerUpSettings | A ScriptableObject storing the configuration of a power-up.    |
-| HittableObject | Represents game objects that can hit by hands, controllers or feet(PICO Motion Trackers) |
-| CrateContainerQueue | Collected power-up crates are stored in this queue. A player can see and interact with only a crate at a time. |
-| EnvironmentManager | Holds references to player spawn points, vehicle spawn points and the map's origin position. Contains methods which help retrieve random points on the map.|
+| DynamicMapObjectsManager | Manages dynamic objects like power-up crates and turret activators. |
+| TurretController | Handles homing missile firing from a turret. |
+| PowerUpCrate | Represents large breakable crates in front of the player. |
+| PowerUpSettings | Stores power-up configuration settings as a ScriptableObject. |
+| HittableObject | Represents objects that can be hit by hands, controllers, or feet (PICO Motion Trackers). |
+| CrateContainerQueue | Stores collected power-up crates in a queue, allowing players to interact with one crate at a time. |
+| EnvironmentManager | Stores references to player spawn points, vehicle spawn points, and the map's origin position. Provides methods for retrieving random points on the map. |
 
 
