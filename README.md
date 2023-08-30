@@ -1,8 +1,10 @@
 ![microwar-image](https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png)
 # MicroWar
-## About MicroWar
 Welcome to MicroWar, an VR game project implemented using the PICO Integration SDK. Our primary objective is to present an immersive experience that spotlights the breadth and depth of capabilities offered by the PICO Integration SDK. This single project encapsulates all the key features, demonstrating their integration potential for fellow developers.
 
+**`Trailer`**<br>
+
+[![Demo](https://img.youtube.com/vi/MtnugBt0IuQ/0.jpg)](https://www.youtube.com/watch?v=MtnugBt0IuQ)
 ## Get Involved
 We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
 
@@ -15,8 +17,7 @@ Thank you for your interest in MicroWar and the PICO Integration SDK. Let's emba
 - [Game Instruction](#game-instruction)
 - [Download APK](#download-apk)
 - [Known Issues](#known-issues)
-## Demo
-[![Demo](https://img.youtube.com/vi/MtnugBt0IuQ/0.jpg)](https://www.youtube.com/watch?v=MtnugBt0IuQ)
+
 
 ## Getting Started
 
@@ -70,12 +71,12 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
 ## Game Instruction
 - Game UI
   - Pick the game mode and check leaderboard and achiement
-  - ![MainMenu-Image](https://github.com/picoxr/MicroWar/blob/e0c1b5d000392a340ea6d71b6f86e9a1f07c41d3/Documentation/Files/mainMenu.png)
+  ![MainMenu-Image](https://github.com/picoxr/MicroWar/blob/e0c1b5d000392a340ea6d71b6f86e9a1f07c41d3/Documentation/Files/mainMenu.png)
 - Gameplay
   - Check Vehicle status and Pick Vehicle
-  - ![PickVehicle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/Check%26PickVechicle.jpeg)
-  - Battle with instruction
-  - ![Battle-image](https://github.com/picoxr/MicroWar/blob/77c9af957b25aacef7f36197493075f958be46ba/Documentation/Files/Battlefield_01_Text.png)
+  ![PickVehicle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/Check%26PickVechicle.jpeg)
+- Battle with instruction
+  ![Battle-image](/Documentation/Files/Battlefield_01_Text.png)
 
 ## Assets used in this project
 - Assets from [Kenny.nl](https://www.kenney.nl/)
