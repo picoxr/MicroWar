@@ -22,13 +22,60 @@ public bool SendPacket2UID(ulong clientUID, byte[] data)
 
             if (netcodeRoomData.ParseUID2PID(clientUID,out targetPID)) // Server send data to clients
             {
-                //DebugUtils.LogWarning(nameof(PlatformController_Network), $"Send data to {targetPID}");
                 return NetworkService.SendPacket(targetPID, data, true);
             }
             return false;
         }
 ```
 ## Receiving Packet
+After launching Netcode, the program continuously fetches packets from the queue. Upon retrieving a packet, it enters the processing logic ***Handle Incoming Packet***. Within this logic, we internally convert PICO packets into the format compatible with Netcode's packet structure.
+
+- **`PlatformController_Network.cs`**<br>
+
+```csharp
+         public void PullEvent()
+        {
+            var packet = NetworkService.ReadPacket();
+            while (packet != null)
+            {
+                HandleInComingPacket(packet);
+                packet.Dispose();
+                packet = NetworkService.ReadPacket();
+            }
+        }
+
+        private void HandleInComingPacket(Packet packet)
+        {
+            byte[] data = new byte[packet.Size];
+            ulong packetSize = packet.GetBytes(data);
+            if(packetSize <= 0)
+            {
+                Debug.LogError("Error Packet Size!");
+            }
+            else //Receive packet success!
+            {
+                //Parse PID to UID
+                string senderPID = packet.SenderId;
+                ulong senderUID = default;
+                if (senderPID == netcodeRoomData.HostPId)//Clients get packet, clients can only receive packet from server.
+                {
+                    var payload = new ArraySegment<byte>(data, 0, data.Length);
+                    OnReceivePICOPacket?.Invoke(NetworkEvent.Data, 0, payload);
+                    return;
+                }
+
+                if (netcodeRoomData.ParsePID2UID(senderPID,out senderUID )) //Server get packet
+                {
+                    var payload = new ArraySegment<byte>(data, 0, data.Length);
+                    OnReceivePICOPacket?.Invoke(NetworkEvent.Data, senderUID, payload);
+                }
+            }
+        }
+```
+> [!NOTE]
+> For more information about Unity Netcode, please refer to the official documentation at https://unity.com/products/netcode.
+
+
 ## More to Explore
 
 For detailed implementation specifics and usage guidelines, please refer to the following documentation:
