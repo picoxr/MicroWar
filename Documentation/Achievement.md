@@ -3,16 +3,22 @@
 This guide will walk you through the process of integrating achievements into your PICO VR application using the Achievement Manager. Achievements add a layer of engagement and motivation for users to explore and enjoy your VR experience.
 
 ## Table of Contents
-- [Get Achievement Information](#get-achievement-information)
-- [Get Basic Achievement Information](#get-basic-achievement-information)
-- [Get Basic Information of Achievements on a Page](#get-basic-information-of-achievements-on-a-page)
-- [Get Achievement Progress](#get-achievement-progress)
+- [Overview](#overview)
+- [Get Achievement data](#overview)
+  - [Get Achievement Information](#get-achievement-information)
+  - [Get Achievement Information](#get-achievement-information)
+  - [Get Basic Information of Achievements on a Page](#get-basic-information-of-achievements-on-a-page)
 - [Update Achievement Progress](#update-achievement-progress)
-- [Unlock a Simnple Achievement](#unlock-an-achievement)
-- [Update Progress for a Count Achievement](#update-progress-for-a-count-achievement)
-- [Update Progress for a Bitfield Achievement](#update-progress-for-a-bitfield-achievement)
+  - [Unlock a Simple Achievement](#unlock-a-simple-achievement)
+  - [Update Progress for a Count Achievement](#update-progress-for-a-count-achievement)
+  - [Update Progress for a Bitfield Achievement](#update-progress-for-a-bitfield-achievement)
 
 
+## Overview
+
+The Achievement Manager is a tool for managing and tracking achievements in your PICO VR application. It provides a way to integrate achievements, display them in your user interface, and interact with the PICO VR achievement API.
+
+## Get Achievement data
 
 ## Get Achievement Information
 Retrieve information about achievements, including their API name, description, type, and unlock criteria.
@@ -46,7 +52,7 @@ AchievementsService.GetDefinitionsByName(new string[] { "yourAchievementName" })
 ```
 
 
-## Get Basic Information of Achievements on a Page
+### Get Basic Information of Achievements on a Page
 To retrieve basic information about achievements on a specified page:
 
 ```csharp
@@ -79,7 +85,7 @@ AchievementsService.GetAllDefinitions(0, 5).OnComplete(
 ```
 
 
-## Get Achievement Progress
+### Get Achievement Progress
 Retrieve the progress a user has made on a specific achievement, including whether it's unlocked, the unlock time, and more.
 
 ```csharp
@@ -101,6 +107,7 @@ AchievementsService.GetProgressByName(new string[] { "yourAchievementName" }).On
 );
 ```
 
+## Update Achievement Progress
 
 ### Unlock a Simple Achievement
 Unlock an achievement when a user reaches the specified goal:
