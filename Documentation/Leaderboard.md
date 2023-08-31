@@ -9,6 +9,8 @@ This guide provides information on integrating and utilizing leaderboard functio
 - [Retrieving Leaderboard Data](#retrieving-leaderboard-data)
   - [Loading Global Leaderboard](#loading-global-leaderboard)
   - [Loading Friends Leaderboard](#loading-friends-leaderboard)
+    
+![Screenshot_com PICO MicroWar_2023 08 31-19 19 40 809_163](https://github.com/picoxr/MicroWar/assets/46362299/d9880d79-7472-44a9-af9f-dfcd46a0bf59)
 
 ## Overview
 
