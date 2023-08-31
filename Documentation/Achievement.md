@@ -13,7 +13,7 @@ This guide will walk you through the process of integrating achievements into yo
   - [Update Progress for a Count Achievement](#update-progress-for-a-count-achievement)
   - [Update Progress for a Bitfield Achievement](#update-progress-for-a-bitfield-achievement)
     
-![Screenshot_com PICO MicroWar_2023 08 31-19 18 54 396_445](https://github.com/picoxr/MicroWar/assets/46362299/9befd8b6-2728-429c-954b-35b51e003ffc)
+![image](https://github.com/picoxr/MicroWar/assets/46362299/21b51957-587e-42bf-b003-12c5caeed5f9)
 
 ## Overview
 
@@ -156,5 +156,3 @@ AchievementsService.AddFields("yourAchievementName", fields, bytes).OnComplete(
     }
 );
 ```
-
-![Screenshot_com PICO MicroWar_2023 08 31-19 18 44 384_682](https://github.com/picoxr/MicroWar/assets/46362299/139d711f-ca0d-4ee4-9724-aa617f7ee17d)
