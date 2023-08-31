@@ -81,12 +81,13 @@ After entering the game, players can choose from three vehicles with distinct at
 
 ### Gameplay Instruction
 
-**'Vehicle control'**<br>
+**`Vehicle control`**<br>
+
 The ***Grab button*** on the controller is used to grab vehicles, while the ***Trigger button*** on the right controller is utilized to launch projectiles. The ***joysticks*** on the left and right controllers are employed to control the vehicle's movement direction and the turret's orientation, respectively.
 
 In the gesture recognition mode, ***clenching the left hand into a fist*** and moving it over the suspended cursor will manipulate the vehicle to move in the corresponding direction. ***Pinching with the right hand*** triggers the firing of projectiles.
 
-**'Power-ups'**<br>
+**`Power-ups`**<br>
 
 Power-ups will randomly spawn on the battlefield. Players can guide their vehicles to collect these power-ups. Currently, the game features two main types of power-ups:
 
