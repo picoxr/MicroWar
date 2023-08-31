@@ -61,8 +61,8 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - [Real Time Communication](/Documentation/RTC%20(Real-Time%20Communication).md)
   - [Rooms](/Documentation/Rooms.md)
   - [Multiplay](/Documentation/Multiplay.md)
-  - Achievements
-  - Leaderboard
+  - [Achievements](https://github.com/picoxr/MicroWar/blob/169bc6d4743c3ff0f71db69e1212646269ead93d/Documentation/Achievement.md)
+  - [Leaderboard](https://github.com/picoxr/MicroWar/blob/169bc6d4743c3ff0f71db69e1212646269ead93d/Documentation/Leaderboard.md)
 ## How To Play
 ### Game UI
 Players have the option to navigate the UI using either controller line interactors or using Hand tracking poke gesture. The player have the ability to select two game modes on the main menu. In the ***single-player mode***, you can promptly initiate a local solo game, fighting with a formidable AI bot. Alternatively, in the ***multiplayer mode***, players can either create their own game room or join an existing one to engage in battles with other players. Of course, the option to include AI bots in multiplayer matches is also available.
