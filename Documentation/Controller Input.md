@@ -10,7 +10,12 @@ In MicroWar, we leverage XR Interaction Toolkit 2.4.3 to seamlessly integrate co
 - **Right Thumbstick**: Manages turret rotation.
 - **Right Trigger**: Holding and pressing enables charging and firing shells.
 - **Grip Buttons**: Holding both allows vehicle pickup during vehicle selection.
-
+## project Setup
+Normally, the controllers under XROrgin are good enough. In MicroWar, we need to do two more things to give the players ability to grab the tank with grip button: 
+1) Attach Direct Interactor prefab to contollers. 
+>![https://github.com/picoxr/MicroWar/blob/f841b9ab8b017b23d525c7c0a72c5a0711ccb87c/Documentation/Files/DirectInteractor.png](https://github.com/picoxr/MicroWar/blob/f841b9ab8b017b23d525c7c0a72c5a0711ccb87c/Documentation/Files/DirectInteractor.png)
+2) Attach a collider, XRGrabInteractable.cs, and TankSelectorBehaviour.cs to tank prefabs and set up Select Enter and Select Exit events.
+>![https://github.com/picoxr/MicroWar/blob/a824c9f256bc72a19c1f24abaacff388a36a89a7/Documentation/Files/TankControllerInput.png](https://github.com/picoxr/MicroWar/blob/a824c9f256bc72a19c1f24abaacff388a36a89a7/Documentation/Files/TankControllerInput.png)
 ## Key Scripts and Logic
 
 ### TankMovement_Player.cs
@@ -84,6 +89,3 @@ m_triggerCurState = rightController.TryGetFeatureValue(CommonUsages.triggerButto
 ```
 Please review the TankShooting_Player.cs script for detailed information on the charge and fire mechanics within the Update() method.
 
-
-## Related Prefabs
-![https://github.com/picoxr/MicroWar/blob/0cb83e04bffc355696829ab32ccfb6801b402cd2/Documentation/Files/ControllerInput.png](https://github.com/picoxr/MicroWar/blob/0cb83e04bffc355696829ab32ccfb6801b402cd2/Documentation/Files/ControllerInput.png)
