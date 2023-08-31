@@ -5,10 +5,7 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 **`Trailer`**<br>
 
 [![Demo](https://img.youtube.com/vi/MtnugBt0IuQ/0.jpg)](https://www.youtube.com/watch?v=MtnugBt0IuQ)
-## Get Involved
-We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
 
-Thank you for your interest in MicroWar and the PICO Integration SDK. Let's embark on a journey of immersive possibilities!
 ## Table of Contents
 - [Demo](#demo)
 - [Getting Started](#getting-started)
@@ -68,15 +65,38 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - [Multiplay](/Documentation/Multiplay.md)
   - Achievements
   - Leaderboard
-## Game Instruction
-- Game UI
-  - Pick the game mode and check leaderboard and achiement
-  ![MainMenu-Image](https://github.com/picoxr/MicroWar/blob/e0c1b5d000392a340ea6d71b6f86e9a1f07c41d3/Documentation/Files/mainMenu.png)
-- Gameplay
-  - Check Vehicle status and Pick Vehicle
-  ![PickVehicle-image](https://github.com/picoxr/MicroWar/blob/342d25e3b8f80e2728ce4598e86e8c20a3c63de2/Documentation/Files/Check%26PickVechicle.jpeg)
-- Battle with instruction
-  ![Battle-image](/Documentation/Files/Battlefield_01_Text.png)
+## How to Play
+### Game UI
+Players have the option to navigate the UI using either controller line interactors or using Hand tracking poke gesture. The player have the ability to select two game modes on the main menu. In the ***single-player mode***, you can promptly initiate a local solo game, fighting with a formidable AI bot. Alternatively, in the ***multiplayer mode***, players can either create their own game room or join an existing one to engage in battles with other players. Of course, the option to include AI bots in multiplayer matches is also available.
+
+Players also have the option to select and view the ***achievements*** they have earned or browse through the ***leaderboard*** from the main menu.
+
+<img src="/Documentation/Files/UI.png" width="800px">
+  
+### Check Vehicle status and Pick Vehicle
+
+After entering the game, players can choose from three vehicles with distinct attributes. Using either a controller or hand tracking, they can pick up the tank and place it onto the illuminated sphere on the battlefield. This action grants them control of the chosen vehicle for gameplay. Once any player achieves victory in three rounds, the game will conclude.
+
+<img src="/Documentation/Files/TankSelector.png" width="800px">
+
+### Gameplay Instruction
+
+**'Vehicle control'**<br>
+The ***Grab button*** on the controller is used to grab vehicles, while the ***Trigger button*** on the right controller is utilized to launch projectiles. The ***joysticks*** on the left and right controllers are employed to control the vehicle's movement direction and the turret's orientation, respectively.
+
+In the gesture recognition mode, ***clenching the left hand into a fist*** and moving it over the suspended cursor will manipulate the vehicle to move in the corresponding direction. ***Pinching with the right hand*** triggers the firing of projectiles.
+
+**'Power-ups'**<br>
+
+Power-ups will randomly spawn on the battlefield. Players can guide their vehicles to collect these power-ups. Currently, the game features two main types of power-ups:
+
+- ***Turret Activator***: This item can be used to activate one of the three turrets placed within the scene. The activated turret will automatically attack all enemies except the player.
+
+- ***Crate***: This power-up generates a crate in front of the player. The player can break the crate using the controller or by tracking foot movements through the body tracker to acquire the bonus inside. There are two types of bonuses available: ***health regeneration*** and ***immunity to a single attack***.
+
+<img src="/Documentation/Files/Battlefield_01_Text.png" width="800px">
+
+
 
 ## Assets used in this project
 - Assets from [Kenny.nl](https://www.kenney.nl/)
@@ -84,8 +104,11 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
 - Prefab Lightmap Data Script: https://github.com/Ayfel/PrefabLightmapping/blob/master/PrefabLightmapData.cs
 
 ## Download APK
-- [Download APK - China Version](link-to-apk)
-- [Download APK - Global Version](link-to-apk)
 
-## Known Issues
+- [Download APK](link-to-apk)
+
+## Get Involved
+We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
+
+Thank you for your interest in MicroWar and the PICO Integration SDK. Let's embark on a journey of immersive possibilities!
 
