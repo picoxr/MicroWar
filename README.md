@@ -7,14 +7,12 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 <a href="https://www.youtube.com/watch?v=DjhB0Pk-ltk" target="-blank"><img src="/Documentation/Files/VideoThumbnailPlayButton.png" padding="middle" width="1080px"></a>
 
 ## Table of Contents
-- [Demo](#demo)
+- [Trailer](#MicroWar)
 - [Getting Started](#getting-started)
 - [Dependency](#dependency)
 - [Features](#features)
 - [Game Instruction](#game-instruction)
 - [Download APK](#download-apk)
-- [Known Issues](#known-issues)
-
 
 ## Getting Started
 
