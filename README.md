@@ -11,7 +11,7 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 - [Getting Started](#getting-started)
 - [Dependency](#dependency)
 - [Features](#features)
-- [Game Instruction](#game-instruction)
+- [Gameplay Instruction](#Gameplay-Instruction)
 - [Download APK](#download-apk)
 
 ## Getting Started
@@ -63,7 +63,7 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
   - [Multiplay](/Documentation/Multiplay.md)
   - Achievements
   - Leaderboard
-## How to Play
+## How To Play
 ### Game UI
 Players have the option to navigate the UI using either controller line interactors or using Hand tracking poke gesture. The player have the ability to select two game modes on the main menu. In the ***single-player mode***, you can promptly initiate a local solo game, fighting with a formidable AI bot. Alternatively, in the ***multiplayer mode***, players can either create their own game room or join an existing one to engage in battles with other players. Of course, the option to include AI bots in multiplayer matches is also available.
 
