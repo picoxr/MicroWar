@@ -12,9 +12,11 @@ This guide will walk you through the process of integrating achievements into yo
   - [Unlock a Simple Achievement](#unlock-a-simple-achievement)
   - [Update Progress for a Count Achievement](#update-progress-for-a-count-achievement)
   - [Update Progress for a Bitfield Achievement](#update-progress-for-a-bitfield-achievement)
-
+    
+![Screenshot_com PICO MicroWar_2023 08 31-19 18 54 396_445](https://github.com/picoxr/MicroWar/assets/46362299/9befd8b6-2728-429c-954b-35b51e003ffc)
 
 ## Overview
+
 
 The Achievement Manager is a tool for managing and tracking achievements in your PICO VR application. It provides a way to integrate achievements, display them in your user interface, and interact with the PICO VR achievement API.
 
@@ -155,4 +157,4 @@ AchievementsService.AddFields("yourAchievementName", fields, bytes).OnComplete(
 );
 ```
 
-
+![Screenshot_com PICO MicroWar_2023 08 31-19 18 44 384_682](https://github.com/picoxr/MicroWar/assets/46362299/139d711f-ca0d-4ee4-9724-aa617f7ee17d)
