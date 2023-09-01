@@ -4,14 +4,14 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 
 **`Trailer`**<br>
 
-<a href="https://www.youtube.com/watch?v=DjhB0Pk-ltk" target="-blank"><img src="/Documentation/Files/VideoThumbnailPlayButton.png" padding="middle" width="1080px"></a>
+<a href="https://bytedance.us.feishu.cn/file/Sw1GbVhgvo51IAxhnCGu2Ercs7b" target="-blank"><img src="/Documentation/Files/VideoThumbnailPlayButton.png" padding="middle" width="1080px"></a>
 
 ## Table of Contents
 - [Trailer](#MicroWar)
 - [Getting Started](#getting-started)
 - [Dependency](#dependency)
 - [Features](#features)
-- [Gameplay Instruction](#Gameplay-Instruction)
+- [Gameplay Instruction](#gameplay-instruction)
 - [Download APK](#download-apk)
 
 ## Getting Started
