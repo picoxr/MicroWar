@@ -40,7 +40,7 @@ Then, clone this repo using the "Code" button above, or this command:
 In Unity Editor, click "File/Build Settings/Build And Run". Make sure the platform is set to Android.
 #### Run in Unity Editor via Live Preview Plug-in (If you have PDC installed)
 Please follow the insturctions here to [setup PDC](https://developer-global.pico-interactive.com/document/unity/pdc-basic-info/) and click play button in Boot Scene.
-## Dependency
+## Dependencies
 - PICO Integration SDK 2.3.0.
 - PUI 5.7.0
 - Swift SDK
