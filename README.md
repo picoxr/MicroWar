@@ -104,7 +104,7 @@ Power-ups will randomly spawn on the battlefield. Players can guide their vehicl
 
 ## Download APK
 
-- [Download APK](https://bytedance.us.feishu.cn/file/IE5yb5m8koT6kMxqAzMuCQBjsRf)
+- [Download APK](https://bytedance.us.feishu.cn/file/RdM9bZxXJoOXVkxke3fuWNoBsbe)
 
 ## Get Involved
 We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
