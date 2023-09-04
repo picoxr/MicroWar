@@ -1,6 +1,8 @@
 ![microwar-image](https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png)
-# MicroWar
+# MicroWar 
 Welcome to MicroWar, an VR game project implemented using the PICO Integration SDK. Our primary objective is to present an immersive experience that spotlights the breadth and depth of capabilities offered by the PICO Integration SDK. This single project encapsulates all the key features, demonstrating their integration potential for fellow developers.
+
+*Current version:* [0.5.0](Documentation/CHANGELOG.md)
 
 **`Trailer`**<br>
 
@@ -106,8 +108,20 @@ Power-ups will randomly spawn on the battlefield. Players can guide their vehicl
 
 - [Download APK](https://bytedance.us.feishu.cn/file/RdM9bZxXJoOXVkxke3fuWNoBsbe)
 
+## Changelog
+
+See the [Changelog](Documentation/CHANGELOG.md) for a detailed history of changes.
+
+## Upcoming Features/Updates
+
+- PICO Avatar SDK Integration
+- PICO MR Features Integration
+- Gameplay Improvements
+- Various Bug-Fixes
+
 ## Get Involved
 We value your questions and ideas. If you're curious about specific aspects of MicroWar or have innovative suggestions, don't hesitate to get in touch. Reach out to us at pico_devsupport@bytedance.com, and let's collaborate to elevate the world of VR development together.
+
 
 Thank you for your interest in MicroWar and the PICO Integration SDK. Let's embark on a journey of immersive possibilities!
 
