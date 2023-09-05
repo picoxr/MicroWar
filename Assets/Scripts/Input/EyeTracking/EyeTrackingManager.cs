@@ -2,6 +2,7 @@
 using Unity.XR.PXR;
 using UnityEngine.XR;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class EyeTrackingManager : MonoBehaviour
 {
@@ -24,24 +25,24 @@ public class EyeTrackingManager : MonoBehaviour
     private Transform selectedObj;
 
     private bool wasPressed;
-
-    private bool hasEyeTracking = false;
+    TrackingStateCode trackingState;
+    private bool supported = false;
     void Start()
     {
         combineEyeGazeOriginOffset = Vector3.zero;
         combineEyeGazeVector = Vector3.zero;
         combineEyeGazeOrigin = Vector3.zero;
         originPoseMatrix = Origin.localToWorldMatrix;
-
-        if (PXR_EyeTracking.GetCombinedEyePoseStatus(out uint status))
-        {
-            hasEyeTracking = true;
-        }
+        trackingState = (TrackingStateCode)PXR_MotionTracking.WantEyeTrackingService();
+        // Query if the current device supports eye tracking
+        EyeTrackingMode eyeTrackingMode = EyeTrackingMode.PXR_ETM_NONE;
+        int supportedModesCount = 0;
+        trackingState = (TrackingStateCode)PXR_MotionTracking.GetEyeTrackingSupported(ref supported, ref supportedModesCount, ref eyeTrackingMode);
     }
 
     void Update()
     {
-        if (hasEyeTracking)
+        if (supported)
         {
 
             //Offest Adjustment
