@@ -18,7 +18,19 @@ The Leaderboard system allows players to view and compare their scores with othe
 
 ## Adding Entries to the Leaderboard
 
-Once you've set up the LeaderboardManager, you can add entries to the leaderboard. Here's an example of adding a score entry to the leaderboard:
+Once you've set up the LeaderboardManager, you can add entries to the leaderboard. The leaderboard name is predefined in the application with the following :
+
+```csharp
+    private const string API_LEADERBOARD_NAME = "leaderboardMicrowar";
+```
+
+By default the incremented score will be equal to 1 each for each round won.
+
+```csharp
+    private const long DEFAULT_LEADERBOARD_INCREMENT = 1;
+```
+
+Here's an example of adding a score entry to the leaderboard:
 
 Using the following fonction :
 ```csharp
