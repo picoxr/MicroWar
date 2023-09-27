@@ -14,19 +14,25 @@ namespace MicroWar.Multiplayer
 {
     public class NetPlayer : NetworkBehaviour
     {
+        private string PlayerNameNetwork;
+        private int playerNumber;
+        private bool isAIBot = false;
+
         public TMP_Text PlayerNameText;
         private TankHealth_Multiplayer health;
         private GameObject canvasGameObject;
-        private string PlayerNameNetwork;
-        private int playerNumber;
-        private NetworkVariable<float> m_StartingHealth = new NetworkVariable<float>();
-        private NetworkVariable<float> m_CurrentHealth = new NetworkVariable<float>();
 
         private ITankHealth m_TankHealth;
         private ITankShooting m_TankShooting;
         private VehicleAIStateController m_AIController;
         private TankMovement_AI tankMovementAI;
         private TankMovement_Multiplayer tankMovementMultiplayer;
+
+        private NetworkVariable<float> m_StartingHealth = new NetworkVariable<float>();
+        private NetworkVariable<float> m_CurrentHealth = new NetworkVariable<float>();
+
+
+
         void Start()
         {
             //[Temp] Test code//////////////////////////
@@ -60,6 +66,7 @@ namespace MicroWar.Multiplayer
             if (null != m_AIController)
             {
                 tankMovementAI = GetComponent<TankMovement_AI>();
+                isAIBot = true;
                 if (!IsHost)
                     m_AIController.enabled = false;
                 tankMovementAI.enabled = false;
@@ -91,6 +98,7 @@ namespace MicroWar.Multiplayer
 
         public override void OnNetworkDespawn()
         {
+            isAIBot = false;
             MultiplayerBehaviour.Instance.RemoveNetworkPlayerReference(NetworkObjectId);
             m_CurrentHealth.OnValueChanged -= OnHealthChange;
             m_TankHealth.OnTankDeath -= OnTankDeath;
@@ -115,7 +123,7 @@ namespace MicroWar.Multiplayer
 
         private void OnHealthChange(float previousValue, float newValue)
         {
-            if (NetworkObject.IsOwner && PXR_HandTracking.GetActiveInputDevice() == ActiveInputDevice.ControllerActive) //If it's local player, vibrate controllers.
+            if (!isAIBot && NetworkObject.IsOwner && PXR_HandTracking.GetActiveInputDevice() == ActiveInputDevice.ControllerActive) //If it's local player, vibrate controllers.
             {
                 PXR_Input.SendHapticImpulse(PXR_Input.VibrateType.BothController, 1f, 2000, 300); //take damage, vibrate!
             }

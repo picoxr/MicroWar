@@ -46,7 +46,7 @@ namespace MicroWar.Multiplayer
             }
             if(powerUpCrate!=null && senderClientId != NetworkManager.Singleton.LocalClientId)//TODO: Clients Need to know if it's self
             {
-                Debug.LogWarning("Client receive Break Crate Container Rpc inner");
+                Debug.Log("Client receive Break Crate Container Rpc inner");
                 powerUpCrate.SimulateHit();
             }
         }
@@ -56,7 +56,7 @@ namespace MicroWar.Multiplayer
         {
             if (!IsHost)
             {
-                Debug.LogWarning($"Create Powerup Crate! Cratecontainer: {gameObject.transform.parent.name}");
+                Debug.Log($"Create Powerup Crate! Cratecontainer: {gameObject.transform.parent.name}");
                 PowerUpCrate breakableCrate = Instantiate(crateContainerQueue.BreakableCratePrefab, crateContainerQueue.Container).GetComponent<PowerUpCrate>();
                 breakableCrate.SetPowerUpType((CrateType)crateType);
                 powerUpCrate = breakableCrate;
@@ -66,7 +66,7 @@ namespace MicroWar.Multiplayer
 
         private void OnHitSuccessfully()
         {
-            Debug.LogWarning("Server Send Break Crate Container ServerRpc");
+            Debug.Log("[CrateContainerQueueNetwork]: Server Send Break Crate Container ServerRpc");
             MultiplayerBehaviour.Instance.OnCrateHitServerRpc();
         }
 

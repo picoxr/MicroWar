@@ -4,8 +4,8 @@ Experience the next level of immersion in the VR realm by embracing Hand Trackin
 
 ## MicroWar Hand Tracking Integration
 
-In MicroWar, we harness the power of PICO Integration 2.3.0, XR Interaction Toolkit 2.4.3, and XR Hands 1.2.1 to integrate the prowess of hand tracking. Remember to check the hand tracking on PXR_Manager.
-![https://github.com/picoxr/MicroWar/blob/4acfc63d30751bad8755fd81411f7340ad3e269b/Documentation/Files/PXR_Manager_HandTracking.png](https://github.com/picoxr/MicroWar/blob/4acfc63d30751bad8755fd81411f7340ad3e269b/Documentation/Files/PXR_Manager_HandTracking.png)
+In MicroWar, we harness the power of PICO Integration 2.3.0, XR Interaction Toolkit 2.4.3, and XR Hands 1.2.1 to integrate the prowess of hand tracking. Remember to check the hand tracking on PXR_Manager.\
+![PXR_Manager_HandTracking.png](/Documentation/Files/PXR_Manager_HandTracking.png)
 ## Scene Setup
 
 To delve into the realm of Hand Tracking, initiate the process by adding the hands prefabs located at "Packages/com.unity.xr.picoxr/Assets/Resources/Prefabs" to your primary scene. This pivotal step empowers you to capture the precise position and pinch state of each hand.
@@ -13,9 +13,9 @@ To delve into the realm of Hand Tracking, initiate the process by adding the han
 For the interaction with Unity UI elements, simply affix the Poke Interactor prefab beneath your hands.
 
 Moreover, we created the MicroHandInteractor prefab—a creation dedicated to grab vehicles via a pinch gesture within the game. Attach this prefab to the hand wrist and assign the appropriate hand reference on the component.\
-![https://github.com/picoxr/MicroWar/blob/4acfc63d30751bad8755fd81411f7340ad3e269b/Documentation/Files/HandTracking.png](https://github.com/picoxr/MicroWar/blob/4acfc63d30751bad8755fd81411f7340ad3e269b/Documentation/Files/HandTracking.png)
+![HandTracking.png](/Documentation/Files/HandTracking.png)
 ## Related Prefabs
-![https://github.com/picoxr/MicroWar/blob/4acfc63d30751bad8755fd81411f7340ad3e269b/Documentation/Files/TankHandTracking.png](https://github.com/picoxr/MicroWar/blob/4acfc63d30751bad8755fd81411f7340ad3e269b/Documentation/Files/TankHandTracking.png)
+![TankHandTracking.png](/Documentation/Files/TankHandTracking.png)
 ## Key Scripts and Logic
 
 ### TankMovement_Player.cs

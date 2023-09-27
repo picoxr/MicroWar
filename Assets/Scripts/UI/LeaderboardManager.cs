@@ -8,8 +8,8 @@ using System.Linq;
 
 public class LeaderboardManager : MonoBehaviour
 {
-    private const string leaderboardName = "leaderboardMicrowar";
-    private const long DefaultIncrementScore = 3;
+    private const string API_LEADERBOARD_NAME = "leaderboardMicrowar";
+    private const long DEFAULT_LEADERBOARD_INCREMENT = 1;
 
     // Singleton instance
     public static LeaderboardManager Instance { get; private set; }
@@ -75,18 +75,19 @@ public class LeaderboardManager : MonoBehaviour
         leaderboardTitleText.text = title;
     }
 
-    public void AddScoreEntry(string winningPlayer = null, long incrementScore = DefaultIncrementScore)
+    public void AddScoreEntry(string winningPlayer = null, long incrementScore = DEFAULT_LEADERBOARD_INCREMENT)
     {
+        /*//Dont need this judgement.
         if (loggedInUser.DisplayName != winningPlayer)
         {
             Debug.Log($"Incorrect winning player. Score not incremented for: {winningPlayer}");
             return;
-        }
+        }*/
 
         Debug.Log($"## [Debug] AddScoreEntry with value: {incrementScore} for player: {winningPlayer}");
 
         // Retrieve leaderboard entries
-        LeaderboardService.GetEntries(leaderboardName, 10, 0, LeaderboardFilterType.None, LeaderboardStartAt.Top)
+        LeaderboardService.GetEntries(API_LEADERBOARD_NAME, 10, 0, LeaderboardFilterType.None, LeaderboardStartAt.Top)
             .OnComplete(message =>
             {
                 if (!message.IsError)
@@ -164,7 +165,7 @@ public class LeaderboardManager : MonoBehaviour
 
     private void WriteEntryInLeaderboard(long score)
     {
-        LeaderboardService.WriteEntry(leaderboardName, score)
+        LeaderboardService.WriteEntry(API_LEADERBOARD_NAME, score)
             .OnComplete(message =>
             {
                 if (!message.IsError)
@@ -183,7 +184,7 @@ public class LeaderboardManager : MonoBehaviour
     private void LoadEntries(LeaderboardFilterType filterType, LeaderboardStartAt startAt)
     {
         // Retrieve leaderboard entries
-        LeaderboardService.GetEntries(leaderboardName, 10, 0, filterType, startAt)
+        LeaderboardService.GetEntries(API_LEADERBOARD_NAME, 10, 0, filterType, startAt)
             .OnComplete(HandleGetEntriesResponse);
     }
 

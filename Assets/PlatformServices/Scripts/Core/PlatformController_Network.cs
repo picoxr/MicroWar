@@ -12,12 +12,12 @@ namespace MicroWar.Platform
         public bool IsHost { get; private set; }
         public event ReceivePICOPackage OnReceivePICOPacket;
         public delegate void ReceivePICOPackage(NetworkEvent eventType, ulong clientId, ArraySegment<byte> payload = default);
-
+        private const string CONNECTION_REQUEST = "MWCR";
         private NetcodeRoomData netcodeRoomData;
+        private bool isInitialized = false;
         internal override void DelayInit()
         {
-            //TODO: Test code here
-            if (!PlatformServiceManager.Instance.EnableNetwork)
+            if (!PlatformServiceManager.Instance.EnableNetwork || isInitialized)
                 return;
             IsHost = false;
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnectedCallback;
@@ -26,6 +26,7 @@ namespace MicroWar.Platform
             PlatformServiceManager.Instance.RegisterNotification<RoomPlayerEvent>(RoomPlayerEventHandler);
             Debug.Log("Network controller Init");
             netcodeRoomData = new NetcodeRoomData();
+            isInitialized = true;
         }
 
         private void RoomUpdateEventHandler(EventWrapper<RoomUpdateEvent> msg)
@@ -40,7 +41,6 @@ namespace MicroWar.Platform
                     netcodeRoomData.UpdateRoomData(roomEvent.CurrentRoom);
                     //We are in a room now, startup Netcode.
                     StartupNetcode(netcodeRoomData.currentRoom);
-                    Debug.Log($"Local client id:  {NetworkManager.Singleton?.LocalClientId}");
                 }
                 else //Not In a room Shutdown Netcode
                 {
@@ -85,11 +85,12 @@ namespace MicroWar.Platform
 
         private void OnUserJoinRoom(string userPID)
         {
-            Debug.Log($"New user join room! {userPID}");
             var userUID = (ulong)userPID.GetHashCode(); //TODO: optimize this. player uid should be in the map
             var myUID = (ulong)PlatformServiceManager.Instance.Me.ID.GetHashCode();
             if(userUID!=myUID && NetworkManager.Singleton.IsServer) //Server ready to receive connection request.
-            OnReceivePICOPacket?.Invoke(NetworkEvent.Connect, userUID); 
+            {
+                //OnReceivePICOPacket?.Invoke(NetworkEvent.Connect, userUID); 
+            }
         }
 
         private void OnUserLeaveRoom(string userPID)
@@ -117,18 +118,25 @@ namespace MicroWar.Platform
                 {
                     NetworkManager.Singleton.NetworkConfig.ConnectionData = Encoding.ASCII.GetBytes(me.ID);
                     NetworkManager.Singleton.StartClient();
+                    SendConnectRequest(currentRoom.OwnerOptional.ID);
                     IsHost = false;
                 }
-                Debug.Log("Start up netcode");
             }
         }
 
+        private void SendConnectRequest(string hostId)
+        {
+            byte[] rawData =Encoding.ASCII.GetBytes(CONNECTION_REQUEST);
+            NetworkService.SendPacket(hostId, rawData);
+        }
+
+
         private void ShutDownNetcode()
         {
+            Debug.Log($"[{nameof(PlatformController_Network)}]: Shutdown Netcode");
             IsHost = false;
             netcodeRoomData.Clear(); //Clear cached room data.
             NetworkManager.Singleton.Shutdown(true);
-            Debug.Log("Not In Room! Shutdown");
         }
 
         private void OnClientDisconnectedCallback(ulong clientId)
@@ -153,15 +161,14 @@ namespace MicroWar.Platform
 
         private void OnClientConnectedCallback(ulong obj)
         {
-            Debug.Log($"[{nameof(PlatformController_Network)}]: connect test. Client {obj} Connected");
-            //MultiplayerManager.Instance.NetworkPlayerReady();//TODO: A Hack here, need to optimize this.
+            Debug.Log($"[{nameof(PlatformController_Network)}]: Client {obj} Connected");
         }
 
         private void ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
         {
-            DebugUtils.LogWarning(nameof(PlatformController_Network), $"Connection approval! ID: {request.ClientNetworkId}");
+            DebugUtils.Log(nameof(PlatformController_Network), $"Connection approval! ID: {request.ClientNetworkId}");
             var playerOpenID = Encoding.ASCII.GetString(request.Payload);
-            if (NetworkManager.ServerClientId == request.ClientNetworkId) //this is because if the host require connection approval, the id will be 0;
+            if (NetworkManager.ServerClientId == request.ClientNetworkId) //If the host require connection approval, the id will be 0;
             {
                 playerOpenID = PlatformServiceManager.Instance.Me.ID;
             }
@@ -195,14 +202,11 @@ namespace MicroWar.Platform
 
             if (clientUID == 0)//Client send data to server
             {
-                //Debug.Log("Send packet to server!");
                 return NetworkService.SendPacket(netcodeRoomData.HostPId, data, true);
             }
 
             if (netcodeRoomData.ParseUID2PID(clientUID,out targetPID)) // Server send data to clients
             {
-                //Debug.Log("Server Send packet to Client!");
-                //DebugUtils.LogWarning(nameof(PlatformController_Network), $"Send data to {targetPID}");
                 return NetworkService.SendPacket(targetPID, data, true);
             }
             return false;
@@ -226,39 +230,40 @@ namespace MicroWar.Platform
         {
             byte[] data = new byte[packet.Size];
             ulong packetSize = packet.GetBytes(data);
-            if(packetSize <= 0)
+
+            if (packetSize <= 0)
             {
-                Debug.LogError("Error Packet Size!"); //TODO: Error handler?
+                Debug.LogError("Error Packet Size!");
+                return;
             }
-            else //Receive packet success!
+            //Parse PID to UID
+            string senderPID = packet.SenderId;
+            ulong senderUID = default;
+            if (senderPID == netcodeRoomData.HostPId)//Clients get packet, clients can only receive packet from server.
             {
-                //Parse PID to UID
-                string senderPID = packet.SenderId;
-                ulong senderUID = default;
+                var payload = new ArraySegment<byte>(data, 0, data.Length);
+                OnReceivePICOPacket?.Invoke(NetworkEvent.Data, 0, payload);
+                return;
+            }
 
-                if (senderPID == netcodeRoomData.HostPId)//Clients get packet, clients can only receive packet from server.
+            if (netcodeRoomData.ParsePID2UID(senderPID,out senderUID )) //Server get packet
+            {
+                if (packetSize < 5) //Connect request check
                 {
-                    var payload = new ArraySegment<byte>(data, 0, data.Length);
-                    OnReceivePICOPacket?.Invoke(NetworkEvent.Data, 0, payload);
-                    return;
+                    if (data[0] == 'M' && data[1] == 'W' && data[2] == 'C' && data[3] == 'R')
+                    {
+                        Debug.Log($"[PlatformController_Network]Receive Connect Request!");
+                        OnReceivePICOPacket?.Invoke(NetworkEvent.Connect, senderUID);
+                        return;
+                    }
                 }
-
-                if (netcodeRoomData.ParsePID2UID(senderPID,out senderUID )) //Server get packet
-                {
-                    var payload = new ArraySegment<byte>(data, 0, data.Length);
-                    OnReceivePICOPacket?.Invoke(NetworkEvent.Data, senderUID, payload);
-                }
+                var payload = new ArraySegment<byte>(data, 0, data.Length);
+                OnReceivePICOPacket?.Invoke(NetworkEvent.Data, senderUID, payload);
             }
         }
         #region Unity Messages
         // Start is called before the first frame update
         void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
         {
 
         }

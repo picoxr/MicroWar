@@ -51,6 +51,8 @@ namespace MicroWar
             InstantiateCrateContainers();
         }
 
+
+
         private void InstantiateCrateContainers()
         {
             Transform[] playerSpawnPoints = environmentManager.GetPlayerSpawnPoints();

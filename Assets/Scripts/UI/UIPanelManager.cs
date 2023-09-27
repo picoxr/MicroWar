@@ -18,6 +18,9 @@ namespace MicroWar
 
         public Button singleplayerSelectBtn;
         public Button multiplayerSelectBtn;
+        public Slider TableHeightSlider;
+        public Slider BGMSlider;
+        public Slider SFXSlider;
 
         private int panelIndex = 0; // Current index of the panel to be shown
         public GameObject tankControllerUI; // Reference to the Tank Controller UI GameObject
@@ -41,6 +44,9 @@ namespace MicroWar
         {
             ShowPanel(); // Show the initial panel
             multiplayerSelectBtn.onClick.AddListener(NextPanel); // Assign the NextPanel function to the button's click event
+            TableHeightSlider.onValueChanged.AddListener(OnTableHeightSliderValueChanged);
+            BGMSlider.onValueChanged.AddListener(OnBGMSliderValueChanged);
+            SFXSlider.onValueChanged.AddListener(OnSFXSliderValueChanged);
         }
 
         private void ShowPanel()
@@ -115,6 +121,19 @@ namespace MicroWar
             multiplayerSelectBtn.gameObject.SetActive(true);
         }
 
+        public void OnTableHeightSliderValueChanged(float value)
+        {
+            GameManager.Instance.BoardGameOrigin.transform.position = new Vector3(GameManager.Instance.BoardGameOrigin.transform.position.x, value, GameManager.Instance.BoardGameOrigin.transform.position.z);
+        }
+        public void OnBGMSliderValueChanged(float value)
+        {
+            GameManager.Instance.AudioMixer.SetFloat("MusicVolume", value);
+        }
+
+        public void OnSFXSliderValueChanged(float value)
+        {
+            GameManager.Instance.AudioMixer.SetFloat("SFXVolume", value);
+        }
         public void GoToRoomPanel()
         {
             // Only switch panel if room can be created - To be adjusted

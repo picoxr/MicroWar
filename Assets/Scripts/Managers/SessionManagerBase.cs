@@ -23,6 +23,7 @@ namespace MicroWar
     public abstract class SessionManagerBase : MonoBehaviour
     {
         public SessionType SessionType { get; protected set; }
+        public SessionState SessionState { get; protected set; }
 
         protected GameManager gameManager;
         protected GameManagerSettings gameSettings;

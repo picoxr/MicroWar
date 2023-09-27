@@ -157,12 +157,8 @@ namespace MicroWar
             if (roundWinner != null)
             {
                 roundWinner.m_Wins++;
-                // TO REMOVE : Local mode granting score for testing
                 if (roundWinner.m_PlayerType == VehiclePlayerType.Local)
                 {
-                    // Leaderboard : Increment winner score
-                    LeaderboardManager.Instance.AddScoreEntry(roundWinner.m_userName);
-
                     // Achievement : Win a round
                     AchievementManager.Instance.UpdateWinRoundsAchievement(roundWinner.m_userName);
 
@@ -173,7 +169,6 @@ namespace MicroWar
 
             // Now the winner's score has been incremented, see if someone has one the game.
             sessionWinner = GetGameWinner();
-            // TO REMOVE : Local mode granting achievement for testing
             if (sessionWinner != null)
             {
                 // Achievement : Win a match

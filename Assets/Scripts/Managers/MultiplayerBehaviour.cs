@@ -15,6 +15,9 @@ namespace MicroWar.Multiplayer
         private int localPlayerIndex = 0;
         public bool IsUseBot { get; private set; } = true;
         public bool IsUseRTC { get; private set; } = true;
+        public int LocalPlayerIndex { get => localPlayerIndex; }
+
+        public bool CanReloadScene = false;
 
         private GameManager gameManager;
         private EnvironmentManager environmentManager;
@@ -42,6 +45,8 @@ namespace MicroWar.Multiplayer
                 return instance;
             }
         }
+
+
         protected virtual void Awake()
         {
             if (instance == null)
@@ -92,6 +97,7 @@ namespace MicroWar.Multiplayer
                     {
                         localPlayerIndex = EventData.Data.CurrentRoom.UsersOptional.Count - 1;
                         environmentManager.SetupXROriginPos(localPlayerIndex); //Set XR originPos after joinning a room;
+                        CanReloadScene = false;
                     }
                 }
                 else
@@ -226,9 +232,10 @@ namespace MicroWar.Multiplayer
         }
 
         [ClientRpc]
-        public void RoundEndingClientRpc(string endMessage)
+        public void RoundEndingClientRpc(string endMessage, bool hasSessionWinner, ulong winnerClientId)
         {
             inGameUIHandler.UpdateMessage(endMessage);
+            UpdateLeaderboardAchivement(hasSessionWinner, winnerClientId);
         }
 
         [ClientRpc]
@@ -246,11 +253,9 @@ namespace MicroWar.Multiplayer
         {
             yield return new WaitForSeconds(gameManager.Settings.EndDelay);
             roomController.LeaveRoom();
-            yield return new WaitForSeconds(2f);
+            yield return new WaitUntil(()=> { return CanReloadScene;});
             SceneManager.LoadScene("Main");
         }
-
-
         private void DisableVehicleControl()
         {
             foreach (KeyValuePair<ulong,NetPlayer> kvp in networkPlayerReference)
@@ -302,6 +307,34 @@ namespace MicroWar.Multiplayer
             return networkPlayerTrans;
         }
 
+        private void UpdateLeaderboardAchivement(bool hasSessionWinner, ulong WinnerClientId)
+        {
+
+            if(NetworkManager.LocalClientId == WinnerClientId)
+            {
+                Debug.Log($"[Leaderboard] : Update Score: Winner Client Id:{WinnerClientId}");
+                if (hasSessionWinner)
+                {
+                    // Achievement : Win a match
+                    AchievementManager.Instance.UpdateWinMatchAchievement();
+
+                    // Achievement : Play a match
+                    AchievementManager.Instance.UpdatePlayMatchAchievement();
+                }
+                else
+                {
+                    // Leaderboard : Increment winner score
+                    LeaderboardManager.Instance.AddScoreEntry();
+
+                    // Achievement : Win a round
+                    AchievementManager.Instance.UpdateWinRoundsAchievement();
+
+                    // Achievement : Play a round
+                    AchievementManager.Instance.UpdatePlayRoundAchievement();
+                }
+            }
+            
+        }
     }
 
 }

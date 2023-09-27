@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 using MicroWar.Multiplayer;
 using System.Collections.Generic;
+using UnityEngine.Audio;
+
 namespace MicroWar
 {
 
@@ -45,6 +47,7 @@ namespace MicroWar
         public DynamicMapObjectsManagerMultiplayer DynamicMapObjectsManagerMultiplayer;
         public VehicleConfigManager VehicleConfigManager;
         public EnvironmentManager EnvironmentManager;
+        public AudioMixer AudioMixer;
 
         public SessionManagerBase currentSession { get; private set; }
 
@@ -162,6 +165,21 @@ namespace MicroWar
             }
             return count;
         }
+
+        /// <summary>
+        /// Returns the current player's vehicle spawn point position
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 GetCurrentMapSpawnPoint() 
+        {
+            int playerIndex = 0;
+            if (currentSession.SessionType == SessionType.Multiplayer)
+            {
+                playerIndex = MultiplayerBehaviour.Instance.LocalPlayerIndex;
+            }
+            return EnvironmentManager.GetSpawnPointPositionByIndex(playerIndex);
+        }
+
         #region Comment Out
         //TODO: Move these methods out of GameManager
         /*

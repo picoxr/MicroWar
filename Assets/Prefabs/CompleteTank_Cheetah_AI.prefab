@@ -696,9 +696,10 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: b65d4315467cf5f42acc8c5b368a38fe, type: 2}
   remainState: {fileID: 11400000, guid: 94d17d76de467e041968de03287ef8b6, type: 2}
   stateTimeElapsed: 0
-  playerPickableObjectsLayerMask: 0
   attackStateChangeCurrentPeriod: 5
   agent: {fileID: 5707187444462386922}
+  gameManager: {fileID: 0}
+  currentSession: {fileID: 0}
   moveController: {fileID: 4820741810631976162, guid: d52413fd440ffe34193d9a8e1a87c786,
     type: 3}
   shootController: {fileID: -4527876291632294583, guid: d52413fd440ffe34193d9a8e1a87c786,
@@ -706,7 +707,6 @@ MonoBehaviour:
   currentEnemyTarget: {fileID: 0}
   previousShootDecision: 0
   lastShootTime: 0
-  destination: {x: 0, y: 0, z: 0}
   lastTargetRefreshTime: 0
   activePowerUpTarget: {fileID: 0}
   debugPlayer: {fileID: 0}
@@ -759,7 +759,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3972938094825085045}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1923039037
   m_Radius: 0.5
   m_Speed: 0.5
   m_Acceleration: 2

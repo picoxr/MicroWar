@@ -70,8 +70,14 @@ namespace MicroWar
 
         public void SetupXROriginPos(int index) //TODO: move this out of environment manager
         {
-            XROrigin.position = PlayerSpawnPoints[index].position; 
-            XROrigin.rotation = PlayerSpawnPoints[index].rotation;
+            Transform spawnTrans = PlayerSpawnPoints[index];
+            XROrigin.position = new Vector3(spawnTrans.position.x, XROrigin.position.y, spawnTrans.position.z); 
+            XROrigin.rotation = spawnTrans.rotation;
+        }
+
+        public Vector3 GetSpawnPointPositionByIndex(int playerIndex)
+        {
+            return MapSpawnPoints[playerIndex].transform.position;
         }
 
         public void ShowSphereForceByIndex(int playerIndex)

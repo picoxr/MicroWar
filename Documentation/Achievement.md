@@ -13,7 +13,7 @@ This guide will walk you through the process of integrating achievements into yo
   - [Update Progress for a Count Achievement](#update-progress-for-a-count-achievement)
   - [Update Progress for a Bitfield Achievement](#update-progress-for-a-bitfield-achievement)
     
-![image](https://github.com/picoxr/MicroWar/assets/46362299/21b51957-587e-42bf-b003-12c5caeed5f9)
+<img src="/Documentation/Files/Achievement.jpeg" width="800px">
 
 ## Overview
 

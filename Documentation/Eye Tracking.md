@@ -10,11 +10,11 @@ In MicroWar, we use Eye Tracking to interact with the vehicle status UI.
 To unlock the potential of Eye Tracking, follow these simple steps:
 
 1. Ensure Eye Tracking is activated on PXR_Manager.\
-![PXR_Manager](https://github.com/picoxr/MicroWar/blob/e4694b1f2fe5028c673b007c6731fa5b9e5a80aa/Documentation/Files/PXR_Manager_EyeTracking.png)  
+![PXR_Manager](/Documentation/Files/PXR_Manager_EyeTracking.png)  
 2. Attach the `EyeTrackingManager` component within your scene.\
-![EyeTrackingManager](https://github.com/picoxr/MicroWar/blob/e4694b1f2fe5028c673b007c6731fa5b9e5a80aa/Documentation/Files/EyeTrackingManager.png)
+![EyeTrackingManager](/Documentation/Files/EyeTrackingManager.png)
 3. To enable UI interaction with Eye Tracking, attach the `EyeTrackingArea` to the tank holders within the `TankSelector` prefab.\
-![EyeTrackingAera](https://github.com/picoxr/MicroWar/blob/e4694b1f2fe5028c673b007c6731fa5b9e5a80aa/Documentation/Files/TankSelectorPrefab.png)
+![EyeTrackingAera](/Documentation/Files/TankSelectorPrefab.png)
 
 If you wish to craft custom Eye Tracking interactions, create a new class inheriting from `EyeTrackingObject`.
 ## Key Scripts and Logic

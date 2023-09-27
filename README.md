@@ -1,20 +1,59 @@
-![microwar-image](https://github.com/picoxr/MicroWar/blob/74c764006aad1b8d2b3008aa9552217a59e32b49/microwar_img.png)
+![microwar-image](/microwar_img.png)
 # MicroWar 
 Welcome to MicroWar, an VR game project implemented using the PICO Integration SDK. Our primary objective is to present an immersive experience that spotlights the breadth and depth of capabilities offered by the PICO Integration SDK. This single project encapsulates all the key features, demonstrating their integration potential for fellow developers.
 
-*Current version:* [0.5.0](Documentation/CHANGELOG.md)
+*Current version:* [0.6.0](Documentation/CHANGELOG.md)
 
 **`Trailer`**<br>
 
-<a href="https://bytedance.us.feishu.cn/file/TdP8b7zxmospuZxtIoDurCxistd" target="-blank"><img src="/Documentation/Files/VideoThumbnailPlayButton.png" padding="middle" width="1080px"></a>
+<a href="https://bytedance.us.feishu.cn/file/UC7hbqLzAooaUwxXi1GuMQfZsnb" target="-blank"><img src="/Documentation/Files/VideoThumbnailPlayButton.jpg" padding="middle" width="1080px"></a>
 
 ## Table of Contents
 - [Trailer](#MicroWar)
+- [Download APK](#download-apk)
+- [Gameplay Instruction](#gameplay-instruction)
 - [Getting Started](#getting-started)
 - [Dependency](#dependency)
 - [Features](#features)
-- [Gameplay Instruction](#gameplay-instruction)
-- [Download APK](#download-apk)
+
+
+
+## Download APK
+
+- [Download APK](https://bytedance.us.feishu.cn/file/SbDgbyw8GoIFsrxx9n0u587Jsjd)
+
+
+## How To Play
+### Game UI
+Players have the option to navigate the UI using either controller line interactors or using Hand tracking poke gesture. The player have the ability to select two game modes on the main menu. In the ***single-player mode***, you can promptly initiate a local solo game, fighting with a formidable AI bot. Alternatively, in the ***multiplayer mode***, players can either create their own game room or join an existing one to engage in battles with other players. Of course, the option to include AI bots in multiplayer matches is also available.
+
+Players also have the option to select and view the ***achievements*** they have earned or browse through the ***leaderboard*** from the main menu.
+
+<img src="/Documentation/Files/UI.png" width="800px">
+  
+### Check Vehicle status and Pick Vehicle
+
+After entering the game, players can choose from three vehicles with distinct attributes. Using either a controller or hand tracking, they can pick up the tank and place it onto the illuminated sphere on the battlefield. This action grants them control of the chosen vehicle for gameplay. Once any player achieves victory in three rounds, the game will conclude.
+
+<img src="/Documentation/Files/TankSelector.png" width="800px">
+
+### Gameplay Instruction
+
+**`Vehicle control`**<br>
+
+The ***Grab button*** on the controller is used to grab vehicles, while the ***Trigger button*** on the right controller is utilized to launch projectiles. The ***joysticks*** on the left and right controllers are employed to control the vehicle's movement direction and the turret's orientation, respectively.
+
+In the gesture recognition mode, ***clenching the left hand into a fist*** and moving it over the suspended cursor will manipulate the vehicle to move in the corresponding direction. ***Pinching with the right hand*** triggers the firing of projectiles.
+
+**`Power-ups`**<br>
+
+Power-ups will randomly spawn on the battlefield. Players can guide their vehicles to collect these power-ups. Currently, the game features two main types of power-ups:
+
+- ***Turret Activator***: This item can be used to activate one of the three turrets placed within the scene. The activated turret will automatically attack all enemies except the player.
+
+- ***Crate***: This power-up generates a crate in front of the player. The player can break the crate using the controller or by tracking foot movements through the body tracker to acquire the bonus inside. There are two types of bonuses available: ***health regeneration*** and ***immunity to a single attack***.
+
+<img src="/Documentation/Files/Battlefield_01_Text.png" width="800px">
 
 ## Getting Started
 
@@ -52,50 +91,20 @@ Please follow the insturctions here to [setup PDC](https://developer-global.pico
 - Netcode for GameObjects 1.5.2
 ## Features
 - Input & tracking
-  - [Controller Input](https://github.com/picoxr/MicroWar/blob/319859ca76dba927ba4c94c061d795b6b220cb4a/Documentation/Controller%20Input.md)
-  - [Haptic feedback](https://github.com/picoxr/MicroWar/blob/aa5e77b89ef0681c1bc7e4014177213802bcf1b5/Documentation/Haptic%20feedback.md)
-  - [Hand Tracking](https://github.com/picoxr/MicroWar/blob/aa5e77b89ef0681c1bc7e4014177213802bcf1b5/Documentation/Hand%20Tracking.md)
-  - [Tracking Origin](https://github.com/picoxr/MicroWar/blob/aa5e77b89ef0681c1bc7e4014177213802bcf1b5/Documentation/TrackingOrigin.md)
-  - [Eye Tracking](https://github.com/picoxr/MicroWar/blob/a2ce47280b570edcc76636f5365b5b0cba1c4061/Documentation/Eye%20Tracking.md)
-  - [PICO Motion Tracker Integration](https://github.com/picoxr/MicroWar/blob/bdc2762d5d03262e497725e5183bca76c384ac47/Documentation/PICO%20Motion%20Trackers.md)
+  - [Controller Input](/Documentation/Controller%20Input.md)
+  - [Haptic feedback](/Documentation/Haptic%20feedback.md)
+  - [Hand Tracking](/Documentation/Hand%20Tracking.md)
+  - [Tracking Origin](/Documentation/TrackingOrigin.md)
+  - [Eye Tracking](/Documentation/Eye%20Tracking.md)
+  - [PICO Motion Tracker Integration](7/Documentation/PICO%20Motion%20Trackers.md)
 - [Platform Service](/Documentation/MicroWar%20Platform%20Service%20Architecture.md)
   - [Initialization And Login](/Documentation/Initialization%20And%20Login.md)
   - [Real Time Communication](/Documentation/RTC%20(Real-Time%20Communication).md)
   - [Rooms](/Documentation/Rooms.md)
   - [Multiplay](/Documentation/Multiplay.md)
-  - [Achievements](https://github.com/picoxr/MicroWar/blob/169bc6d4743c3ff0f71db69e1212646269ead93d/Documentation/Achievement.md)
-  - [Leaderboard](https://github.com/picoxr/MicroWar/blob/169bc6d4743c3ff0f71db69e1212646269ead93d/Documentation/Leaderboard.md)
-## How To Play
-### Game UI
-Players have the option to navigate the UI using either controller line interactors or using Hand tracking poke gesture. The player have the ability to select two game modes on the main menu. In the ***single-player mode***, you can promptly initiate a local solo game, fighting with a formidable AI bot. Alternatively, in the ***multiplayer mode***, players can either create their own game room or join an existing one to engage in battles with other players. Of course, the option to include AI bots in multiplayer matches is also available.
+  - [Achievements](Documentation/Achievement.md)
+  - [Leaderboard](Documentation/Leaderboard.md)
 
-Players also have the option to select and view the ***achievements*** they have earned or browse through the ***leaderboard*** from the main menu.
-
-<img src="/Documentation/Files/UI.png" width="800px">
-  
-### Check Vehicle status and Pick Vehicle
-
-After entering the game, players can choose from three vehicles with distinct attributes. Using either a controller or hand tracking, they can pick up the tank and place it onto the illuminated sphere on the battlefield. This action grants them control of the chosen vehicle for gameplay. Once any player achieves victory in three rounds, the game will conclude.
-
-<img src="/Documentation/Files/TankSelector.png" width="800px">
-
-### Gameplay Instruction
-
-**`Vehicle control`**<br>
-
-The ***Grab button*** on the controller is used to grab vehicles, while the ***Trigger button*** on the right controller is utilized to launch projectiles. The ***joysticks*** on the left and right controllers are employed to control the vehicle's movement direction and the turret's orientation, respectively.
-
-In the gesture recognition mode, ***clenching the left hand into a fist*** and moving it over the suspended cursor will manipulate the vehicle to move in the corresponding direction. ***Pinching with the right hand*** triggers the firing of projectiles.
-
-**`Power-ups`**<br>
-
-Power-ups will randomly spawn on the battlefield. Players can guide their vehicles to collect these power-ups. Currently, the game features two main types of power-ups:
-
-- ***Turret Activator***: This item can be used to activate one of the three turrets placed within the scene. The activated turret will automatically attack all enemies except the player.
-
-- ***Crate***: This power-up generates a crate in front of the player. The player can break the crate using the controller or by tracking foot movements through the body tracker to acquire the bonus inside. There are two types of bonuses available: ***health regeneration*** and ***immunity to a single attack***.
-
-<img src="/Documentation/Files/Battlefield_01_Text.png" width="800px">
 
 
 
@@ -104,9 +113,6 @@ Power-ups will randomly spawn on the battlefield. Players can guide their vehicl
 - SFX from [OpenGameArt](https://opengameart.org/), [Sonniss - Game Audio GDC](https://sonniss.com/gameaudiogdc)
 - Prefab Lightmap Data Script: https://github.com/Ayfel/PrefabLightmapping/blob/master/PrefabLightmapData.cs
 
-## Download APK
-
-- [Download APK](https://bytedance.us.feishu.cn/file/RdM9bZxXJoOXVkxke3fuWNoBsbe)
 
 ## Changelog
 

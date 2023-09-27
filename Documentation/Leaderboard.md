@@ -10,7 +10,7 @@ This guide provides information on integrating and utilizing leaderboard functio
   - [Loading Global Leaderboard](#loading-global-leaderboard)
   - [Loading Friends Leaderboard](#loading-friends-leaderboard)
     
-![image](https://github.com/picoxr/MicroWar/assets/46362299/d4f5c161-5ead-47a0-9b20-235e40b4fdd9)
+<img src="/Documentation/Files/Leaderboard.jpeg" width="800px">
 
 ## Overview
 

@@ -293,7 +293,6 @@ public class AchievementManager : MonoBehaviour
         {
             // Display a debug message in case of incorrect player
             Debug.Log($"Incorrect winning player. Achievement not incremented for: {playerToGrantAchievement}");
-            // The line below was originally in a commented state, I'm leaving it as is for your reference
             return; // Return without performing further actions if the player is incorrect
         }
 

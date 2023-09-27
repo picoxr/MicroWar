@@ -12,5 +12,7 @@ namespace MicroWar
         int GetMapSpawnPointIndex(Transform transform);
         Vector3 GetRandomPointOnMap(float maxDistanceFromMapOrigin, float maxDistanceFromTheSource);
         Vector3 GetRandomPointOnMap(Vector3 sourcePoint, float maxDistanceFromSource);
+
+        Vector3 GetSpawnPointPositionByIndex(int playerIndex);
     }
 }

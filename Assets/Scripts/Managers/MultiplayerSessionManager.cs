@@ -45,6 +45,8 @@ namespace MicroWar.Multiplayer
         protected override IEnumerator SessionStarting()
         {
             SetupVehicles();
+            OnSessionStateChanged?.Invoke(SessionState.SessionStarting);
+            SessionState = SessionState.SessionStarting;
             multiplayerBehaviour.StartTankConfigrationClientRpc();
             var Timeout = gameSettings.VehicleSelectDelay;
             while (Timeout > 0 && !CheckPlayerReady())
@@ -54,7 +56,6 @@ namespace MicroWar.Multiplayer
             }
             inGameUIHandler.UpdateMessage(string.Empty);
             SpawnAllVehicles();
-            OnSessionStateChanged?.Invoke(SessionState.SessionStarting);
             StartCoroutine(SessionLoop());
         }
 
@@ -89,6 +90,7 @@ namespace MicroWar.Multiplayer
             RoundNumber++;
             multiplayerBehaviour.RoundStartClientRpc(RoundNumber);;
             OnSessionStateChanged?.Invoke(SessionState.RoundStarting);
+            SessionState = SessionState.RoundStarting;
             yield return startWait; //TODO: move this out of session manager
         }
 
@@ -98,6 +100,7 @@ namespace MicroWar.Multiplayer
             //EnableTankControl();
             multiplayerBehaviour.RoundPlayingClientRpc();
             OnSessionStateChanged?.Invoke(SessionState.RoundPlaying);
+            SessionState = SessionState.RoundPlaying;
             while (!OnePlayerLeft())
             {
                 yield return null;
@@ -108,34 +111,28 @@ namespace MicroWar.Multiplayer
         {
             roundWinner = null;
             roundWinner = GetRoundWinner();
+            bool hasSessionWinner = false;
+            ulong? winnerClientId = null;
             // If there is a winner, increment their score.
             if (roundWinner != null)
             {
                 roundWinner.m_Wins++;
-                // Leaderboard : Increment winner score
-                LeaderboardManager.Instance.AddScoreEntry(roundWinner.m_userName);
-
-                // Achievement : Win a round
-                AchievementManager.Instance.UpdateWinRoundsAchievement(roundWinner.m_userName);
-
-                // Achievement : Play a round
-                AchievementManager.Instance.UpdatePlayRoundAchievement();
+                winnerClientId = roundWinner.m_clientId;
             }
-
             // Now the winner's score has been incremented, see if someone has won the game.
             sessionWinner = GetGameWinner();
             if (sessionWinner != null)
             {
-                // Achievement : Win a match
-                AchievementManager.Instance.UpdateWinMatchAchievement(sessionWinner.m_userName);
-
-                // Achievement : Play a match
-                AchievementManager.Instance.UpdatePlayMatchAchievement();
+                hasSessionWinner = true;
+                winnerClientId = sessionWinner.m_clientId;
             }
-            
             string message = EndMessage();
-            multiplayerBehaviour.RoundEndingClientRpc(message);
+            if(winnerClientId!=null)
+            {
+                multiplayerBehaviour.RoundEndingClientRpc(message, hasSessionWinner, (ulong)winnerClientId);
+            }
             OnSessionStateChanged?.Invoke(SessionState.RoundEnding);
+            SessionState = SessionState.RoundEnding;
             yield return endWait;
         }
         #endregion
@@ -254,8 +251,9 @@ namespace MicroWar.Multiplayer
 
         public void NetworkPlayerReady(VehicleType vehicleType, ulong clientId)
         {
-            Debug.Log("Hide all force field sphere");
-            //environmentManager.HideAllSphereForce();
+            //Return if game status is playing.
+            if (SessionState != SessionState.SessionStarting) return; //Fixed: multi-Spawn issue.
+
             if (!readyPlayers.ContainsKey(clientId))
             {
                 readyPlayers.Add(clientId, vehicleType);

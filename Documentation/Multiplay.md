@@ -3,7 +3,7 @@ Multiplay is an important part of the game, to implement multiplay features, we 
 ## Packet Distribution Process
 PICO SDK provides basic packet forwarding APIs, enabling players within a game room to exchange data. In MicroWar, we utilize a customize transport to establish a connection between Netcode and PICO SDK. The picture below elucidates the travel of network data across different components.
 
-![PacketProcess](https://github.com/picoxr/MicroWar/blob/0e9ef5d885c2913c3105061e906994929bfc2478/Documentation/Files/PacketProcess.jpg)
+![PacketProcess](/Documentation/Files/PacketProcess.jpg)
 ## Sending Packet
 
 In the following example, PID represents the ***PICO User ID***, and UID represents the ***Unity Netcode Client ID***. We maintain this mapping relationship in the project, checking in the map to determine the PICO user ID of the target user we need to send to.

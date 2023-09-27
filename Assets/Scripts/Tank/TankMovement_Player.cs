@@ -59,6 +59,14 @@ namespace MicroWar
                     leftHandStartPosition = GameManager.Instance.LeftHandInteractor.m_Hand.handJoints[(int)HandJoint.JointThumbProximal].position;
                     GameManager.Instance.InGameUIHandler.HandTrackingUICanvas.transform.position = leftHandStartPosition;
                 }
+                float x = Mathf.Clamp(axis2D_L.x * 50f, -50f, 50f);
+                float z = Mathf.Clamp(axis2D_L.y * 50f, -50f, 50f);
+                if (GameManager.Instance.InGameUIHandler.Joystick != null)
+                {
+
+                    GameManager.Instance.InGameUIHandler.Joystick.transform.localEulerAngles = new Vector3(z, 0, -x);
+
+                }
             }
             else if (PXR_HandTracking.GetActiveInputDevice() == ActiveInputDevice.ControllerActive)
 #endif

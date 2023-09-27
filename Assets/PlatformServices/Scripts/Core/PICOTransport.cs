@@ -10,20 +10,19 @@ namespace MicroWar.Platform.Netcode
     public class PICOTransport : NetworkTransport
     {
         public override ulong ServerClientId => 0;
-        private ulong serverClientID; //TODO: how to implement this
+        private ulong serverClientID; 
         private PlatformController_Network networkController;
 
 
         public override void DisconnectLocalClient()
         {
             networkController.OnReceivePICOPacket -= InvokeTransportEvent;
-            Debug.Log("[PICO transport]: Disconnect local client");
-            //throw new NotImplementedException();
+            Debug.Log("[PICOTransport]: Disconnect local client");
         }
 
         public override void DisconnectRemoteClient(ulong clientId)
         {
-            //throw new NotImplementedException();
+
         }
 
         public override ulong GetCurrentRtt(ulong clientId)
@@ -33,19 +32,16 @@ namespace MicroWar.Platform.Netcode
 
         public override void Initialize(NetworkManager networkManager = null)
         {
+            Debug.Log("PICO Transport Initialize");
             networkController = PlatformServiceManager.Instance.GetController<PlatformController_Network>();
             networkController.OnReceivePICOPacket += InvokeTransportEvent; // Listen event from Network controller
             //networkController.OnChangeHost+= OnChangeHost; // Listen event from Network controller
-            Debug.Log("PICO Transport initialize called!");
-            //throw new NotImplementedException();
         }
 
         private void OnChangeHost(ulong hostUID)
         {
-            //TODO: ID references.
             serverClientID = hostUID;
             Debug.Log($"[{nameof(PICOTransport)}]: HostID: {serverClientID}");
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -91,31 +87,27 @@ namespace MicroWar.Platform.Netcode
         {
             var payloadDataArray = payload.ToArray();
             networkController.SendPacket2UID(clientUID,payloadDataArray);
-            //throw new NotImplementedException();
         }
 
         public override void Shutdown()
         {
-            Debug.LogWarning($"Shutdown");
-            //throw new NotImplementedException();
+            networkController.OnReceivePICOPacket -= InvokeTransportEvent; // Listen event from Network controller
+            MicroWar.Multiplayer.MultiplayerBehaviour.Instance.CanReloadScene = true;
+            Debug.Log($"[PICOTransport]: Shutdown");
         }
 
         public override bool StartClient()
         {
-            Debug.LogWarning($"Start Client");
-            DebugUtils.Log(nameof(PICOTransport), "Start Client!");
+            Debug.LogWarning($"[PICOTransport]: Start Client");
             var myUID = (ulong)PlatformServiceManager.Instance.Me.ID.GetHashCode();
             //Connect to server
             InvokeTransportEvent(NetworkEvent.Connect, myUID);
             return true;
-            //throw new NotImplementedException();
         }
 
         public override bool StartServer()
         {
-            Debug.LogWarning($"Start Server");
             return true;
-            //throw new NotImplementedException();
         }
     }
 

@@ -10,6 +10,7 @@ namespace MicroWar
         public TMP_Text MessageText;                  // Reference to the overlay Text to display winning text, etc.
         public GameObject MessageCanvas;
         public GameObject HandTrackingUICanvas;
+        public GameObject Joystick;
         public void ShowMessageCanvas()
         {
             MessageCanvas.SetActive(true);
