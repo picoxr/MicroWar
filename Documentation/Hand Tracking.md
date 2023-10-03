@@ -55,25 +55,34 @@ For game objects with a collider and the TankSelectorBehaviour.cs script, the Mi
   private void OnTriggerStay(Collider other)
     {
         //Debug.LogWarning(other.name + "OnTriggerStay");
-        if (m_Hand != null && m_Tank)
+        if (m_Hand != null)
         {
-            if(m_Hand.PinchStrength > 0 && !m_IsTankInHand)
+            if(m_Hand.Pinch && !m_IsTankInHand)
             {
-                Debug.LogWarning("Grab Tank!");
-                m_Tank.transform.parent = transform;
-                m_Tank.transform.localPosition = Vector3.zero;
-                m_Tank.transform.localRotation = Quaternion.identity;
-                m_IsTankInHand = true;
-                m_Tank.SelectEntered();
+                m_Tank = other.GetComponent<TankSelectorBehaviour>();
+                if (m_Tank != null)
+                {
+                    Debug.LogWarning("Grab Tank!");
+                    m_Tank.transform.parent = transform;
+                    m_Tank.transform.localPosition = Vector3.zero;
+                    m_Tank.transform.localRotation = Quaternion.identity;
+                    m_IsTankInHand = true;
+                    m_Tank.SelectEntered();
+                }
             }
-            if(m_Hand.PinchStrength == 0 && m_IsTankInHand)
+            if(!m_Hand.Pinch && m_IsTankInHand)
             {
-                m_IsTankInHand = false;
-                Debug.LogWarning("Release Tank!");
-                m_Tank.SelectExited();
+                m_Tank = other.GetComponent<TankSelectorBehaviour>();
+                if (m_Tank != null)
+                {
+                    m_IsTankInHand = false;
+                    Debug.LogWarning("Release Tank!");
+                    m_Tank.SelectExited();
+                }
                 
             }
         }
+    }
 ```
 
 
