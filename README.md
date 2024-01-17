@@ -25,6 +25,9 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 **What's New in this APK?**<br>
 ![MR_Features](/Documentation/Files/MR/MR_Update07.png)
 
+> [!IMPORTANT]
+> The Mixed-Reality features are currently in an **experimental phase and may undergo modifications.**<br>
+
 
 ## How To Play
 ### Game UI
