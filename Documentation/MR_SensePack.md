@@ -1,10 +1,13 @@
 # Sense Pack Integration
 > [!NOTE]
 > **Sense pack** includes mixed reality-related features, including video seethrough, spatial anchors, and space calibration, enabling you to blend the real and virtual environments in a scene. The physical and digital objects in the scene coexist and interact in real time.
+> 
+> Before proceeding, we suggest taking a look at the **[Sense Pack Quickstart](https://developer-global.pico-interactive.com/document/unity/sense-pack-quickstart/)**. This article introduces the development environment for sense pack features and the key steps to integrate them into your app.
 
 ---
 > [!IMPORTANT]
-> Before proceeding, we suggest taking a look at the **[Sense Pack Quickstart](https://developer-global.pico-interactive.com/document/unity/sense-pack-quickstart/)**. This article introduces the development environment for sense pack features and the key steps to integrate them into your app.
+> The Mixed-Reality features are currently in an **experimental phase and may undergo modifications.**<br>
+
 
 # MicroWar Mixed-Reality Features
 MicroWar utilizes **[Space Calibration](https://developer-global.pico-interactive.com/document/unity/space-calibration/)** Data and **[Video Seethrough](https://developer-global.pico-interactive.com/document/unity/seethrough/)** features of the Sense Pack.
