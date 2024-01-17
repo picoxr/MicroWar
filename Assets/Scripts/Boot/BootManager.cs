@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 public class BootManager : MonoSingleton<BootManager>
 {
+    public static string mainSceneName = "Main";
     public bool ErrorNotificationFlag { get; private set; }
 
     private int RetryGameInitTimes = 3; //Retry 3 times if game not properly initialized. TODO: Game service might need re-initialize if the app is interrupted.
@@ -48,7 +49,7 @@ public class BootManager : MonoSingleton<BootManager>
         PlatformServiceManager.Instance.InitPlatformServices();
         //Start loading loading scene asynchronously
         IsFirstLaunch = true;
-        asyncLoadSceneOp = LoadSceneAsync("Main", LoadSceneMode.Single);
+        asyncLoadSceneOp = LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
         asyncLoadSceneOp.allowSceneActivation = false; //Do not switch scene immidiatly
         //Platform Init timeout
         yield return new WaitUntil(CheckPlatformInitTimeout);

@@ -1,10 +1,14 @@
+using System;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Android;
 
 namespace MicroWar
 {
     public class EnvironmentManager : MonoBehaviour, IEnvironmentManager
     {
+
         [Header("Spawn Points")]
         public Transform[] PlayerSpawnPoints;
         public Transform[] MapSpawnPoints;
@@ -14,12 +18,28 @@ namespace MicroWar
        
         [Header("XROrigin Of The Map")]
         public Transform XROrigin;
-        
+
+        [Header("Battleground Root")]
+        public Transform Battleground;
+
+        public Action<float> OnBattlegroundScaled; //param = scaleFactor
+        public Action OnBattlegroundRepositioned; 
+
+        public float CurrentBattleGroundScaleFactor { get { return currentBattlegroundScaleFactor; } }
+
+        private Vector3 originalBattlegroundScale = Vector3.one;
+        private float currentBattlegroundScaleFactor = 1f;
+
         private int walkableNavMeshAreaMask;
+
+        private BattlegroundManager battlegroundManager;
+
 
         private void Start()
         {
             walkableNavMeshAreaMask = 1 << NavMesh.GetAreaFromName("Walkable");
+            originalBattlegroundScale = Battleground.localScale;
+            battlegroundManager = Battleground.gameObject.GetComponent<BattlegroundManager>();
         }
 
         public Transform[] GetPlayerSpawnPoints() 
@@ -62,7 +82,7 @@ namespace MicroWar
 
         public Vector3 GetRandomPointOnMap(float maxDistanceFromMapOrigin, float maxDistanceFromTheSource)
         {
-            Vector2 randomPoint = Random.insideUnitCircle * maxDistanceFromMapOrigin;
+            Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * maxDistanceFromMapOrigin;
             Vector3 sourcePoint = new Vector3(MapOrigin.position.x + randomPoint.x, MapOrigin.position.y, MapOrigin.position.z + randomPoint.y);
 
             return GetRandomPointOnMap(sourcePoint, maxDistanceFromTheSource);
@@ -106,5 +126,44 @@ namespace MicroWar
             }
         }
 
+        //scaleFactor 0.1 - 1
+        public void RescaleBattleground(float scaleFactor)
+        {
+            currentBattlegroundScaleFactor = Mathf.Clamp(scaleFactor, 0.1f, 1f);
+            Battleground.localScale = originalBattlegroundScale * currentBattlegroundScaleFactor;
+
+            battlegroundManager.RebuildNavMesh();
+
+            OnBattlegroundScaled?.Invoke(currentBattlegroundScaleFactor);
+        }
+
+        public void EnableBattlegroundRotation()
+        {
+            battlegroundManager.EnableBattlegroundRotation();
+        }
+
+        public void DisableBattlegroundRotation()
+        {
+            battlegroundManager.DisableBattlegroundRotation();
+            battlegroundManager.RebuildNavMesh();
+        }
+
+        public void AttachBattlegroundTo(Transform deskAnchor, Vector3 offset)
+        {
+            battlegroundManager.transform.parent = deskAnchor;
+            battlegroundManager.transform.localPosition = Vector3.zero;
+            battlegroundManager.transform.position = battlegroundManager.transform.position + offset;
+
+            Vector3 battlegroundEuler = battlegroundManager.transform.eulerAngles;
+            
+#if UNITY_EDITOR
+            battlegroundManager.transform.localRotation = Quaternion.identity;
+#else
+            battlegroundManager.transform.rotation = deskAnchor.rotation;
+            battlegroundManager.transform.Rotate(Vector3.up, 180f);
+            battlegroundManager.transform.Rotate(Vector3.right, -90f);
+#endif
+            OnBattlegroundRepositioned?.Invoke();
+        }
     }
 }

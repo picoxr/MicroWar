@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using MicroWar;
 using UnityEngine;
 
 public class HomingMissile : MonoBehaviour
@@ -16,13 +15,27 @@ public class HomingMissile : MonoBehaviour
     private bool isTargetSet = false;
     private bool isDynamicTarget = false;
 
-    // Start is called before the first frame update
+    private float originalSpeed;
+    private float originalRotationSpeed;
+
+    private void Awake()
+    {
+        originalSpeed = speed;
+        originalRotationSpeed = rotationSpeed;
+    }
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
 
         // Activate homing functionality after 1 second
         Invoke(nameof(ActivateHoming), homingActivationDelay);
+    }
+
+    private void OnEnable()
+    {
+        speed = originalSpeed * GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
+        rotationSpeed = originalRotationSpeed * GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
     }
 
     public void SetTarget(Vector3 position)

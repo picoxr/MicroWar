@@ -70,7 +70,7 @@ namespace MicroWar
             {
                 GC.Collect();
                 // If there is a game winner, restart the level.
-                SceneManager.LoadScene("Main");
+                SceneManager.LoadScene(BootManager.mainSceneName);
             }
             else
             {

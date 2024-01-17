@@ -14,9 +14,14 @@ namespace MicroWar
         private Vector2 axis2D_R;
         private bool axis2DClick_R;
         private InputDevice rightController;
+
+        private Vector3 spawnPosForward;
+
+
         private void Start()
         {
             base.Start();
+            spawnPosForward = transform.forward;
             PXR_Input.SendHapticBuffer(PXR_Input.VibrateType.RightController, m_ChargingClip, PXR_Input.ChannelFlip.No, ref m_chargingHapticsID, PXR_Input.CacheType.CacheNoVibrate);
             PXR_Input.SendHapticBuffer(PXR_Input.VibrateType.RightController, m_FireClip, PXR_Input.ChannelFlip.No, ref m_fireHapticsID, PXR_Input.CacheType.CacheNoVibrate);
             rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
@@ -50,8 +55,8 @@ namespace MicroWar
             if (axis2D_R != Vector2.zero)
             {
                 Vector3 lookDirection = new Vector3(axis2D_R.x, 0, axis2D_R.y);
-                lookDirection = Quaternion.Euler(GameManager.Instance.XROrigin.eulerAngles) * lookDirection;
-                Quaternion lookRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+       
+                Quaternion lookRotation = Quaternion.LookRotation(lookDirection, Vector3.up) * Quaternion.FromToRotation(Vector3.forward, spawnPosForward); ;
 
                 float step = m_TurnSpeed * Time.deltaTime;
                 m_Turret.rotation = Quaternion.RotateTowards(lookRotation, m_Turret.rotation, step);

@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MicroWar.Multiplayer;
+using MicroWar;
+
 public class TurretController : MonoBehaviour
 {
     public GameObject ammoPrefab;
@@ -42,12 +44,14 @@ public class TurretController : MonoBehaviour
             Rigidbody missileRigidBody = Instantiate(ammoPrefab, GetNextLauncherTransform()).GetComponent<Rigidbody>();
             HomingMissile homingMissile = missileRigidBody.GetComponent<HomingMissile>();
 
+           
             //TODO: If target is not active or destroyed attack a random area
             homingMissile.SetTarget(targets.Current);
 
+            float scaleFactor = GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
             missileRigidBody.transform.localPosition = Vector3.zero;
-            missileRigidBody.transform.localScale *= 0.5f;
-            missileRigidBody.AddForce(missileRigidBody.transform.forward * launchForce, ForceMode.Impulse);
+            missileRigidBody.transform.localScale *= 0.5f * scaleFactor;
+            missileRigidBody.AddForce(missileRigidBody.transform.forward * launchForce * scaleFactor, ForceMode.Impulse);
             PlayLaunchSFX();
         }
     }

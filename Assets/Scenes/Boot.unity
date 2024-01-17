@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -965,6 +965,8 @@ MonoBehaviour:
   screenFade: 0
   eyeTracking: 1
   trackingMode: 0
+  sharpeningMode: 0
+  sharpeningEnhance: 0
   faceTracking: 0
   lipsyncTracking: 0
   lateLatching: 0
@@ -988,6 +990,7 @@ MonoBehaviour:
   adaptiveResolutionPowerSetting: 1
   minEyeTextureScale: 0.7
   maxEyeTextureScale: 1.26
+  enableSuperResolution: 0
   useRecommendedAntiAliasingLevel: 1
 --- !u!4 &1849793078
 Transform:
@@ -1169,6 +1172,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8864629751545560451, guid: 822791a817c0d6345a3e82c38bfa8e21,
+        type: 3}
+      propertyPath: mainSceneName
+      value: Main-Rescaled
+      objectReference: {fileID: 0}
     - target: {fileID: 8864629751545560452, guid: 822791a817c0d6345a3e82c38bfa8e21,
         type: 3}
       propertyPath: m_RootOrder

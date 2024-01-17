@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.XR.PXR;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using static UnityEngine.XR.Interaction.Toolkit.InputHelpers;
 
@@ -17,11 +18,16 @@ namespace MicroWar
         private int m_drivingHapticsID;
         private bool wasMoving = false;
         private bool isMoving = false;
-        private InputDevice leftController;
-        private InputDevice rightController;
+        private UnityEngine.XR.InputDevice leftController;
+        private UnityEngine.XR.InputDevice rightController;
         private Vector3 leftHandStartPosition;
         private Vector3 leftHandCurrentPosition;
         private Vector3 leftHandMovement;
+
+        private Vector3 spawnPosForward;
+
+        public InputActionReference vehicleMovement;
+
         private void Awake()
         {
             base.Awake();
@@ -29,6 +35,13 @@ namespace MicroWar
             leftController = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
             rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         }
+
+        private void Start()
+        {
+            base.Start();
+            spawnPosForward = transform.forward;
+        }
+
         private void Update()
         {
             base.Update();
@@ -74,12 +87,13 @@ namespace MicroWar
                 GameManager.Instance.InGameUIHandler.HandTrackingUICanvas.SetActive(false);
                 if (leftController != null)
                 {
-                    leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out axis2D_L);
+                    leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out axis2D_L);
+
                 }
 
                 if (rightController != null)
                 {
-                    rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out axis2D_R);
+                    rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out axis2D_R);
                 }
             }
             
@@ -106,12 +120,13 @@ namespace MicroWar
                 case VehicleControlType.VideoGameControl:
                     //2.5D Video Game control
 
+#if UNITY_EDITOR
+                    axis2D_L = vehicleMovement.action.ReadValue<Vector2>();
+#endif
                     if (axis2D_L != Vector2.zero)
                     {
-
                         Vector3 lookDirection = new Vector3(axis2D_L.x, 0, axis2D_L.y);
-                        lookDirection = Quaternion.Euler(GameManager.Instance.XROrigin.eulerAngles) * lookDirection;
-                        Quaternion lookRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+                        Quaternion lookRotation = Quaternion.LookRotation(lookDirection, Vector3.up) * Quaternion.FromToRotation(Vector3.forward, spawnPosForward); 
 
                         float step = m_TurnSpeed * Time.deltaTime;
                         transform.rotation = Quaternion.RotateTowards(lookRotation, transform.rotation, step);

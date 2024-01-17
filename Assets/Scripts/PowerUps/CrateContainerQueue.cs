@@ -30,6 +30,23 @@ namespace MicroWar
         private void Awake()
         {
             crateQueue= new Queue<CrateInfo>();
+
+        }
+
+        private void Start()
+        {
+            Container.transform.localScale *= GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
+            GameManager.Instance.EnvironmentManager.OnBattlegroundScaled += OnBattlegroundScaled;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.EnvironmentManager.OnBattlegroundScaled -= OnBattlegroundScaled;
+        }
+
+        private void OnBattlegroundScaled(float scaleFactor)
+        {
+            Container.transform.localScale *= scaleFactor;
         }
 
         public void Enqueue(CrateType crateType, Transform targetTransform)

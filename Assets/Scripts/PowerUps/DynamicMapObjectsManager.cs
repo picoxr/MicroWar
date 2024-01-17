@@ -165,11 +165,17 @@ namespace MicroWar
                 GameObject turretActivator = Instantiate(TurretActivatorPrefab, randomPoint, Quaternion.identity);
                 GameObject turretLinkCurve = Instantiate(TurretLinkCurvePrefab, Vector3.zero, Quaternion.identity);
 
+                float scaleFactor = GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
+                turretActivator.transform.localScale *= scaleFactor;
+                turretLinkCurve.transform.localScale *= scaleFactor;
+
                 PlayerPickableObject pickableObject = turretActivator.GetComponent<PlayerPickableObject>();
                 RegisterPickableObject(pickableObject);
 
                 //Draw a connector link between the turret and it's activator object on the map.
-                CurveUtils.DrawCurveBetween(turretActivator, turret.gameObject, 20, turretLinkCurve.GetComponent<LineRenderer>());
+                LineRenderer curve = turretLinkCurve.GetComponent<LineRenderer>();
+                curve.startWidth = curve.endWidth *= GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
+                CurveUtils.DrawCurveBetween(turretActivator, turret.gameObject, 20, curve);
 
                 pickableObject.OnPickedUp = (playerPicked) =>
                     {
@@ -204,6 +210,7 @@ namespace MicroWar
             Vector3 randomPoint = environmentManager.GetRandomPointOnMap(maxDistanceFromMapOrigin, maxDistanceFromSource);
 
             GameObject cratePickup = Instantiate(CratePickupPrefab, randomPoint, Quaternion.identity);
+            cratePickup.transform.localScale *= GameManager.Instance.EnvironmentManager.CurrentBattleGroundScaleFactor;
             PlayerPickableObject pickableObject = cratePickup.GetComponent<PlayerPickableObject>();
             RegisterPickableObject(pickableObject);
             pickableObject.OnPickedUp = (playerPicked) =>

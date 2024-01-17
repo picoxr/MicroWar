@@ -1,9 +1,1 @@
-{
-  "general": { "region": "I18n" },
-  "account": { "access_token": "act.413b413ebf302a7753fcd94e8d5b1b44cCFbXHQKgeRUqnUUDi7aQCWjB5xX!4949" },
-  "package": {
-    "package_name": "com.Company.VRTank",
-    "package_version_code": 1,
-    "package_version_name": "1.0"
-  }
-}
+{"general":{"region":"cn"},"account":{"access_token":"act.413b413ebf302a7753fcd94e8d5b1b44cCFbXHQKgeRUqnUUDi7aQCWjB5xX!4949"},"package":{"package_name":"com.PICO.MicroWar","package_version_code":1,"package_version_name":"0.5.0"}}

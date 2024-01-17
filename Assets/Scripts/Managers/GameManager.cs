@@ -48,6 +48,7 @@ namespace MicroWar
         public VehicleConfigManager VehicleConfigManager;
         public EnvironmentManager EnvironmentManager;
         public AudioMixer AudioMixer;
+        public MixedRealityManager MixedRealityManager;
 
         public SessionManagerBase currentSession { get; private set; }
 

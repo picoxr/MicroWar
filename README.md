@@ -2,7 +2,7 @@
 # MicroWar 
 Welcome to MicroWar, an VR game project implemented using the PICO Integration SDK. Our primary objective is to present an immersive experience that spotlights the breadth and depth of capabilities offered by the PICO Integration SDK. This single project encapsulates all the key features, demonstrating their integration potential for fellow developers.
 
-*Current version:* [0.6.0](Documentation/CHANGELOG.md)
+*Current version:* [0.7.0](Documentation/CHANGELOG.md)
 
 **`Trailer`**<br>
 
@@ -20,7 +20,10 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 
 ## Download APK
 
-- [Download APK](https://bytedance.us.feishu.cn/file/SbDgbyw8GoIFsrxx9n0u587Jsjd)
+- [Download APK](https://bytedance.sg.larkoffice.com/file/EBGubcBLvouZfxx8rZVljPITgfq)
+
+**What's New in this APK?**<br>
+![MR_Features](/Documentation/Files/MR/MR_Update07.png)
 
 
 ## How To Play
@@ -82,28 +85,29 @@ In Unity Editor, click "File/Build Settings/Build And Run". Make sure the platfo
 #### Run in Unity Editor via Live Preview Plug-in (If you have PDC installed)
 Please follow the insturctions here to [setup PDC](https://developer-global.pico-interactive.com/document/unity/pdc-basic-info/) and click play button in Boot Scene.
 ## Dependencies
-- PICO Integration SDK 2.3.0.
-- PUI 5.7.0
+- PICO Integration SDK 2.4.3.
+- PUI 5.8.0
 - Swift SDK
 - Live Preview Plug-in
 - XR Hands 1.2.1
 - XR Interaction Toolkit 2.4.3
 - Netcode for GameObjects 1.5.2
 ## Features
-- Input & tracking
+- Interaction & Mixed-Reality
   - [Controller Input](/Documentation/Controller%20Input.md)
   - [Haptic feedback](/Documentation/Haptic%20feedback.md)
   - [Hand Tracking](/Documentation/Hand%20Tracking.md)
   - [Tracking Origin](/Documentation/TrackingOrigin.md)
   - [Eye Tracking](/Documentation/Eye%20Tracking.md)
-  - [PICO Motion Tracker Integration](7/Documentation/PICO%20Motion%20Trackers.md)
+  - [PICO Motion Tracker Integration](/Documentation/PICO%20Motion%20Trackers.md)
+  - [MR - Sense Pack Integration](/Documentation/MR_SensePack.md)
 - [Platform Service](/Documentation/MicroWar%20Platform%20Service%20Architecture.md)
   - [Initialization And Login](/Documentation/Initialization%20And%20Login.md)
   - [Real Time Communication](/Documentation/RTC%20(Real-Time%20Communication).md)
   - [Rooms](/Documentation/Rooms.md)
   - [Multiplay](/Documentation/Multiplay.md)
-  - [Achievements](Documentation/Achievement.md)
-  - [Leaderboard](Documentation/Leaderboard.md)
+  - [Achievements](/Documentation/Achievement.md)
+  - [Leaderboard](/Documentation/Leaderboard.md)
 
 
 
@@ -121,7 +125,6 @@ See the [Changelog](Documentation/CHANGELOG.md) for a detailed history of change
 ## Upcoming Features/Updates
 
 - PICO Avatar SDK Integration
-- PICO MR Features Integration
 - Gameplay Improvements
 - Various Bug-Fixes
 

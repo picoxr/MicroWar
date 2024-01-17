@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7121513603081878855
 Transform:
@@ -105,7 +105,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4141976450504547619
 Transform:
@@ -449,7 +449,7 @@ PrefabInstance:
     - target: {fileID: -3293336427984311689, guid: 7d5066a6c41bd2f428b4012ce478d5ca,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7d5066a6c41bd2f428b4012ce478d5ca,
         type: 3}
@@ -464,7 +464,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7d5066a6c41bd2f428b4012ce478d5ca,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2063001871730864813, guid: 7d5066a6c41bd2f428b4012ce478d5ca,
         type: 3}
@@ -526,10 +526,10 @@ MonoBehaviour:
   m_RendererInfo:
   - renderer: {fileID: 3367236782594299673}
     lightmapIndex: 0
-    lightmapOffsetScale: {x: 0.011038174, y: 0.011038174, z: 0.8282168, w: 0.33219436}
+    lightmapOffsetScale: {x: 0.005519087, y: 0.005519087, z: 0.9937339, w: -0.00040672696}
   - renderer: {fileID: 2727493516882147632}
     lightmapIndex: 0
-    lightmapOffsetScale: {x: 0.01583299, y: 0.01583299, z: 0.81171674, w: 0.33222458}
+    lightmapOffsetScale: {x: 0.007916495, y: 0.007916495, z: 0.9922842, w: 0.22658388}
   m_Lightmaps:
   - {fileID: 2800000, guid: f101ef6ce1afb1d45b25b6ad8cbd1cd7, type: 3}
   m_LightmapsDir:
@@ -613,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 6348106420597313686, guid: cf61e065129f1d0468cc2bc79631b640,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf61e065129f1d0468cc2bc79631b640, type: 3}

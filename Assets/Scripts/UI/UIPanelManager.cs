@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using MicroWar.Platform;
+using System;
 
 namespace MicroWar
 {
@@ -16,6 +17,8 @@ namespace MicroWar
     {
         public List<PanelGroup> panelGroups; // List to hold groups of UI panels
 
+        public Button singleplayerBtn;
+
         public Button singleplayerSelectBtn;
         public Button multiplayerSelectBtn;
         public Slider TableHeightSlider;
@@ -24,6 +27,7 @@ namespace MicroWar
 
         private int panelIndex = 0; // Current index of the panel to be shown
         public GameObject tankControllerUI; // Reference to the Tank Controller UI GameObject
+        public GameObject battlegroundRotationUI;
 
         private static UIPanelManager _instance;
         public static UIPanelManager Instance { get { return _instance; } }
@@ -72,6 +76,13 @@ namespace MicroWar
         }
         public void OpenSpecificPanel(GameObject panelToOpen)
         {
+            DisableAllPanels();
+            // Enable the specified panel
+            panelToOpen.SetActive(true);
+        }
+
+        public void DisableAllPanels()
+        {
             // Disable all panels
             foreach (PanelGroup group in panelGroups)
             {
@@ -80,9 +91,6 @@ namespace MicroWar
                     panel.SetActive(false);
                 }
             }
-
-            // Enable the specified panel
-            panelToOpen.SetActive(true);
         }
 
         public void NextPanel()
@@ -101,6 +109,7 @@ namespace MicroWar
 
         public void OnSingleplayerSelectBtnClick()
         {
+            
             GameManager.Instance.IsSinglePlayer = true;
 
             // Disable the multiplayer selection button
@@ -108,6 +117,28 @@ namespace MicroWar
 
             // Enable the singleplayer selection button
             singleplayerSelectBtn.gameObject.SetActive(true);
+        }
+
+        public void OnMixedRealityBtnClick()
+        {
+            DisableAllPanels();
+            GameManager.Instance.MixedRealityManager.EnablePassthrough();
+            battlegroundRotationUI.SetActive(true);
+            GameManager.Instance.EnvironmentManager.EnableBattlegroundRotation();
+            //Wait for confirmation or exit
+        }
+
+        public void OnBattlegroundRotationConfirm()
+        {
+            battlegroundRotationUI.SetActive(false);
+            GameManager.Instance.EnvironmentManager.DisableBattlegroundRotation();
+            OnSingleplayerSelectBtnClick();
+            singleplayerBtn.onClick?.Invoke();
+        }
+
+        public void OnBattlegroundRotationCancel()
+        {
+            //Reload Main Scene
         }
 
         public void OnMultiplayerSelectBtnClick()

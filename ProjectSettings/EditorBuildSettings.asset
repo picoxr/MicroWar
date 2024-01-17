@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: c46958d0c1b9bad40b27d1d9d97a44ad
   - enabled: 1
     path: Assets/Scenes/Main.unity
-    guid: a373629a1ed18e049b0c1a3e5b975a22
+    guid: 88d8f4e909566ac4c8e44deac425296b
   m_configObjects:
     Unity.XR.PICO.LivePreview.Settings: {fileID: 11400000, guid: 89e64641bd3e8a646ab73701cf977e06,
       type: 2}
