@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774be41e62eb84bcc9cf8b3f9477098e, type: 3}
+  m_Name: URPMaterialConfiguration
+  m_EditorClassIdentifier: 
+  renderPipelineType: 2
+  lodMaterial0: {fileID: 2100000, guid: d95380059b04f4038a22b18051fceb94, type: 2}
+  lodMaterial1: {fileID: 2100000, guid: cbdf5f935605e438a8a60d7cc5a3c328, type: 2}
+  lodMaterial2: {fileID: 2100000, guid: 70c1a55b3d07e4ef8a4a78a73a6d4b0d, type: 2}
+  lodMaterial3: {fileID: 2100000, guid: 70c1a55b3d07e4ef8a4a78a73a6d4b0d, type: 2}
+  lodMaterial4: {fileID: 2100000, guid: 65b5ea7787106461e8d92702e0489c17, type: 2}
+  avatarBunchShader: {fileID: 4800000, guid: 8d22163533f587045a40f53b886f979d, type: 3}
+  hairKKMaterial0: {fileID: 2100000, guid: a79899827e11af24e93e3989acda8150, type: 2}
+  shaderVariantCollection: {fileID: 20000000, guid: e5df3bec2ac8e4a1ea1b05b67eea6776,
+    type: 2}
+  needTangent: 1
+  enableMultiLights: 1
+  morphAndSkinningShader: {fileID: 7200000, guid: 5ff332df566ccf94aab05df95099b433,
+    type: 3}
+  transferShapingMeshShader: {fileID: 7200000, guid: 658e99efa3c6049479e362408e42d426,
+    type: 3}
+  colorTemperatureMaterial: {fileID: 2100000, guid: d81f38c2aa416e6408fb0f2bda1b92a6,
+    type: 2}
+  need_ToonShadowMap: 0
+  need_MetallicGlossMap: 1
+  need_SpecGlossMap: 0
+  need_BumpMap: 1
+  need_ParallaxMap: 0
+  need_EmissionMap: 1
+  need_DetailMask: 0
+  need_DetailAlbedoMap: 0
+  need_DetailNormalMap: 0
+  need_SecondMap: 0
+  need_ColorRegionMap: 1
+  isLod2NeedBumpMap: 0
+  isLod3EnablePBR: 0
+  name_BaseMap: _BaseMap
+  name_BumpMap: _BumpMap

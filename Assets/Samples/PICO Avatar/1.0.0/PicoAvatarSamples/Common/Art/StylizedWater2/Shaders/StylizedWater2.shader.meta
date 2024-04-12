@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f04c9486b297dd848909db26983c9ddb
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _CausticsTex: {fileID: 2800000, guid: 36b7496f7c0078b49a44468d3e120e62, type: 3}
+  - _IntersectionNoise: {fileID: 2800000, guid: b8850342fb8b1e846ac3807e35ec1685,
+      type: 3}
+  - _FoamTex: {fileID: 2800000, guid: e91f048fea6b6b94eb864b2124843ce9, type: 3}
+  - _BumpMap: {fileID: 2800000, guid: ec6f0adef15b52448a82f3f183525d84, type: 3}
+  - _BumpMapLarge: {fileID: 2800000, guid: 88908a7c7a1f0ed418d1048378c17411, type: 3}
+  - _PlanarReflectionLeft: {instanceID: 0}
+  nonModifiableTextures: []
+  preprocessorOverride: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

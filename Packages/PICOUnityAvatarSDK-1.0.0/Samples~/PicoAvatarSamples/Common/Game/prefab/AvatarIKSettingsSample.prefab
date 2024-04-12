@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3942325869385004053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7500905086515415544}
+  - component: {fileID: 2795920657985917065}
+  m_Layer: 0
+  m_Name: AvatarIKSettingsSample
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7500905086515415544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942325869385004053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2795920657985917065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942325869385004053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5463fbad4a156314d8404d6dcba15c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ikMode: 2
+  autoStopIK: 1
+  worldSpaceDrive: 1
+  XRRoot: {fileID: 0}
+  head:
+    target:
+      transform: {fileID: 0}
+      positionOffset: {x: 0, y: 0.1, z: 0.1}
+      rotationOffset: {x: 0, y: 0, z: 0}
+    enableSpineBend: 1
+    spineRotationWeight: 0.5
+    rotationLimits:
+      head: 1
+      chest: 1
+      hips: 1
+  hands:
+    leftTarget:
+      transform: {fileID: 0}
+      positionOffset: {x: 0.036, y: 0.041, z: 0.081}
+      rotationOffset: {x: -20, y: 0, z: 0}
+    rightTarget:
+      transform: {fileID: 0}
+      positionOffset: {x: -0.036, y: 0.041, z: 0.081}
+      rotationOffset: {x: -20, y: 0, z: 0}
+    stretch: 1
+    rotationLimits:
+      shoulder: 1
+      upperArm: 1
+      lowerArm: 1
+      handWrist: 1
+  feet:
+    autoFootstep: 1
+    footstep:
+      stepHeight: 0.05
+      stepSpeed: 2
+      footCollisionRadius: 0.1
+      positionThreshold: 0.1
+      rotationThreshold: 40
+    leftTarget:
+      transform: {fileID: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      rotationOffset: {x: 0, y: 0, z: 0}
+    rightTarget:
+      transform: {fileID: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      rotationOffset: {x: 0, y: 0, z: 0}
+    rotationLimits:
+      upperLeg: 1
+      lowerLeg: 1
+      ankle: 1
+  heightAutoFit:
+    enableAutoFitHeight: 0
+    cameraOffsetTarget: {fileID: 0}
+    standingMode:
+      thresholds:
+        maxFloatingTime: 1
+        maxCrouchingTime: 2
+        crouchingDistance: 0.2
+        maxCrouchingDistance: 0.7
+    sittingMode:
+      thresholds:
+        maxFloatingTime: 1
+        maxCrouchingTime: 3
+        crouchingDistance: 0.15
+        maxCrouchingDistance: 0.3
+      autoStandUp: 1
+      autoStandUpDistance: 0.05
+      autoStandUpAngle: 135
+      autoStandUpTime: 0
+      sittingTarget: {fileID: 0}
+      sittingHeight: 0

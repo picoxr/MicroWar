@@ -177,11 +177,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.pico.livepreview": {
-      "version": "file:PICO Unity Live Preview Plugin (Experiment)",
+      "version": "file:PICO Unity Live Preview Plugin-101",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.xr.management": "4.0.0"
+        "com.unity.xr.management": "4.0.0",
+        "com.unity.xr.interaction.toolkit": "2.0.0"
       }
     },
     "com.unity.postprocessing": {
@@ -401,12 +402,24 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:PICO Unity Integration SDK 240",
+      "version": "file:PICO Unity Integration SDK_250",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
         "com.unity.xr.management": "4.0.0",
         "com.unity.xr.interaction.toolkit": "2.0.0"
+      }
+    },
+    "org.byted.avatar.sdk": {
+      "version": "file:PICOUnityAvatarSDK-1.0.0",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.inputsystem": "1.5.1",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.render-pipelines.universal": "12.1.7"
       }
     },
     "com.unity.modules.ai": {

@@ -1,0 +1,10 @@
+IgnoreRules:
+  FilePathPattern:
+    - ^Assets/.*$
+    - ^Editor/.*$
+    - ^Enterprise/.*$
+    - ^Platform/.*$
+    - ^Runtime/.*$
+    - ^SpatialAudio/.*$
+    - ^package.json$
+    

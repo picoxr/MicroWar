@@ -1,8 +1,6 @@
 using System;
-using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Android;
 
 namespace MicroWar
 {
@@ -21,6 +19,9 @@ namespace MicroWar
 
         [Header("Battleground Root")]
         public Transform Battleground;
+
+        [Header("UI Root")]
+        public Transform UIRoot;
 
         public Action<float> OnBattlegroundScaled; //param = scaleFactor
         public Action OnBattlegroundRepositioned; 
@@ -93,6 +94,8 @@ namespace MicroWar
             Transform spawnTrans = PlayerSpawnPoints[index];
             XROrigin.position = new Vector3(spawnTrans.position.x, XROrigin.position.y, spawnTrans.position.z); 
             XROrigin.rotation = spawnTrans.rotation;
+            Vector3 uiEulerRot = UIRoot.localRotation.eulerAngles;
+            UIRoot.localRotation = Quaternion.Euler(uiEulerRot.x, GetUIRotationByPlayerSpawnIndex(index), uiEulerRot.z);
         }
 
         public Vector3 GetSpawnPointPositionByIndex(int playerIndex)
@@ -146,6 +149,19 @@ namespace MicroWar
         {
             battlegroundManager.DisableBattlegroundRotation();
             battlegroundManager.RebuildNavMesh();
+        }
+
+        private float GetUIRotationByPlayerSpawnIndex(int index)
+        {
+            switch (index)
+            {
+                case 0: return 0f;
+                case 1: return 180f;
+                case 2: return 90f;
+                case 3: return -90f;
+            }
+
+            return 0f;
         }
 
         public void AttachBattlegroundTo(Transform deskAnchor, Vector3 offset)

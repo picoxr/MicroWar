@@ -1,5 +1,13 @@
 ## Changelog
 
+### [0.8.0] - 2024-04-05
+Avatar Update
+
+Added:
+- PICO Avatar SDK integration
+- Minor refactoring in the multiplayer codebase
+- Minor bug fixes
+
 ### [0.7.0] - 2024-01-14
 Sense Pack (Mixed Reality) Update
 

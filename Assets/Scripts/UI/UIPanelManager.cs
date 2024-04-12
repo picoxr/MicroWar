@@ -28,6 +28,7 @@ namespace MicroWar
         private int panelIndex = 0; // Current index of the panel to be shown
         public GameObject tankControllerUI; // Reference to the Tank Controller UI GameObject
         public GameObject battlegroundRotationUI;
+        public GameObject avatarHeightCalibrationUI;
 
         private static UIPanelManager _instance;
         public static UIPanelManager Instance { get { return _instance; } }
@@ -126,6 +127,11 @@ namespace MicroWar
             battlegroundRotationUI.SetActive(true);
             GameManager.Instance.EnvironmentManager.EnableBattlegroundRotation();
             //Wait for confirmation or exit
+        }
+
+        public void CloseAvatarCalibrationPanel()
+        {
+            avatarHeightCalibrationUI.SetActive(false);
         }
 
         public void OnBattlegroundRotationConfirm()

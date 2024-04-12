@@ -5,6 +5,8 @@ using Unity.Netcode;
 using MicroWar.Platform;
 using System;
 using UnityEngine.SceneManagement;
+using System.Linq;
+
 
 namespace MicroWar.Multiplayer
 {
@@ -17,6 +19,8 @@ namespace MicroWar.Multiplayer
         public bool IsUseRTC { get; private set; } = true;
         public int LocalPlayerIndex { get => localPlayerIndex; }
 
+        public event Action<Dictionary<string, int>> OnPlayerSpawnPointsUpdated;
+
         public bool CanReloadScene = false;
 
         private GameManager gameManager;
@@ -24,9 +28,14 @@ namespace MicroWar.Multiplayer
         private MultiplayerSessionManager currentSession;
         private PlatformController_Rooms roomController;
         private Dictionary<ulong, NetPlayer> networkPlayerReference;
+        private Dictionary<string, int> spawnPositionsServer;
+        private Queue<int> availablePlayerPositions;
+        public PlatformController_Network NetworkController { get; private set; }
+
+        private bool isServerInitialized = false;
 
         private InGameUIHandler inGameUIHandler;
-        #region Singleton
+        
         private static MultiplayerBehaviour instance;
         public static MultiplayerBehaviour Instance
         {
@@ -46,7 +55,6 @@ namespace MicroWar.Multiplayer
             }
         }
 
-
         protected virtual void Awake()
         {
             if (instance == null)
@@ -59,13 +67,164 @@ namespace MicroWar.Multiplayer
                 Destroy(this.gameObject);
             }
         }
-        #endregion
-        #region UnityMessages
+        
         private void Start()
         {
-            PlatformServiceManager.Instance.RegisterNotification<RoomUpdateEvent>(RoomUpdateHandler);
             roomController = PlatformServiceManager.Instance.GetController<PlatformController_Rooms>();
+            NetworkController = PlatformServiceManager.Instance.GetController<PlatformController_Network>();
+
+            NetworkManager.OnServerStarted += OnServerStarted;
+
+            NetworkManager.OnClientConnectedCallback += OnClientConnected;
+            NetworkManager.OnClientDisconnectCallback += OnClientDisconnected;
+
             SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+
+        private void OnClientConnected(ulong clientId)
+        {
+            Debug.Log($"Client Connected: {clientId} - PlatformId: {NetworkController.GetOpenID(clientId)}");
+            ClientJoinHandler(NetworkController.GetOpenID(clientId));
+        }
+
+        private void OnClientDisconnected(ulong clientId)
+        {
+            Debug.Log($"Client Disconnected: {clientId} - PlatformId: {NetworkController.GetOpenID(clientId)}");
+            ClientDisconnectHandler(NetworkController.GetOpenID(clientId));
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            if (PlatformServiceManager.Instance == null) return;
+
+            if (NetworkManager != null)
+            {
+                NetworkManager.OnServerStarted -= OnServerStarted;
+                NetworkManager.OnClientConnectedCallback -= OnClientConnected;
+                NetworkManager.OnClientDisconnectCallback -= OnClientDisconnected;
+            }
+
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+
+            base.OnDestroy();
+        }
+
+        private void ClientJoinHandler(string clientPlatformId)
+        {
+            if (!IsServer) return;
+
+            string clientPicoId = clientPlatformId;
+ 
+                //Set Spawn Positions
+                Debug.Log($"ClientJoinHandler {clientPicoId}");
+
+                if (!spawnPositionsServer.ContainsKey(clientPicoId))
+                {
+                    if (!availablePlayerPositions.TryDequeue(out int pos))
+                    {
+                        Debug.LogError("Unexpected condition. No available player position is available.");
+                        return;
+                    }
+
+                    Debug.Log($"spawnPositionsServer {clientPicoId} - spawnPositionsServer Add pos: {pos}");
+
+                    spawnPositionsServer.Add(clientPicoId, pos);
+
+                    SetSpawnPositionsClientRPC(
+                        StringContainer.ArrayConvert(spawnPositionsServer.Keys.ToArray()),
+                        spawnPositionsServer.Values.ToArray()
+                    );
+                }
+        }
+
+        private void ClientDisconnectHandler(string clientPlatformId)
+        {
+            if (!IsServer) return;
+
+            Debug.Log($"ClientDisconnectHandler {clientPlatformId}");
+
+            if (spawnPositionsServer.TryGetValue(clientPlatformId, out int pos))
+            {
+                Debug.Log($"spawnPositionsServer {clientPlatformId} - availablePlayerPositions Enqueue pos: {pos}");
+                availablePlayerPositions.Enqueue(pos);
+                spawnPositionsServer.Remove(clientPlatformId);
+
+                SetSpawnPositionsClientRPC(
+                    StringContainer.ArrayConvert(spawnPositionsServer.Keys.ToArray()),
+                    spawnPositionsServer.Values.ToArray()
+                );
+            }
+            else
+            {
+                Debug.LogError("Unexpected condition. clientId does not exist.");
+            }
+            
+        }
+
+        [ClientRpc]
+        private void SetSpawnPositionsClientRPC(StringContainer[] picoId, int[] positions)
+        {
+            Debug.Log($"SetSpawnPositionsClientRPC - IsClient={IsClient}");
+
+            if (!IsClient) return;
+
+            Dictionary<string, int> spawnPositionsClient = new Dictionary<string, int>();
+
+            for (int i = 0; i < picoId.Length; i++)
+            {
+                StringContainer client = picoId[i];
+                int pos = positions[i];
+
+                Debug.Log($"SetSpawnPositionsClientRPC - client={client}, pos={pos}");
+
+                if (PlatformServiceManager.Instance.Me.ID == client.text)
+                {
+                    Debug.Log($"SetSpawnPositionsClientRPC - localPlayerIndex={localPlayerIndex}, Local Client Pos = {pos}");
+                    if (localPlayerIndex != pos)
+                    {
+                        localPlayerIndex = pos;
+                        environmentManager.SetupXROriginPos(localPlayerIndex);
+                    }
+                }
+
+                Debug.Log($"SetSpawnPositionsClientRPC - spawnPositionsClient Add={client}, pos={pos}");
+                spawnPositionsClient.Add(client.text, pos);
+            }
+
+            OnPlayerSpawnPointsUpdated?.Invoke(spawnPositionsClient);       
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+
+            Debug.Log($"OnNetworkSpawn IsClient={IsClient}");
+
+            if (IsClient) 
+            {
+                CanReloadScene = false;
+            }
+        }
+
+        private void OnServerStarted()
+        {
+            InitServer();
+        }
+
+        private void InitServer()
+        {
+            Debug.Log($"InitServer - isServerInitialize={isServerInitialized}");
+            if (isServerInitialized) return;
+
+            availablePlayerPositions = new Queue<int>();
+            spawnPositionsServer = new Dictionary<string, int>();
+
+            for (int i = 0; i < GameManager.MAX_NETWORK_PLAYERS; i++)
+            {
+                availablePlayerPositions.Enqueue(i);
+            }
         }
 
         private void OnSceneLoaded(Scene sceneName, LoadSceneMode mode)
@@ -78,36 +237,7 @@ namespace MicroWar.Multiplayer
             networkPlayerReference = new Dictionary<ulong, NetPlayer>();
 
         }
-
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            if (PlatformServiceManager.Instance == null) return;
-            PlatformServiceManager.Instance.UnregisterNotification<RoomUpdateEvent>(RoomUpdateHandler);
-        }
-        #endregion
-
-        private void RoomUpdateHandler(EventWrapper<RoomUpdateEvent> EventData)
-        {
-            if (EventData.NotificationType == NotificationType.RoomServiceStatus)
-            {
-                if (EventData.Data.RoomServiceStatus == RoomServiceStatus.InRoom) //Player Join Room
-                {
-                    if (null != EventData.Data.CurrentRoom.UsersOptional && EventData.Data.CurrentRoom.UsersOptional.Count > 0)
-                    {
-                        localPlayerIndex = EventData.Data.CurrentRoom.UsersOptional.Count - 1;
-                        environmentManager.SetupXROriginPos(localPlayerIndex); //Set XR originPos after joinning a room;
-                        CanReloadScene = false;
-                    }
-                }
-                else
-                {
-                    environmentManager.SetupXROriginPos(0);
-                    localPlayerIndex = 0;
-                }
-            }
-        }
-
+  
         public void SetIsUseBot(bool isUseBot)
         {
             IsUseBot = isUseBot;

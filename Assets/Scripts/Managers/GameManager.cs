@@ -20,6 +20,8 @@ namespace MicroWar
 
     public class GameManager : MonoBehaviour
     {
+        public const int MAX_NETWORK_PLAYERS = 4;
+
         public bool VehicleIsDeployed = false;
         public GameObject VehicleSelector;
         public GameObject Sphereforce;

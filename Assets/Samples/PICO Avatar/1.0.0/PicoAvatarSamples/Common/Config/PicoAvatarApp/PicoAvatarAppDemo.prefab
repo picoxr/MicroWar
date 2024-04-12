@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2345975864829640533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2552969881638309446}
+  - component: {fileID: 1273630387674298529}
+  m_Layer: 0
+  m_Name: PicoAvatarAppDemo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2552969881638309446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345975864829640533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1273630387674298529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345975864829640533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde6bf81750e44147a76cb6b2872ed1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appSettings:
+    localMode: 1
+    autoGarbageCollection: 1
+    serverType: 1
+    mainCamera: {fileID: 0}
+    additiveGI: 0
+    enabledFullscreenFeatures: 0
+    localResourcePath: 
+  loginSettings:
+    userID: 
+    accessToken: 
+  logSettings:
+    debugLogMasks: -1
+    enableLogTime: 1
+  renderSettings:
+    disablePrimitiveMerge: 0
+    forceDisableCastShadow: 0
+    forceDisableReceiveShadow: 0
+    meshVertexDataFormat: 0
+    morphVertexDataFormat: 0
+    avatarTranspQueueStart: 3500
+    avatarOpaqueQueueStart: 2000
+    enableRimProfile: 0
+    lineProfileDistance: 0
+    materialConfiguration: {fileID: 11400000, guid: 497800a3511954c87ad7b5f40de5e9b8,
+      type: 2}
+  lodSettings:
+    maxLodLevel: 0
+    forceLodLevel: 0
+    lod0ScreenPercentage: 1
+    lod1ScreenPercentage: 1
+    lod2ScreenPercentage: 0.7
+    lod3ScreenPercentage: 0.5
+    lod4ScreenPercentage: 0
+  animationSettings:
+    animationFlags: 0
+  optimizationSettings:
+    positionErrorThreshold: 0.01
+    orientationErrorThreshold: 0.01
+    scaleErrorThreshold: 0.01
+    skipUpdateIfInvisibleThisFrame: 1
+    skipUpdateEvenVisibleDistance: -0.1
+    skipUpdateEvenVisibleInterval: 0.1
+    skipFaceExpressionPlaybackDist: 6
+    enableWeakNetworkMode: 0
+    intermitentMode: 0
+    IKInterpDelayTime: 0.03
+  extraSettings:
+    configString: 
+    enableBuiltinAvatarPlaceHolder: 0
+    avatarSceneLayer: 0
+    mainAvatarHeadSceneLayer: -1
+  netBodyPlaybackSettings:
+    maxPacketCountPerFrame: 5
+    avgPlaybackDelayTime: 0.3
+    maxPlaybackSpeedRatio: 1.5
+    minPlaybackSpeedRatio: 0.15
+    playbackInterval: 0.05
+    defaultPlaybackLevel: 2
+    recordVersion: 5
+    recordInterval: 0.1
+    packetApplyMode: 0
+  netFaceExpressionPlaybackSettings:
+    maxPacketCountPerFrame: 5
+    avgPlaybackDelayTime: 0.5
+    maxPlaybackSpeedRatio: 1.5
+    minPlaybackSpeedRatio: 0.5
+    recordVersion: 4
+  localDebugSettings:
+    debugConfigText: 
+    enableDebugPauseResume: 0
+    enableStats: 0
+    enableSystemInfo: 0
+    traceNativeCaller: 0
+  accessType: 1

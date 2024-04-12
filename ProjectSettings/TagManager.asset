@@ -23,8 +23,8 @@ TagManager:
   - PlayerPickableObjects
   - TurretShell
   - CrateInteraction
-  - 
-  - 
+  - UserAvatar
+  - UserAvatarCulling
   - 
   - 
   - 
