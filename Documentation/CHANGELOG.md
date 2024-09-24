@@ -1,5 +1,14 @@
 ## Changelog
 
+### [0.8.5] - 2024-09-24
+SDK Updates
+
+Added:
+- Updated PICO Avatar SDK to 2.0 
+- Update PICO Unity Integration SDK to 3.0
+- Modified MixedRealityManager to utilize new MR APIs.
+- Minor modifications to replace deprecated APIs with the new ones.
+
 ### [0.8.0] - 2024-04-05
 Avatar Update
 

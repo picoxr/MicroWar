@@ -28,7 +28,7 @@ namespace MicroWar.Platform
         [SerializeField] private bool InitOption;
         [SerializeField] internal bool EnableNetwork;
         [SerializeField]public LogLevel LogLevel;
-        private const string APPID = "9f7e83c0dacdd38eb9f7167258610888"; // Demo version
+        private readonly string APPID = Pico.Platform.CoreService.GetAppID();//"9f7e83c0dacdd38eb9f7167258610888"; // Demo version
 
         private User me;
 

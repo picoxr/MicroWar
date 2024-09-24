@@ -57,7 +57,6 @@ namespace MicroWar.Avatar
             }
         }
 
-
         private void Start()
         {
             if (interactionManagerCache == null)

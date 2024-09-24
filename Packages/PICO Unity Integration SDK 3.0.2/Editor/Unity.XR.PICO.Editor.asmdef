@@ -1,0 +1,38 @@
+{
+    "name": "Unity.XR.PICO.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Unity.XR.PICO",
+        "Unity.XR.Management",
+        "Unity.XR.Management.Editor",
+        "Unity.XR.ARFoundation",
+        "Unity.XR.CoreUtils",
+        "Unity.XR.CoreUtils.Editor",
+        "Unity.RenderPipelines.Universal.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.management",
+            "expression": "3.2.0",
+            "define": "XR_MGMT_GTE_320"
+        },
+        {
+            "name": "com.unity.xr.arfoundation",
+            "expression": "5.1.2",
+            "define": "AR_FOUNDATION",
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "12.1.12",
+            "define": "URP"
+        }
+    ],
+    "noEngineReferences": false
+}

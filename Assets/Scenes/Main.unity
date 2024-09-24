@@ -17387,6 +17387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1273630387674298529, guid: 84d0cabf91ee743ddbda59325de6328d,
         type: 3}
+      propertyPath: lodSettings.forceLodLevel
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273630387674298529, guid: 84d0cabf91ee743ddbda59325de6328d,
+        type: 3}
       propertyPath: RenderSettings.enableRimProfile
       value: 0
       objectReference: {fileID: 0}
@@ -19694,6 +19699,7 @@ GameObject:
   - component: {fileID: 1603497474}
   - component: {fileID: 1603497473}
   - component: {fileID: 1603497477}
+  - component: {fileID: 1603497478}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -19718,7 +19724,7 @@ MonoBehaviour:
   trackingMode: 0
   sharpeningMode: 0
   sharpeningEnhance: 0
-  faceTracking: 0
+  faceTracking: 1
   lipsyncTracking: 0
   lateLatching: 0
   latelatchingDebug: 0
@@ -19742,7 +19748,7 @@ MonoBehaviour:
   minEyeTextureScale: 0.7
   maxEyeTextureScale: 1.26
   enableSuperResolution: 0
-  useRecommendedAntiAliasingLevel: 1
+  useRecommendedAntiAliasingLevel: 0
 --- !u!114 &1603497474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19804,6 +19810,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandMeshGO: {fileID: 2044760697}
   rightHandMeshGO: {fileID: 1675832087}
+--- !u!114 &1603497478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603497472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3516b7da6c025d54aa025a08f8c14775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerLeft: {fileID: 1754591126}
+  controllerRight: {fileID: 196429931}
+  pico4PrefabLeft: {fileID: 3222469904833361626, guid: 853840c5196b2486a97e1785f3a68575,
+    type: 3}
+  pico4PrefabRight: {fileID: 1704171135803129665, guid: 3a5f20f82a5224d7d969e99da633fc69,
+    type: 3}
+  pico4UPrefabLeft: {fileID: 5160734707760153619, guid: d600af752179d4343b26d6d3eab89e8d,
+    type: 3}
+  pico4UPrefabRight: {fileID: 2641197622611298662, guid: ab854e81d8fcde04eb1603f397457afc,
+    type: 3}
 --- !u!1001 &1607947612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20468,6 +20496,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1881746041775158856, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2399745996034576092, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -20671,32 +20704,32 @@ PrefabInstance:
     - target: {fileID: 6055425978491840359, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6055425978491840359, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6055425978491840359, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6055425978491840359, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 33.999996
       objectReference: {fileID: 0}
     - target: {fileID: 6055425978491840359, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 6055425978491840359, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -31.999998
       objectReference: {fileID: 0}
     - target: {fileID: 6179026732245734625, guid: cd9f4bf1ca1d0784d8457fa4d2a8a7de,
         type: 3}

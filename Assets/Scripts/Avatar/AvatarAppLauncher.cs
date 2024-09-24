@@ -50,12 +50,6 @@ namespace MicroWar.Avatar
             PicoAvatarApp avatarApp = PicoAvatarApp.instance;
             avatarApp.loginSettings.accessToken = UserServiceAccessToken;
 
-#if UNITY_EDITOR
-            avatarApp.appSettings.localMode = true; //Work with local SDK 
-#else
-            avatarApp.appSettings.localMode = false; //Download up-to-date SDK 
-#endif
-
             avatarApp.StartAvatarManager();
         }
 
