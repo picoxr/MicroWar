@@ -21,6 +21,11 @@ public class AvatarManagerEditor : Editor
             avatarManager.LoadAvatar(avatarManager.debugUserID, null);
         }
 
+        if (GUILayout.Button("Request User Avatars"))
+        {
+            avatarManager.RequestUserAvatars();
+        }
+
         EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
 
         base.OnInspectorGUI();

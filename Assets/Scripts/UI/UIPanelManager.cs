@@ -123,7 +123,7 @@ namespace MicroWar
         public void OnMixedRealityBtnClick()
         {
             DisableAllPanels();
-            GameManager.Instance.MixedRealityManager.EnablePassthrough();
+            GameManager.Instance.MixedRealityManager.EnableMixedReality();
             battlegroundRotationUI.SetActive(true);
             GameManager.Instance.EnvironmentManager.EnableBattlegroundRotation();
             //Wait for confirmation or exit

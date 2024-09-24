@@ -11,12 +11,13 @@ namespace MicroWar
         public Vector3 center;
         public Vector3 extent;
         public Transform anchorTransform;
+        public Quaternion rotation;
     }
 
     public class MixedRealityManager : MonoBehaviour
     {
         private static readonly Color bgColor = new Color(0, 0, 0, 0);
-        private const float battlegroundOffsetY = 0.01f;
+        private const float battlegroundOffsetY = 0.02f;
 
         public Transform[] disableIfPassthrough;
 
@@ -51,6 +52,8 @@ namespace MicroWar
 
         public Transform debugTable;
 
+        private static readonly PxrSemanticLabel[] mrQueryLabels = { PxrSemanticLabel.Table, PxrSemanticLabel.Wall };
+
         private void Awake()
         {
             tableAnchors = new Dictionary<ulong, AnchorVolume>();
@@ -60,19 +63,6 @@ namespace MicroWar
         private void Start()
         {
             CacheCameraData();
-        }
-
-        private void OnEnable()
-        {
-            PXR_Manager.SpatialTrackingStateUpdate += PXRManager_SpatialTrackingStateUpdate;
-            PXR_Manager.AnchorEntityLoaded += PXRManager_AnchorEntityLoaded;
-        }
-
-
-        private void OnDisable()
-        {
-            PXR_Manager.SpatialTrackingStateUpdate -= PXRManager_SpatialTrackingStateUpdate;
-            PXR_Manager.AnchorEntityLoaded -= PXRManager_AnchorEntityLoaded;
         }
 
         private void CacheCameraData()
@@ -86,9 +76,21 @@ namespace MicroWar
             HandleSpatialDrift();
         }
 
-        public void EnablePassthrough()
+        public async void EnableMixedReality()
         {
+            await PXR_MixedReality.StartSenseDataProvider(PxrSenseDataProviderType.SceneCapture);
+            await PXR_MixedReality.StartSenseDataProvider(PxrSenseDataProviderType.SpatialAnchor);
 
+            if (PXR_Input.GetControllerDeviceType() != PXR_Input.ControllerDevice.PICO_4)
+            {
+                PxrResult res = await PXR_MixedReality.StartSceneCaptureAsync();
+
+                if (res != PxrResult.SUCCESS)
+                {
+                    Debug.Log("Failed to retrieve scene capture data.");
+                }
+            }
+               
             if (null != disableIfPassthrough)
             {
                 for (int i = 0; i < disableIfPassthrough.Length; i++)
@@ -109,15 +111,17 @@ namespace MicroWar
 
             isPassthroughEnabled = true;
 
-            //TODO: Let the user decide the scale of the battleground
             GameManager.Instance.EnvironmentManager.RescaleBattleground(0.4f);
 
-#if !UNITY_EDITOR
-            LoadRoomData();
-#else
-            AnchorVolume tableAnchor = new AnchorVolume { anchorTransform = debugTable, extent = debugTable.GetComponent<BoxCollider>().size };
-            TryAttachBattlegroundToTable(tableAnchor);
-#endif
+            if (UnityEngine.Device.Application.isEditor)
+            {
+                AnchorVolume tableAnchor = new AnchorVolume { anchorTransform = debugTable, extent = debugTable.GetComponent<BoxCollider>().size };
+                TryAttachBattlegroundToTable(tableAnchor);
+            }
+            else
+            {
+                LoadSceneData();
+            }
         }
 
         private void TryAttachBattlegroundToTable(AnchorVolume tableAnchor)
@@ -187,143 +191,98 @@ namespace MicroWar
             }
         }
 
-        private void LoadRoomData()
+        private async void LoadSceneData()
         {
-            //Flags can be static, move this outside of this method
-            PxrSpatialSceneDataTypeFlags[] flags = {
-                PxrSpatialSceneDataTypeFlags.Ceiling,
-                PxrSpatialSceneDataTypeFlags.Door, PxrSpatialSceneDataTypeFlags.Floor,
-                PxrSpatialSceneDataTypeFlags.Opening,
-                PxrSpatialSceneDataTypeFlags.Window,
-                PxrSpatialSceneDataTypeFlags.Wall,
-                PxrSpatialSceneDataTypeFlags.Object };
-
-            //PXRManager_AnchorEntityLoaded will be trigged when the anchors are loaded
-            PxrResult result = PXR_MixedReality.LoadAnchorEntityBySceneFilter(flags, out var taskId);
-
-            Debug.Log($"LoadAnchorEntityBySceneFilter returned: {result}");
-            
-        }
-
-        private void PXRManager_AnchorEntityLoaded(PxrEventAnchorEntityLoaded result)
-        {
-            if (result.result == PxrResult.SUCCESS && result.count != 0)
+            (PxrResult res, List<ulong> anchors) = await PXR_MixedReality.QuerySceneAnchorAsync(mrQueryLabels);
+            if (res == PxrResult.SUCCESS)
             {
-                PXR_MixedReality.GetAnchorEntityLoadResults(result.taskId, result.count, out var loadedAnchors);
-
-                foreach (var key in loadedAnchors.Keys)
+                if (anchors == null || anchors.Count == 0)
                 {
-                    //Load an anchor at position 
-                    GameObject anchorObject = Instantiate(anchorPrefab);
-
-                    PXR_MixedReality.GetAnchorPose(key, out var orientation, out var position);
-                    anchorObject.transform.SetPositionAndRotation(position, orientation);
-                    //Now anchor is at correct position in our space
-
-                    anchorMap.Add(key, anchorObject.transform);
-
-                    PxrResult labelResult = PXR_MixedReality.GetAnchorSceneLabel(key, out var label);
-                    if (labelResult == PxrResult.SUCCESS)
+                    Debug.Log("No anchors found.");
+                }
+                else
+                {
+                    foreach (ulong anchorKey in anchors)
                     {
+                        GameObject anchorObject = Instantiate(anchorPrefab);
 
-                        //What labels?
-                        //PxrSceneLabel.Wall
-                        //System Space Calibration Furniture names -> SDK SceneData Labels
-                        //Couch             -> Sofa
-                        //Desk              -> Table
-                        //Door/Windows      -> Doors
-                        //Objects/Unknowns  -> Unknowns
-                        //Floors            -> Floors
-                        //Ceiling           -> Ceiling
-                        //Walls             -> Walls
+                        PXR_MixedReality.LocateAnchor(anchorKey, out Vector3 anchorPos, out Quaternion anchorRot);
+                        anchorObject.transform.SetPositionAndRotation(anchorPos, anchorRot);
+                        //Now anchor is at correct position in our space
+                        
+                        anchorMap.Add(anchorKey, anchorObject.transform);
 
-                        switch (label)
+                        PXR_MixedReality.GetSceneSemanticLabel(anchorKey, out var label);
+
+                        Debug.Log($"[LoadSceneData] - Anchor={anchorKey} - Anchor Label={label}");
+
+                        if (PXR_MixedReality.GetSceneAnchorComponentTypes(anchorKey, out PxrSceneComponentType[] types) == PxrResult.SUCCESS)
                         {
-                            //Sofa&Tables&Unknown/Objects
-                            //Volume: The Anchor is located at the center of the rectangle on the upper surface of the cube with Z axis as up
-                            case PxrSceneLabel.Sofa:
+                            foreach (PxrSceneComponentType compType in types)
+                            {
+                                switch(compType) 
                                 {
-                                    PXR_MixedReality.GetAnchorVolumeInfo(key, out var center, out var extent);
-                                    //extent: x-width, y-height, z-depth from center
-                                    var newSofa = Instantiate(sofaPrefab);
-                                    //All info is relative to the anchor position
-                                    newSofa.transform.SetParent(anchorObject.transform);
-                                    newSofa.transform.localPosition = center;
-                                    newSofa.transform.localRotation = Quaternion.identity;
-                                    newSofa.transform.localScale = extent;
-                                }
-                                break;
-                            case PxrSceneLabel.Table:
-                                {
-                                    PXR_MixedReality.GetAnchorVolumeInfo(key, out var center, out var extent);
-                                    //extent: x-width, y-height, z-depth from center
-                                    var newTable = Instantiate(sofaPrefab);
-                                    //All info is relative to the anchor position
-                                    newTable.transform.SetParent(anchorObject.transform);
-                                    newTable.transform.localPosition = center;
-                                    newTable.transform.localRotation = Quaternion.identity;
-                                    newTable.transform.localScale = extent;
+                                    case PxrSceneComponentType.Box3D:
+                                        
+                                        PXR_MixedReality.GetSceneBox3DData(anchorKey, out Vector3 position, out Quaternion rotation, out Vector3 extent);
+                                        Debug.Log($"[LoadSceneData] GetSceneBox3DData / Anchor={anchorKey} - Anchor Label={label}");
+                                        switch (label)
+                                        {
+                                            case PxrSemanticLabel.Table:
+                                                var newTable = Instantiate(sofaPrefab);
+                                                //All info is relative to the anchor position
+                                                newTable.transform.SetParent(anchorObject.transform);
+                                                newTable.transform.localPosition = position;
+                                                newTable.transform.localRotation = Quaternion.identity;
+                                                newTable.transform.localScale = extent;
 
-                                    tableAnchors.TryAdd(key, new AnchorVolume { key = key, center = center, extent = extent, anchorTransform = anchorObject.transform});
-                                }
-                                break;
-                            //Wall/Window/Door
-                            //Plane: Anchor is located in the center of the plane
-                            //x-axis - width, yaxis - height, zaxis - normal vector
-                            case PxrSceneLabel.Wall:
-                                {
-                                    PXR_MixedReality.GetAnchorPlaneBoundaryInfo(key, out var center, out var extent);
-                                    wallAnchors.TryAdd(key, new AnchorVolume { key = key, center = center, extent = extent, anchorTransform = anchorObject.transform });
-                                }
-                                break;
-                            //Windows are labeled as Doors
-                            case PxrSceneLabel.Window:
-                            case PxrSceneLabel.Door:
-                                {
-                                    PXR_MixedReality.GetAnchorPlaneBoundaryInfo(key, out var center, out var extent);
-                                    var windowDoor = Instantiate(windowDoorPrefab);
-                                    windowDoor.transform.SetParent(anchorObject.transform);
-                                    windowDoor.transform.localPosition = Vector3.zero;//we are already at center
-                                    windowDoor.transform.localRotation = Quaternion.identity;
-                                    windowDoor.transform.Rotate(270, 0, -180);
-                                    //extent - Vector2: x-width, y-depth
-                                    //0.001f because I want a thin wall
-                                    //increase wall height to cover any gaps
-                                    windowDoor.transform.localScale = new Vector3(extent.x, 0.002f, extent.y);
-                                }
-                                break;
-                            //Not currently supported in the current SDK Version
-                            //!PXR_MixedReality.GetAnchorPlanePolygonInfo(ulong anchorHandle, out Vector3[] vertices)
-                            //but! we know the anchor object as at the center
-                            case PxrSceneLabel.Floor:
-                                {
+                                                tableAnchors.TryAdd(anchorKey, new AnchorVolume { key = anchorKey, center = position, extent = extent, anchorTransform = anchorObject.transform });
+                                                Debug.Log($"[LoadSceneData] added to tableAnchors / Anchor={anchorKey} - Anchor Label={label}");
+                                                break;
+                                        }
+                                        
+                                        break;
+                                    case PxrSceneComponentType.Box2D:
 
-                                }
-                                break;
-                            case PxrSceneLabel.Ceiling:
-                                {
+                                        PXR_MixedReality.GetSceneBox2DData(anchorKey, out Vector2 offset2D, out Vector2 extent2D);
+                                        Debug.Log($"[LoadSceneData] GetSceneBox2DData / Anchor={anchorKey} - Anchor Label={label}");
+                                        switch (label)
+                                        {
+                                            case PxrSemanticLabel.Wall:
+                                                wallAnchors.TryAdd(anchorKey, new AnchorVolume { key = anchorKey, center = offset2D, extent = extent2D, anchorTransform = anchorObject.transform });
+                                                Debug.Log($"[LoadSceneData] added to wallAnchors / Anchor={anchorKey} - Anchor Label={label}");
+                                                break;
+                                        }
 
+                                        break;
                                 }
-                                break;
-                                
+                            }
+                            
+                        }
+                        else 
+                        {
+                            Debug.Log($"Failed to retrieve tables anchor component types for anchorId={anchorKey}.");
                         }
                     }
                 }
-
-                //Attach the battleground to a table found in the room data
-                if (tableAnchors.Count > 0)
-                {
-                    IEnumerator<ulong> enumerator = tableAnchors.Keys.GetEnumerator(); 
-                    enumerator.MoveNext();
-                    AnchorVolume anchor = tableAnchors[enumerator.Current];
-                    TryAttachBattlegroundToTable(anchor);
-                }
-                
-                TryAttachDecorations();
             }
+            else 
+            {
+                Debug.Log("Failed to retrieve tables anchors.");
+            }
+
+            if (tableAnchors.Count > 0)
+            {
+                IEnumerator<ulong> enumerator = tableAnchors.Keys.GetEnumerator();
+                enumerator.MoveNext();
+                AnchorVolume anchor = tableAnchors[enumerator.Current];
+                TryAttachBattlegroundToTable(anchor);
+            }
+
+            TryAttachDecorations();
         }
 
-        private void HandleSpatialDrift()
+        private async void HandleSpatialDrift()
         {
             //if no anchors, we don't need to handle drift
             if (anchorMap.Count == 0)
@@ -332,6 +291,12 @@ namespace MicroWar
             currDriftDelay += Time.deltaTime;
             if (currDriftDelay >= maxDriftDelay)
             {
+                //Need this for PICO4Ultra Only:
+                //The SDK caches the anchor locations for PICO4U. However, the user might re-center after the anchors have been cached.
+                //Therefore the cached anchors will be invalid. That's why we need to call QuerySceneAnchorAsync to reload anchors before we call PXR_MixedReality.LocateAnchor
+                //in order to get the correct anchor data.
+                (PxrResult res, List<ulong> anchors) = await PXR_MixedReality.QuerySceneAnchorAsync(mrQueryLabels);
+
                 currDriftDelay = 0f;
                 foreach (var handlePair in anchorMap)
                 {
@@ -344,23 +309,29 @@ namespace MicroWar
                         continue;
                     }
 
-                    PXR_MixedReality.GetAnchorPose(handle, out var rotation, out var position);
+                    Vector3 position;
+                    Quaternion rotation;
+
+                    PXR_MixedReality.LocateAnchor(handle, out position, out rotation);
+                    
                     anchorTransform.position = position;
                     anchorTransform.rotation = rotation;
                 }
             }
         }
 
-        private void PXRManager_SpatialTrackingStateUpdate(PxrEventSpatialTrackingStateUpdate statusUpdate)
+        private void OnDestroy()
         {
-            Debug.LogError($"Spatial Tracking State is {statusUpdate.state}. Message: {statusUpdate.message}");
-            switch (statusUpdate.state)
+            PXR_MixedReality.GetSenseDataProviderState(PxrSenseDataProviderType.SceneCapture, out PxrSenseDataProviderState state);
+            if (state == PxrSenseDataProviderState.Running)
             {
-                case PxrSpatialTrackingState.Invalid:
-                case PxrSpatialTrackingState.Limited:
-                    // Invalid data, Room Caliration needs to run 
-                    PXR_MixedReality.StartSpatialSceneCapture(out ulong taskId);
-                    break;
+                PXR_MixedReality.StopSenseDataProvider(PxrSenseDataProviderType.SceneCapture);
+            }
+
+            PXR_MixedReality.GetSenseDataProviderState(PxrSenseDataProviderType.SpatialAnchor, out state);
+            if (state == PxrSenseDataProviderState.Running)
+            {
+                PXR_MixedReality.StopSenseDataProvider(PxrSenseDataProviderType.SpatialAnchor);
             }
         }
     }

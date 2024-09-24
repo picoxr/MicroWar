@@ -1,12 +1,13 @@
-using MicroWar.Platform;
+﻿using MicroWar.Platform;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using Pico.Avatar;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
-using Unity.XR.PXR;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using System;
 
 namespace MicroWar.Avatar
 {
@@ -21,7 +22,7 @@ namespace MicroWar.Avatar
         private const string USER_AVATAR_LAYER = "UserAvatar";
         private const string USER_AVATAR_CULLING_LAYER = "UserAvatarCulling";
 
-        public override string PlatformAppID => "9f7e83c0dacdd38eb9f7167258610888";
+        public override string PlatformAppID => Pico.Platform.CoreService.GetAppID();//"9f7e83c0dacdd38eb9f7167258610888";
 
         [SerializeField]
         private GameObject avatarPrefab;
@@ -81,12 +82,13 @@ namespace MicroWar.Avatar
             if (PicoAvatarManager.instance != null)
             {
                 PicoAvatarManager.instance.OnAvatarSpecificationUpdated -= OnAvatarUpdated;
+                PicoAvatarManager.instance.RemoveAvatarChangeListener(OnAvatarChanged);
             }
         }
 
-        private void OnAvatarUpdated(PicoAvatar avatar, long requestId, int errorCode, string message)
+        private void OnAvatarUpdated(PicoAvatar avatar, int errorCode, string message)
         {
-            Debug.Log($"Avatar Updated. message:{message} - errorCode:{errorCode}");
+            Debug.Log($"OnAvatarSpecificationUpdated: Avatar Updated. message:{message} - errorCode:{errorCode}");
         }
 
         private IEnumerator Start()
@@ -114,6 +116,7 @@ namespace MicroWar.Avatar
             }
 
             PicoAvatarManager.instance.OnAvatarSpecificationUpdated += OnAvatarUpdated;
+            PicoAvatarManager.instance.AddAvatarChangeListener(OnAvatarChanged);
 
             while (PlatformServiceManager.Instance.Me == null)
             {
@@ -124,6 +127,56 @@ namespace MicroWar.Avatar
 
 
             LoadUserAvatar(mainUserId);
+        }
+
+        private void OnAvatarChanged(string data)
+        {
+            if (data == "0")
+            {
+                // Open Avatar Hub (suggest hiding the app's own panel at this time to avoid overlap)
+                Debug.Log("<color=cyan>Open Avatar Hub</color>");
+
+            }
+            else if (data == "1")
+            {
+                // Avatar changed. Need to reload the avatar
+                Debug.Log("<color=cyan>Avatar changed. Need to reload the avatar</color>");
+                UnloadAvatar(MainUserAvatar.Avatar);
+                MainUserAvatar.gameObject.SetActive(false);
+                Destroy(MainUserAvatar, 1f);
+
+                LoadUserAvatar(PlatformServiceManager.Instance.Me.ID);
+            }
+            else if (data == "2")
+            {
+                // Avatar updated. Need to reload the avatar
+                Debug.Log("<color=cyan>Avatar updated. Need to reload the avatar</color>");
+
+            }
+            else if (data == "3")
+            {
+                // Directly exit Avatar Hub
+                Debug.Log("<color=cyan>Directly exit Avatar Hub</color>");
+
+            }
+            else if (data == "4")
+            {
+                // Save edit to the avatar and exit Avatar Hub. Need to reload the avatar
+                Debug.Log("<color=cyan>Save edit to the avatar and exit Avatar Hub. Need to reload the avatar</color>");
+
+            }
+            else if (data == "5")
+            {
+                // Click the Exit button to exit Avatar Hub without saving any edits to the avatar
+                Debug.Log("<color=cyan>Click the Exit button to exit Avatar Hub without saving any edits to the avatar</color>");
+
+            }
+            else if (data == "6")
+            {
+                // Minimize Avatar Hub as a background app after clicking on any area outside the UI of Avatar Hub
+                Debug.Log("<color=cyan>Minimize Avatar Hub as a background app after clicking on any area outside the UI of Avatar Hub</color>");
+
+            }
         }
 
         //Load non-user avatar. In our case, we load remote player avatars by using this method.
@@ -180,9 +233,43 @@ namespace MicroWar.Avatar
             });
         }
 
-        public void UnloadAvatar(PicoAvatar avatar)
+        public bool UnloadAvatar(PicoAvatar avatar)
         {
-            PicoAvatarManager.instance.UnloadAvatar(avatar);
+            return PicoAvatarManager.instance.UnloadAvatar(avatar);
+        }
+
+        public void OpenAvatarEditor()
+        {
+            PicoAvatarManager.instance.StartAvatarEditor(null,(result) => 
+            {
+                Debug.Log("start avatar editor = " + result);
+            });
+        }
+
+        //Not utilized in the project. This method retrieves custom avatars defined for the app.
+        public void RequestUserAvatars()
+        {
+            RequestCharacterListRequest.DoRequest((NativeResult errorCode, string message) =>
+            {
+                var characterList = JsonConvert.DeserializeObject<JArray>(message);
+                Debug.Log("LoadAvatar RequestCharacterList, errorCode= " + errorCode + ", message= " + message);
+                for (int i = 0; i < characterList.Count; i++)
+                {
+                    var data = characterList[i];
+                    // Output avatar IDs
+                    var characterID = data.Value<string>("character_id");
+                    Debug.Log("characterID  = " + characterID);
+                    // Output avatar types
+                    // 1：PICO's official avatars
+                    // 2：Custom avatars uploaded to the Avatar Asset Platform
+                    // 3：Avatars provided by the Creator Studio
+                    var characterType = data.Value<string>("character_type");
+                    Debug.Log("characterType = " + characterType);
+                    // Output avatar versions
+                    var characterVersion = data.Value<string>("item_online_version");
+                    Debug.Log("characterVersion= " + characterVersion);
+                }
+            });
         }
 
         //Calls the SDK method to Load an avatar by using the given AvatarCapabilities and the userId. 

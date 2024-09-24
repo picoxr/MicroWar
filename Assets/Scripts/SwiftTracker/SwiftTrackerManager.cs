@@ -32,16 +32,15 @@ namespace MicroWar
 
         private void Start()
         {
-            PXR_Plugin.System.FitnessBandElectricQuantity += ElectricQuantity;
-            PXR_Plugin.System.FitnessBandNumberOfConnections += NumberOfConnections;
+            PXR_MotionTracking.MotionTrackerNumberOfConnections += NumberOfConnections;
 
 #if SWIFT_DEBUG
             bodyTrackerResult.trackingdata = new BodyTrackerTransform[24];
 #else
             Destroy(SkeletonObjects[0].parent.gameObject);
 #endif
-            PxrFitnessBandConnectState state = new PxrFitnessBandConnectState();
-            int result = PXR_Input.GetFitnessBandConnectState(ref state);
+            PxrMotionTracker1ConnectState state = new PxrMotionTracker1ConnectState();
+            int result = PXR_Input.GetMotionTrackerConnectStateWithID(ref state);
 
             UpdateConnectedTrackerCount(state.num);
         }
@@ -108,11 +107,6 @@ namespace MicroWar
             trackedObject.gameObject.SetActive(bothTrackersConnected);
         }
 
-        public void ElectricQuantity(int id, int value)
-        {
-            Debug.Log($"ElectricQuantity: id:{id} - value:{value}");
-        }
-
         public void NumberOfConnections(int state, int num)
         {
             UpdateConnectedTrackerCount(num);
@@ -121,7 +115,7 @@ namespace MicroWar
 
         public void OpenSwiftCalibrationApp()
         {
-            PXR_Input.OpenFitnessBandCalibrationAPP();
+            PXR_MotionTracking.StartMotionTrackerCalibApp();
         }
 
         private void PaintSkeletonPartIfTouchingGround(BodyTrackerRole part)

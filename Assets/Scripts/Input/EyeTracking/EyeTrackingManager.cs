@@ -3,6 +3,7 @@ using Unity.XR.PXR;
 using UnityEngine.XR;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
+using System;
 
 public class EyeTrackingManager : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class EyeTrackingManager : MonoBehaviour
         originPoseMatrix = Origin.localToWorldMatrix;
         trackingState = (TrackingStateCode)PXR_MotionTracking.WantEyeTrackingService();
         // Query if the current device supports eye tracking
-        EyeTrackingMode eyeTrackingMode = EyeTrackingMode.PXR_ETM_NONE;
+        EyeTrackingMode[] eyeTrackingMode = new EyeTrackingMode[3];
+        Array.Fill<EyeTrackingMode>(eyeTrackingMode, EyeTrackingMode.PXR_ETM_NONE);
         int supportedModesCount = 0;
         trackingState = (TrackingStateCode)PXR_MotionTracking.GetEyeTrackingSupported(ref supported, ref supportedModesCount, ref eyeTrackingMode);
     }
