@@ -1,0 +1,281 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d901569659e485b9970cff434c272c, type: 3}
+  m_Name: PicoAvatarJsonSpecData-Oversea
+  m_EditorClassIdentifier: Assembly-CSharp:Pico.Avatar.Sample:PicoAvatarJsonSpecData
+  jsonSpecList:
+  - '{     "info": {         "sex": "male",         "continent": "AF",         "status":
+    "Online",         "tag_list": ["Common"],         "background": {            
+    "start_color": [                 110,                 102,                 210            
+    ],             "end_color":[                 236,                 181,                
+    237             ],             "image": "https://dfsedffe.png"         },        
+    "avatar_type" : "preset"     },     "graph": {         "type": "PicoAvatar",        
+    "avatar_style": "PicoAvatar2",         "label": "general asset graph for pico
+    avatar",         "directed": true,         "nodes": {             "1": {                
+    "label": "Body_Male",                 "metadata": {                     "uuid":
+    "1411855947084705792",                     "category": "Body_Male",                    
+    "tag": "Body_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "UserDefine_BaseTexture": "color_2"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "2": {                 "label": "FacialFeature_Male",                 "metadata":
+    {                     "uuid": "1411857673946775552",                     "category":
+    "FacialFeature_Male",                     "tag": "Head_dev",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "circleColor": [                             1,                             1,                            
+    1,                             1                         ]                    
+    },                     "textures": {                         "UserDefine_BaseTexture":
+    "color_2"                     },                     "blendshapes": {                        
+    "mouthOpen": 0.8                     },                     "boneDisplacements":
+    {                         "nose": 0.3                     },                    
+    "animations": {                         "gesture1": "fsegfsi"                    
+    }                 }             },             "3": {                 "label":
+    "Top_Male",                 "metadata": {                     "uuid": "",                    
+    "category": "Top_Male",                     "tag": "Cloth_dev",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "circleColor": [                             1,                             1,                            
+    1,                             1                         ]                    
+    },                     "textures": {                         "signature": "fsegisjf"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "4": {                 "label": "Bottom_Male",                 "metadata": {                    
+    "uuid": "",                     "category": "Bottom_Male",                    
+    "tag": "Cloth_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "5": {                 "label": "Suit_Male",                 "metadata": {                    
+    "uuid": "1414521312872886272",                     "category": "Suit_Male",                    
+    "tag": "Cloth_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "6": {                 "label": "Shoes_Male",                 "metadata": {                    
+    "uuid": "",                     "category": "Shoes_Male",                    
+    "tag": "Cloth_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "7": {                 "label": "HairStyle_Male",                 "metadata":
+    {                     "uuid": "1411938045351018496",                     "category":
+    "HairStyle_Male",                     "tag": "Hair_dev",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "UserDefine_BaseColor" : [63,41,41]                     },                    
+    "textures": {                         "signature": "fsegisjf"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "8": {                 "label": "Skeleton_Male",                 "metadata":
+    {                     "uuid": "1417456710804701184",                     "tag":
+    "Skeleton",                     "category": "Skeleton_Male",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "circleColor": [                             1,                             1,                            
+    1,                             1                         ]                    
+    },                     "textures": {                         "signature": "fsegisjf"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     }                 }             },            
+    "9": {                 "label": "Eyebrow_Male",                 "metadata": {                    
+    "uuid": "1411890329153552384",                     "category": "Eyebrow_Male",                    
+    "tag": "Head_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             }        
+    }     } } '
+  - '{     "info": {         "sex": "male",         "continent": "AF",         "status":
+    "Online",         "tag_list": ["Common"],         "background": {            
+    "start_color": [                 148,                 111,                 253            
+    ],             "end_color":[                 133,                 182,                
+    255             ],             "image": "https://dfsedffe.png"         },        
+    "avatar_type" : "preset"     },     "graph": {         "type": "PicoAvatar",        
+    "avatar_style": "PicoAvatar2",         "label": "general asset graph for pico
+    avatar",         "directed": true,         "nodes": {             "1": {                
+    "label": "Body_Male",                 "metadata": {                     "uuid":
+    "1411855947084705792",                     "category": "Body_Male",                    
+    "tag": "Body_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "UserDefine_BaseTexture": "color_4"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "2": {                 "label": "FacialFeature_Male",                 "metadata":
+    {                     "uuid": "1411857673946775552",                     "category":
+    "FacialFeature_Male",                     "tag": "Head_dev",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "circleColor": [                             1,                             1,                            
+    1,                             1                         ]                    
+    },                     "textures": {                         "UserDefine_BaseTexture":
+    "color_4"                     },                     "blendshapes": {                        
+    "mouthOpen": 0.8                     },                     "boneDisplacements":
+    {                         "nose": 0.3                     },                    
+    "animations": {                         "gesture1": "fsegfsi"                    
+    }                 }             },             "3": {                 "label":
+    "Top_Male",                 "metadata": {                     "uuid": "1411950632960638976",                    
+    "category": "Top_Male",                     "tag": "Cloth_dev",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "circleColor": [                             1,                             1,                            
+    1,                             1                         ]                    
+    },                     "textures": {                         "signature": "fsegisjf"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "4": {                 "label": "Bottom_Male",                 "metadata": {                    
+    "uuid": "1411951135673135104",                     "category": "Bottom_Male",                    
+    "tag": "Cloth_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "5": {                 "label": "Suit_Male",                 "metadata": {                    
+    "uuid": "",                     "category": "Suit_Male",                    
+    "tag": "Cloth_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "6": {                 "label": "Shoes_Male",                 "metadata": {                    
+    "uuid": "1411951610434797568",                     "category": "Shoes_Male",                    
+    "tag": "Cloth_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "7": {                 "label": "HairStyle_Male",                 "metadata":
+    {                     "uuid": "1411939440326193152",                     "category":
+    "HairStyle_Male",                     "tag": "Hair_dev",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "UserDefine_BaseColor" : [188,188,196]                     },                    
+    "textures": {                         "signature": "fsegisjf"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             },            
+    "8": {                 "label": "Skeleton_Male",                 "metadata":
+    {                     "uuid": "1417456710804701184",                     "tag":
+    "Skeleton",                     "category": "Skeleton_Male",                    
+    "incompatibleTags": [                         "hair_longBangs"                    
+    ],                     "pins": {                         "root": {                            
+    "type": "transform",                             "entityName": "root"                        
+    }                     },                     "colors": {                        
+    "circleColor": [                             1,                             1,                            
+    1,                             1                         ]                    
+    },                     "textures": {                         "signature": "fsegisjf"                    
+    },                     "blendshapes": {                         "mouthOpen":
+    0.8                     },                     "boneDisplacements": {                        
+    "nose": 0.3                     }                 }             },            
+    "9": {                 "label": "Eyebrow_Male",                 "metadata": {                    
+    "uuid": "1411891200025280512",                     "category": "Eyebrow_Male",                    
+    "tag": "Head_dev",                     "incompatibleTags": [                        
+    "hair_longBangs"                     ],                     "pins": {                        
+    "root": {                             "type": "transform",                            
+    "entityName": "root"                         }                     },                    
+    "colors": {                         "circleColor": [                            
+    1,                             1,                             1,                            
+    1                         ]                     },                     "textures":
+    {                         "signature": "fsegisjf"                     },                    
+    "blendshapes": {                         "mouthOpen": 0.8                    
+    },                     "boneDisplacements": {                         "nose":
+    0.3                     },                     "animations": {                        
+    "gesture1": "fsegfsi"                     }                 }             }        
+    }     } } '
