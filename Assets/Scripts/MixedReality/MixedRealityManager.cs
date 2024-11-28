@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.XR.PXR;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace MicroWar 
 {
@@ -54,6 +55,8 @@ namespace MicroWar
 
         private static readonly PxrSemanticLabel[] mrQueryLabels = { PxrSemanticLabel.Table, PxrSemanticLabel.Wall };
 
+        private UniversalAdditionalCameraData urpCameraData;
+
         private void Awake()
         {
             tableAnchors = new Dictionary<ulong, AnchorVolume>();
@@ -62,6 +65,7 @@ namespace MicroWar
 
         private void Start()
         {
+            urpCameraData = Camera.main.GetComponent<UniversalAdditionalCameraData>();
             CacheCameraData();
         }
 
@@ -102,9 +106,10 @@ namespace MicroWar
             //Setup Passthrough
             Camera.main.clearFlags = CameraClearFlags.SolidColor;
             Camera.main.backgroundColor = bgColor;
-            PXR_MixedReality.EnableVideoSeeThrough(true);
+            PXR_Manager.EnableVideoSeeThrough = true;
 
-            
+
+            SetPostProcessing(false);//Disabling post-processing otherwise passthrough won't work.
             PXR_MixedReality.EnableVideoSeeThroughEffect(true);
             PXR_MixedReality.SetVideoSeeThroughLut(LutTexture, 8, 8);
 
@@ -123,6 +128,13 @@ namespace MicroWar
                 LoadSceneData();
             }
         }
+
+
+        private void SetPostProcessing(bool isEnabled)
+        {
+            urpCameraData.renderPostProcessing = isEnabled;
+        }
+
 
         private void TryAttachBattlegroundToTable(AnchorVolume tableAnchor)
         {
@@ -176,10 +188,11 @@ namespace MicroWar
 
             Camera.main.clearFlags = cameraClearFlags; 
             Camera.main.backgroundColor = cameraBgColor;
-            PXR_MixedReality.EnableVideoSeeThrough(false);
+
+            PXR_Manager.EnableVideoSeeThrough = false;
 
             PXR_MixedReality.EnableVideoSeeThroughEffect(false);
-
+            SetPostProcessing(true);
             isPassthroughEnabled = false;
         }
 
@@ -187,7 +200,7 @@ namespace MicroWar
         {
             if (!pause && isPassthroughEnabled)
             {
-                PXR_MixedReality.EnableVideoSeeThrough(true);
+                PXR_Manager.EnableVideoSeeThrough = true;
             }
         }
 

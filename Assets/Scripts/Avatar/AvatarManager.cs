@@ -22,8 +22,6 @@ namespace MicroWar.Avatar
         private const string USER_AVATAR_LAYER = "UserAvatar";
         private const string USER_AVATAR_CULLING_LAYER = "UserAvatarCulling";
 
-        public override string PlatformAppID => Pico.Platform.CoreService.GetAppID();//"9f7e83c0dacdd38eb9f7167258610888";
-
         [SerializeField]
         private GameObject avatarPrefab;
 
@@ -93,6 +91,8 @@ namespace MicroWar.Avatar
 
         private IEnumerator Start()
         {
+            this.PlatformAppID = Pico.Platform.CoreService.GetAppID(); //"9f7e83c0dacdd38eb9f7167258610888";
+
             string mainUserId = debugUserID;
 
             //Making sure that PICO Platform Services are ready

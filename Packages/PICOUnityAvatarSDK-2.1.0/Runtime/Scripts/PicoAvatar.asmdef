@@ -1,0 +1,23 @@
+{
+  "name": "PicoAvatar",
+  "rootNamespace": "",
+  "references": [
+    "Unity.XR.PicoXR",
+    "Unity.InputSystem",
+    "Unity.RenderPipelines.Core.Runtime",
+    "Unity.RenderPipelines.Universal.Runtime",
+    "Unity.Mathematics",
+    "Unity.XR.PICO",
+    "PICO.Platform",
+    "PICO.Platform.Editor"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": true,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

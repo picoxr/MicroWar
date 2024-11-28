@@ -1,0 +1,6 @@
+#pragma kernel MainCS
+//#pragma enable_d3d11_debug_symbols
+
+#define HAS_ALPHA 1
+
+#include "ASTC_Encode.hlsl"

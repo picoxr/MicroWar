@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2716665991919426460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3722992489874604500}
+  - component: {fileID: 408910689732588553}
+  m_Layer: 0
+  m_Name: InputAsset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3722992489874604500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716665991919426460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2940964, y: 0.66207504, z: 2.0799751}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &408910689732588553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716665991919426460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505011185032342d0afa654555a64bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputAsset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  actionNameList:
+  - XRI Head/Position
+  - XRI Head/Rotation
+  - XRI LeftHand Interaction/Activate
+  - XRI LeftHand Interaction/Activate Value
+  - XRI LeftHand Interaction/Grip
+  - XRI LeftHand Interaction/MenuButton
+  - XRI LeftHand Interaction/Primary2DButton
+  - XRI LeftHand Interaction/PrimaryButton
+  - XRI LeftHand Interaction/Rotate Anchor
+  - XRI LeftHand Interaction/SecondaryButton
+  - XRI LeftHand Interaction/Select
+  - XRI LeftHand Interaction/Select Value
+  - XRI LeftHand Interaction/Translate Anchor
+  - XRI LeftHand Interaction/Trigger
+  - XRI LeftHand Interaction/UI Press
+  - XRI LeftHand Interaction/UI Press Value
+  - XRI LeftHand Locomotion/Move
+  - XRI LeftHand Locomotion/Teleport Mode Activate
+  - XRI LeftHand Locomotion/Teleport Mode Cancel
+  - XRI LeftHand Locomotion/Teleport Select
+  - XRI LeftHand Locomotion/Turn
+  - XRI LeftHand/Haptic Device
+  - XRI LeftHand/Position
+  - XRI LeftHand/Rotation
+  - XRI LeftHand/Tracking State
+  - XRI RightHand Interaction/Activate
+  - XRI RightHand Interaction/Activate Value
+  - XRI RightHand Interaction/Grip
+  - XRI RightHand Interaction/MenuButton
+  - XRI RightHand Interaction/Primary2DButton
+  - XRI RightHand Interaction/PrimaryButton
+  - XRI RightHand Interaction/Rotate Anchor
+  - XRI RightHand Interaction/SecondaryButton
+  - XRI RightHand Interaction/Select
+  - XRI RightHand Interaction/Select Value
+  - XRI RightHand Interaction/Translate Anchor
+  - XRI RightHand Interaction/Trigger
+  - XRI RightHand Interaction/UI Press
+  - XRI RightHand Interaction/UI Press Value
+  - XRI RightHand Locomotion/Move
+  - XRI RightHand Locomotion/Teleport Mode Activate
+  - XRI RightHand Locomotion/Teleport Mode Cancel
+  - XRI RightHand Locomotion/Teleport Select
+  - XRI RightHand Locomotion/Turn
+  - XRI RightHand/Haptic Device
+  - XRI RightHand/Position
+  - XRI RightHand/Rotation
+  - XRI RightHand/Tracking State
+  actionsRefList:
+  - {fileID: 7862207684358717888, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -530380113134220495, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -5982496924579745919, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -4289430672226363583, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 684178271008665108, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 4191552293185558100, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -6911358384767722392, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 637484288969600308, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -7363382999065477798, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -2259929929526879323, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -6131295136447488360, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 6558622148059887818, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 7779212132400271959, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -6781336271661891348, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -6395602842196007441, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 71106601250685021, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 6972639530819350904, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 1263111715868034790, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 737890489006591557, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -4084014799535200556, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 1010738217276881514, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -8785819595477538065, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -2024308242397127297, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 8248158260566104461, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 684395432459739428, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 83097790271614945, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 7904272356298805229, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -663589437726240831, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -1034599992402365662, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -5561142177327581603, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 2665747626503664179, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -5913262927076077117, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 748048597511555469, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 187161793506945269, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -1758520528963094988, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 875253871413052681, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -1061471797331103282, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 3279264004350380116, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -5908353012961274365, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -8198699208435500284, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -8061240218431744966, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 2307464322626738743, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -8270564778575511633, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -6493913391331992944, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -8222252007134549311, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -3326005586356538449, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: 5101698808175986029, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}
+  - {fileID: -1277054153949319361, guid: 6db5483d0c3ad47ecb316b1742845946, type: 3}

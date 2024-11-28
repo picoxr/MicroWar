@@ -2,7 +2,7 @@
 # MicroWar 
 Welcome to MicroWar, an VR game project implemented using the PICO Integration SDK. Our primary objective is to present an immersive experience that spotlights the breadth and depth of capabilities offered by the PICO Integration SDK. This single project encapsulates all the key features, demonstrating their integration potential for fellow developers.
 
-*Current version:* [0.8.5](Documentation/CHANGELOG.md)
+*Current version:* [0.8.6](Documentation/CHANGELOG.md)
 
 **`Trailer`**<br>
 
@@ -20,15 +20,12 @@ Welcome to MicroWar, an VR game project implemented using the PICO Integration S
 
 ## Download APK
 
-- [Download APK](https://bytedance.sg.larkoffice.com/file/SxVxbfQzfogrNsxMMIIla8tAgDc)
+- [Download APK](https://bytedance.sg.larkoffice.com/file/XBcQbL39roro2Uxo4K9l8xzMg2g)
 
 **Recent Updates**<br>
 ![MR_Features](/Documentation/Files/Avatars/Avatar_Screencaptures.png)
 
 ![MR_Features](/Documentation/Files/MR/MR_Update07.png)
-
-> [!IMPORTANT]
-> The Mixed-Reality features are currently in an **experimental phase and may undergo modifications.**<br>
 
 
 ## How To Play
@@ -68,7 +65,7 @@ Power-ups will randomly spawn on the battlefield. Players can guide their vehicl
 ### Prerequisites
 Before you begin, ensure you have met the following requirements:
 - PICO 4 / PICO 4 Ultra / PICO 4 PRO 
-- Unity 2021.3.28f1
+- Unity 2022.3.47f1
 - PICO Developer Center (Optional)
 ### Getting The Code
 First, ensure you have Git LFS installed by running this command:
@@ -88,11 +85,11 @@ Then, clone this repo using the "Code" button above, or this command:
 #### Make a build and run on the headset.
 In Unity Editor, click "File/Build Settings/Build And Run". Make sure the platform is set to Android.
 #### Run in Unity Editor via Live Preview Plug-in (If you have PDC installed)
-Please follow the insturctions here to [setup PDC](https://developer-global.pico-interactive.com/document/unity/pdc-basic-info/) and click play button in Boot Scene.
+Please follow the instructions here to [setup PDC](https://developer-global.pico-interactive.com/document/unity/pdc-basic-info/) and click play button in Boot Scene.
 ## Dependencies
-- PICO Integration SDK 3.0.2
+- PICO Integration SDK 3.0.5
 - PUI 5.11.0+
-- PICO Avatar SDK 2.0.0
+- PICO Avatar SDK 2.1.0
 - XR Hands 1.2.1
 - XR Interaction Toolkit 2.4.3
 - Netcode for GameObjects 1.5.2

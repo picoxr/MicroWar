@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba3176db5d1a244dabcf5e4ffb5c30c, type: 3}
+  m_Name: SceneDescription
+  m_EditorClassIdentifier: 
+  sceneDescGroup:
+  - sceneName: AvatarAnimTest
+    sceneDesc: <b><size=30>AvatarAnimTest</size></b>
+  - sceneName: AvatarCustomAnimationTest
+    sceneDesc: <b><size=30>AvatarCustomAnimationTest</size></b>
+  - sceneName: AvatarCustomHandTest
+    sceneDesc: <b><size=30>AvatarCustomHandTest</size></b>
+  - sceneName: HeightAutoFitAPITest
+    sceneDesc: <b><size=30>HeightAutoFitAPITest</size></b>
+  - sceneName: LoadAvatarSample
+    sceneDesc: '<b><size=30>Introduction</size></b>\n
+
+      Loading the Avatar image
+
+
+
+      <b><size=30>You
+      Can Learn</size></b>\n
+
+      The initialization process of PicoAvatarApp and
+      the creation process of PicoAvatar'
+  - sceneName: AvatarHomeCenter
+    sceneDesc: <b><size=30>AvatarHomeCenter</size></b>
+  - sceneName: AvatarMirrorSample
+    sceneDesc: "<b><size=30>Introduction</size></b>\\n\nPicoAvatar SDK initializes
+      the process and loads the current image of the user center\n\n\n<b><size=30>You
+      Can Learn</size></b>\\n\n1.Pico Integration SDK initialization process\\n \n2.PicoAvatarApp
+      startup process\\n \n3.PicoAvatar loading display\\n"
+  - sceneName: HandPoseAPISample
+    sceneDesc: "<b><size=30>Introduction</size></b>\\n\nCustom gesture animation
+      API to use\n\n\n<b><size=30>You Can Learn</size></b>\\n\n1.Bone specifications
+      and Settings of custom gestures\\n \n2.Use custom bones to drive the animation
+      of Avatar gesture parts\\n"
+  - sceneName: HeightAutoFitAPISample
+    sceneDesc: "<b><size=30>Introduction</size></b>\\n\nHeight adaptation function
+      and API use\n\n\n<b><size=30>You Can Learn</size></b>\\n\n1.How to use the
+      height adaptation function\\n \n2.Height adaptation function demonstration\\n"
+  - sceneName: PacketSyncAPISample
+    sceneDesc: '<b><size=30>Introduction</size></b>\n
+
+      Avatar Action Data packet
+      sending and receiving flow
+
+
+
+      <b><size=30>You Can Learn</size></b>\n
+
+      Local
+      data simulates network data to drive action updates of another Avatar image'
+  - sceneName: DynamicAnimationClipSample
+    sceneDesc: '<b><size=30>Introduction</size></b>\n
+
+      Custom action file loading
+      and action playback API usage
+
+
+
+      <b><size=30>You Can Learn</size></b>\n
+
+      1.How
+      to load a custom animated zip package\n
+
+      2.How to create an animation
+      layer using BlendTree2D\n
+
+      3.How to use AvatarAnimationLayer\n
+
+      4.How
+      do I use AvatarAnimationState\n'
+  - sceneName: BodyTrackingSample
+    sceneDesc: '<b><size=30>Introduction</size></b>\n
+
+      BodyTracking Full body
+      motion capture function
+
+
+
+      <b><size=30>You Can Learn</size></b>\n
+
+      Configure
+      and use BodyTracking full body motion capture capability'
+  - sceneName: AvatarIKSample
+    sceneDesc: <b><size=30>Introduction</size></b>\n\nAvatar IK driving capability\n\n\n<b><size=30>You
+      Can Learn</size></b>\n\n1.How to configure head, hands, and feet IK targets\n\n2.How
+      to configure auto footstep\n\n3.How to adjust height and arm length\n\n

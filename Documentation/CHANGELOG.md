@@ -1,5 +1,15 @@
 ## Changelog
 
+### [0.8.6] - 2024-11-27
+SDK Updates
+
+Added:
+- Updated PICO Unity Integration SDK to 3.0.5
+- Updated PICO Avatar SDK to 2.1.0
+- Imported PICO URP Fork
+- Updated Unity version to 2022.3.47f1
+- Fixed a bug preventing setting up a multiplayer game
+
 ### [0.8.5] - 2024-09-24
 SDK Updates
 

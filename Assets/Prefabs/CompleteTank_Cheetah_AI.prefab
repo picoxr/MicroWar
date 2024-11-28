@@ -34,7 +34,6 @@ RectTransform:
   m_Children:
   - {fileID: 3127562478036330198}
   m_Father: {fileID: 3972938094825370407}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -58,7 +57,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -149,7 +150,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127562478036330198}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -287,7 +287,6 @@ RectTransform:
   - {fileID: 1571338213410538215}
   - {fileID: 3057936527096522092}
   m_Father: {fileID: 3374264652938061968}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -389,7 +388,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127562478036330198}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -498,6 +496,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 102232189071182415, guid: 0fe2005be98dde343a5f2f8ec5845606,
@@ -616,9 +615,62 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8911466894030586784, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8911466894030586784, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2615333824054471695, guid: 0fe2005be98dde343a5f2f8ec5845606, type: 3}
     - {fileID: 4123395750286953637, guid: 0fe2005be98dde343a5f2f8ec5845606, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 102232189091112189, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3374264652938061968}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4768257574261034915}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8888735090934912327}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6194506209770833561}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1203100403680921125}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5509714426995396688}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5707187444462386922}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6454418057554470448}
+    - targetCorrespondingSourceObject: {fileID: 102232189091352495, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7281987109335519013}
+    - targetCorrespondingSourceObject: {fileID: 5476574050767348790, guid: 0fe2005be98dde343a5f2f8ec5845606,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1464483116828154615}
   m_SourcePrefab: {fileID: 100100000, guid: 0fe2005be98dde343a5f2f8ec5845606, type: 3}
 --- !u!114 &2158903180326531758 stripped
 MonoBehaviour:
@@ -638,6 +690,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3911804569231562714}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4768257574261034915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3972938094825085045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 4196291742
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &-8888735090934912327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0f762bc361f064b9aa453c108644db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 0
   SyncPositionZ: 1
@@ -719,26 +793,6 @@ MonoBehaviour:
   debugDistanceToDestination: 0
   debugDistanceToSteeringTarget: 0
   debugAngleToSteeringTarget: 0
---- !u!114 &4768257574261034915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3972938094825085045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!114 &5509714426995396688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,6 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0f762bc361f064b9aa453c108644db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
   SyncPositionX: 0
   SyncPositionY: 0
   SyncPositionZ: 0

@@ -1,0 +1,81 @@
+#pragma kernel BakeColorRegionsToBaseMapCS
+//#pragma enable_d3d11_debug_symbols
+
+RWTexture2D<float4> OutTex;
+Texture2D BaseTex;
+SamplerState sampler_BaseTex;
+Texture2D ColorRegionTex;
+SamplerState sampler_ColorRegionTex;
+
+float4 region1;
+float4 region2;
+float4 region3;
+float4 region4;
+float4 userData;  // x: albedoHue , y: isNewShaderTheme, zw : inv BaseTex texelSize
+
+float3 RgbToHsv(float3 c)
+{
+    const float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    float4 p = lerp(float4(c.bg, K.wz), float4(c.gb, K.xy), step(c.b, c.g));
+    float4 q = lerp(float4(p.xyw, c.r), float4(c.r, p.yzx), step(p.x, c.r));
+    float d = q.x - min(q.w, q.y);
+    const float e = 1.0e-4;
+    return float3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+float3 HsvToRgb(float3 c)
+{
+    const float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    float3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * lerp(K.xxx, saturate(p - K.xxx), c.y);
+}
+
+float3 ShiftHSV(float3 hsv, float4 hsvAlpha)
+{
+    return float3(hsv.x + hsvAlpha.x, (hsv.yz * hsvAlpha.yz));
+}
+
+#define FLT_EPSILON     1.192092896e-07 // Smallest positive number, such that 1.0 + FLT_EPSILON != 1.0
+
+float3 PositivePow(float3 base, float3 power)
+{
+    return pow(max(abs(base), float3(FLT_EPSILON, FLT_EPSILON, FLT_EPSILON)), power);
+}
+
+float3 LinearToGamma22(float3 c)
+{
+    return PositivePow(c.rgb, float3(0.454545454545455, 0.454545454545455, 0.454545454545455));
+}
+
+float3 Gamma22ToLinear(float3 c, float exponent)
+{
+    return PositivePow(c.rgb, float3(exponent, exponent, exponent));
+}
+
+[numthreads(8, 8, 1)]
+void BakeColorRegionsToBaseMapCS(uint3 id : SV_DispatchThreadID)
+{
+    float2 inv_texelSize = userData.zw;
+    float2 uv = (id.xy + 0.5) * inv_texelSize;
+    float4 baseCol = BaseTex.SampleLevel(sampler_BaseTex, uv, 0);
+    float4 colorMask = ColorRegionTex.SampleLevel(sampler_ColorRegionTex, uv, 0);
+    float  useAlbedoHue = userData.x;
+
+    float4 HSVAlpha1 = region1;
+    float4 HSVAlpha2 = region2;
+    float4 HSVAlpha3 = region3;
+    float4 HSVAlpha4 = region4;
+
+    baseCol.rgb = LinearToGamma22(baseCol.rgb);
+    float3 hsv = RgbToHsv(baseCol.rgb);
+    float4 result;
+    hsv.r *= useAlbedoHue;
+    float3 swiftColor = lerp(baseCol.rgb, saturate(HsvToRgb(ShiftHSV(hsv, HSVAlpha1))), saturate(colorMask.x * HSVAlpha1.w));
+    swiftColor = lerp(swiftColor, saturate(HsvToRgb(ShiftHSV(hsv, HSVAlpha2))), saturate(colorMask.y * HSVAlpha2.w));
+    swiftColor = lerp(swiftColor, saturate(HsvToRgb(ShiftHSV(hsv, HSVAlpha3))), saturate(colorMask.z * HSVAlpha3.w));
+    swiftColor = lerp(swiftColor, saturate(HsvToRgb(ShiftHSV(hsv, HSVAlpha4))), saturate(colorMask.w * HSVAlpha4.w));
+    swiftColor = Gamma22ToLinear(swiftColor, userData.y);
+    result = float4(swiftColor, baseCol.a);
+
+    OutTex[id.xy] = result;
+}
